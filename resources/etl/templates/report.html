@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <title>Travel Authorization Request</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+
+<body style="background-color: ghostwhite;">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="padding-top: 0; padding-bottom: 0;">
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-brand " style="color: ghostwhite; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px;">
+      Submitted Requests
+    </li>
+  </ul>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto active">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Submit Request</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<div class="container-fluid" style="margin-top: 100px;">
+  <div class="row" style="margin-left: 20px; margin-right: 20px;">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr style="text-align: left;">
+                  <!-- <th>Record Number</th>
+                  <th>Employee ID</th>
+                  <th>Employee Last Name</th>
+                  <th>Employee First Name</th>
+                  <th>Company</th>
+                  <th>Travel #</th>
+                  <th>Project Name</th>
+                  <th>Project ID/IA #</th>
+                  <th>Contract/Task_Order</th>
+                  <th>Date</th> -->
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+  
+  var tbody = d3.select("tbody");
+  var tr = d3.select("tr");
+  var records = JSON.parse('{{records | tojson}}');
+  var data = JSON.stringify(records)
+
+  console.log(data);
+
+  console.log(records);
+
+  for(i=0; i<1; i++)
+  {
+    var record = records[i];
+    Object.entries(record).forEach(([key, value]) => 
+    {
+      var cell = tr.append("th");
+      cell.text(key);
+    });
+  };
+
+  // records.forEach((record) => {
+  // Object.entries(record).forEach(([key, value]) => {
+  //   var cell = tr.append("th");
+  //   cell.text(key);
+  // });
+  // });
+
+  records.forEach((record) => {
+  var row = tbody.append("tr");
+  Object.entries(record).forEach(([key, value]) => {
+    var cell = row.append("td");
+    cell.text(value);
+  });
+  });
+
+</script>
+
+</html>

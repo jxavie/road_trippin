@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <title>Travel Authorization Request</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset="100" style="background-color: ghostwhite; position: relative;">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="padding-top: 0; padding-bottom: 0;">
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-brand " style="color: rgb(80, 80, 80); background-color: ghostwhite; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px;">
+      Travel Authorization Request
+    </li>
+  </ul>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav mr-auto active" style="padding-left: 30px;">
+      <li class="nav-item">
+        <a class="nav-link" href="#client_info_fed">Client</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#tpoc_info_fed">TPOC</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#traveler_info_fed">Traveler</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#fsde_employees_df">Employee</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#employee_training-pre_deployment_tasks">Training/Tasks</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/report">View Submitted Requests</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<form action="{{ url_for('process_form_data') }}" method="POST">
+
+  <div id="client_info_fed" class="container-fluid" style="margin-top: 100px; margin-bottom: 25px;">
+    <div class="card" style="background-color: aliceblue;">
+      <div class="card-body">
+        <h2>Client Information</h2>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="industry_partner">Industry Partner:</label>
+              <input type="text" class="form-control" id="industry_partner" placeholder="Enter Partner Name" name="industry_partner">
+            </div>
+            <div class="form-group">
+              <label for="client_id">Client:</label>
+              <input type="text" class="form-control" id="client_id" placeholder="Enter Client Name" name="client_id">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="version_date">Version Date:</label>
+              <input type="date" class="form-control" id="version_date" name="version_date">
+            </div>  
+            <div class="form-group">
+              <label for="travel_no">Travel #:</label>
+              <input type="text" class="form-control" id="travel_no" placeholder="Enter Travel No." name="travel_no">
+            </div>
+            <div class="form-group">
+              <label for="dt">Date:</label>
+              <input type="date" class="form-control" id="dt" placeholder="Enter Date" name="dt">
+            </div>
+            <div class="form-group">
+              <label for="project_name">Project Name:</label>
+              <input type="text" class="form-control" id="project_name" placeholder="Enter Project Name" name="project_name">
+            </div>
+            <div class="form-group">
+              <label for="project_id">Project ID/IA #:</label>
+              <input type="text" class="form-control" id="project_id" placeholder="Enter Project ID" name="project_id">
+            </div>
+            <div class="form-group">
+              <label for="contract_task_order">Contract/Task Order:</label>
+              <input type="text" class="form-control" id="contract_task_order" placeholder="Enter Contract/Task Order" name="contract_task_order">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  
+  <div id="tpoc_info_fed" class="container-fluid" style="margin-bottom: 25px;">
+    <div class="card" style="background-color: snow;">
+      <div class="card-body">
+        <h2>TPOC Information</h2>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="from_requestor">From (Requestor):</label>
+              <input type="text" class="form-control" id="from_requestor" placeholder="Enter Requestor Name" name="from_requestor">
+            </div>
+            <div class="form-group">
+              <label for="through">Through:</label>
+              <input type="text" class="form-control" id="through" placeholder="Enter Value" name="through">
+            </div>
+            <div class="form-group">
+              <label for="funding_stream">Funding Stream:</label>
+              <input type="text" class="form-control" id="funding_stream" placeholder="Enter Funding Stream" name="funding_stream">
+            </div>
+            <!-- <div class="form-group">
+              <label for="funding_stream">Funding Stream (select one):</label>
+              <select class="custom-select" id="funding_stream">
+                <option selected>Choose...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div> -->
+            <div class="form-group">
+              <label for="subject_id">Subject:</label>
+              <input type="text" class="form-control" id="subject_id" placeholder="Enter Value" name="subject_id">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+              <div class="form-group">
+                <label for="cum_amt_billed">Billed - Cummulative Amount:</label>
+                <input type="text" class="form-control" id="cum_amt_billed" placeholder="Enter Amount Billed" name="cum_amt_billed">
+              </div>
+              <div class="form-group">
+                <label for="cum_amt_billed_balance">Balance - Cummulative Amount:</label>
+                <input type="text" class="form-control" id="cum_amt_billed_balance" placeholder="Enter Balance" name="cum_amt_billed_balance">
+              </div>
+              <div class="form-group">
+                <label for="estimate">Estimate:</label>
+                <input type="text" class="form-control" id="estimate" placeholder="Enter Estimate" name="estimate">
+              </div>
+              <div class="form-group">
+                <label for="estimate_balance">Balance - Estimate:</label>
+                <input type="text" class="form-control" id="estimate_balance" placeholder="Enter Estimate Balance" name="estimate_balance">
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+
+  <div id="traveler_info_fed" class="container-fluid" style="margin-bottom: 25px;">
+    <div class="card" style="background-color: lightgoldenrodyellow;">
+      <div class="card-body">
+        <h2>Traveler Information</h2>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="client_poc">Client POC:</label>
+              <input type="text" class="form-control" id="client_poc" placeholder="Enter Client POC" name="client_poc">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+              <label for="id_project_mgr">IP Project Manager:</label>
+              <input type="text" class="form-control" id="id_project_mgr" placeholder="Enter IP Project Manager" name="id_project_mgr">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="travel_justification">Purpose/Justification for Request:</label>
+              <textarea class="form-control" rows="4" id="travel_justification" name="travel_justification"></textarea>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div style="margin-bottom: 10px;">
+              <h5><i>Traveler</i></h5>
+            </div>
+            <div class="form-group">
+              <label for="first_name">First Name:</label>
+              <input type="text" class="form-control" id="first_name" placeholder="Enter First Name" name="first_name">
+            </div>
+            <div class="form-group">
+              <label for="middle_name">Middle Name:</label>
+              <input type="text" class="form-control" id="middle_name" placeholder="Enter Middle Name" name="middle_name">
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name:</label>
+              <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" name="last_name">
+            </div>
+            <div class="form-group">
+              <label for="company">Company:</label>
+              <input type="text" class="form-control" id="company" placeholder="Enter Company Name" name="company">
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div style="margin-bottom: 10px;">
+              <h5><i>Subcontractor POC</i></h5>
+            </div>
+            <div class="form-group">
+              <label for="sub_company_poc_name">Name:</label>
+              <input type="text" class="form-control" id="sub_company_poc_name" placeholder="Enter POC Name" name="sub_company_poc_name">
+            </div>
+            <div class="form-group">
+              <label for="sub_company_address">Address:</label>
+              <input type="text" class="form-control" id="sub_company_address" placeholder="Enter POC Address" name="sub_company_address">
+            </div>
+            <div class="form-group">
+              <label for="sub_company_city">City:</label>
+              <input type="text" class="form-control" id="sub_company_city" placeholder="Enter POC City" name="sub_company_city">
+            </div>
+            <div class="form-group">
+              <label for="sub_company_phone">Phone:</label>
+              <input type="text" class="form-control" id="sub_company_phone" placeholder="Enter POC Phone" name="sub_company_phone">
+            </div>
+            <div class="form-group">
+              <label for="sub_company_email">Email:</label>
+              <input type="text" class="form-control" id="sub_company_email" placeholder="Enter POC Email" name="sub_company_email">
+            </div>
+            <div class="form-group">
+              <label for="sub_company_po">Sub Purchase Order:</label>
+              <input type="text" class="form-control" id="sub_company_po" placeholder="Enter Subcontractor PO" name="sub_company_po">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+
+  <div id="fsde_employees_df" class="container-fluid" style="margin-bottom: 25px;">
+    <div class="card" style="background-color: whitesmoke;">
+      <div class="card-body">
+        <h2>Employee Information</h2>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-md-3 col-sm-12">
+            <div class="form-group">
+              <label for="birth_date">Date of Birth:</label>
+              <input type="date" class="form-control" id="birth_date" placeholder="Enter Date of Birth" name="birth_date">
+            </div>
+            <div class="form-group">
+              <label for="place_of_birth">Place of Birth:</label>
+              <input type="text" class="form-control" id="place_of_birth" placeholder="Enter Country" name="place_of_birth">
+            </div>
+            <div class="form-group">
+              <label for="ssn">SSN:</label>
+              <input type="text" class="form-control" id="ssn" placeholder="Enter SSN" name="ssn">
+            </div>
+            <div class="form-group">
+              <label for="dod_id">DOD ID:</label>
+              <input type="text" class="form-control" id="dod_id" placeholder="Enter DOD ID" name="dod_id">
+            </div>
+            <div class="form-group">
+              <label for="passport_no">Passport #:</label>
+              <input type="text" class="form-control" id="passport_no" placeholder="Enter Passport No" name="passport_no">
+            </div>
+            <div class="form-group">
+              <label for="passport_expiration">Passport Expiration:</label>
+              <input type="date" class="form-control" id="passport_expiration" name="passport_expiration">
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <div class="form-group">
+              <label for="employee_id">Employee ID:</label>
+              <input type="text" class="form-control" id="employee_id" placeholder="Enter Employee ID" name="employee_id">
+            </div>
+            <div class="form-group">
+              <label for="date_hired">Date Hired:</label>
+              <input type="date" class="form-control" id="date_hired" name="date_hired">
+            </div>
+            <div class="form-group">
+              <label for="position_type">Position:</label>
+              <input type="text" class="form-control" id="position_type" placeholder="Enter Position Type" name="position_type">
+            </div>
+            <div class="form-group">
+              <label for="primary_phone">Primary Phone:</label>
+              <input type="text" class="form-control" id="primary_phone" placeholder="Enter Phone Number" name="primary_phone">
+            </div>
+            <div class="form-group">
+              <label for="secondary_phone">Secondary Phone:</label>
+              <input type="text" class="form-control" id="secondary_phone" placeholder="Enter Phone Number" name="secondary_phone">
+            </div>
+            <div class="form-group">
+              <label for="primary_email">Primary Email:</label>
+              <input type="text" class="form-control" id="primary_email" placeholder="Enter Email Address" name="primary_email">
+            </div>
+            <div class="form-group">
+              <label for="secondary_email">Secondary Email:</label>
+              <input type="text" class="form-control" id="secondary_email" placeholder="Enter Email Address" name="secondary_email">
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <div class="form-group">
+              <label for="task_id">Task ID:</label>
+              <input type="text" class="form-control" id="task_id" placeholder="Enter Task ID" name="task_id">
+            </div>
+            <div class="form-group">
+              <label for="manager">Manager:</label>
+              <input type="text" class="form-control" id="manager" placeholder="Enter Employee Manager Name" name="manager">
+            </div>
+            <div class="form-group">
+              <label for="oy2_po_code">OY2 PO Code:</label>
+              <input type="text" class="form-control" id="oy2_po_code" placeholder="Enter OY2 PO Code" name="oy2_po_code">
+            </div>
+            <div class="form-group">
+              <label for="oy2_org_code">OY2 Org Code:</label>
+              <input type="text" class="form-control" id="oy2_org_code" placeholder="Enter OY2 Org Code" name="oy2_org_code">
+            </div>
+            <div class="form-group">
+              <label for="oy2_project_string">OY2 Project:</label>
+              <input type="text" class="form-control" id="oy2_project_string" placeholder="Enter OY2 Project" name="oy2_project_string">
+            </div>
+            <div class="form-group">
+              <label for="plc_code">PLC Code:</label>
+              <input type="text" class="form-control" id="plc_code" placeholder="Enter OY2 Project" name="plc_code">
+            </div>
+            <div class="form-group">
+              <label for="nok_date">NOK:</label>
+              <input type="date" class="form-control" id="nok_date" name="nok_date">
+            </div>
+            <div class="form-group">
+              <label for="fsde_sheet_date">FSDE Sheet:</label>
+              <input type="date" class="form-control" id="fsde_sheet_date" name="fsde_sheet_date">
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-12">
+            <div class="form-group">
+              <label for="deployment_start_date">Deployment Start:</label>
+              <input type="date" class="form-control" id="deployment_start_date" name="deployment_start_date">
+            </div>
+            <div class="form-group">
+              <label for="deployment_end_date">Deployment End:</label>
+              <input type="date" class="form-control" id="deployment_end_date" name="deployment_end_date">
+            </div>
+            <div class="form-group">
+              <label for="leave_start_date">Leave Start:</label>
+              <input type="date" class="form-control" id="leave_start_date" name="leave_start_date">
+            </div>
+            <div class="form-group">
+              <label for="leave_end_date">Leave End:</label>
+              <input type="date" class="form-control" id="leave_end_date" name="leave_end_date">
+            </div>
+            <div class="form-group">
+              <label for="mil_leave_start_date">Mil Leave Start:</label>
+              <input type="date" class="form-control" id="mil_leave_start_date" name="mil_leave_start_date">
+            </div>
+            <div class="form-group">
+              <label for="mil_leave_end_date">Mil Leave End:</label>
+              <input type="date" class="form-control" id="mil_leave_end_date" name="mil_leave_end_date">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="container-fluid" id="employee_training-pre_deployment_tasks" style="margin-bottom: 25px;">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="card" style="background-color: antiquewhite;">
+          <div class="card-body">
+            <h2>Training</h2>
+            <hr class="my-4">
+            <div class="form-group">
+              <label for="ditac">DITAC:</label>
+              <input type="date" class="form-control" id="ditac" name="ditac">
+            </div>
+            <div class="form-group">
+              <label for="sis">SIS:</label>
+              <input type="date" class="form-control" id="sis" name="sis">
+            </div>
+            <div class="form-group">
+              <label for="ftp">FTP:</label>
+              <input type="date" class="form-control" id="ftp" name="ftp">
+            </div>
+            <div class="form-group">
+              <label for="jasa">JASA:</label>
+              <input type="date" class="form-control" id="jasa" name="jasa">
+            </div>
+            <div class="form-group">
+              <label for="dst_osint">DST_OSINT:</label>
+              <input type="date" class="form-control" id="dst_osint" name="dst_osint">
+            </div>
+            <div class="form-group">
+              <label for="proton">PROTON:</label>
+              <input type="date" class="form-control" id="proton" name="proton">
+            </div>
+            <div class="form-group">
+              <label for="fmv_academy">FMC Academy:</label>
+              <input type="date" class="form-control" id="fmv_academy" name="fmv_academy">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="card" style="background-color: mintcream;">
+          <div class="card-body">
+            <h2>Pre-Deployment Task</h2>
+            <hr class="my-4">
+            <div class="form-group">
+              <label for="ccmsubmit">CCM Submitted:</label>
+              <input type="date" class="form-control" id="ccmsubmit" name="ccmsubmit">
+            </div>
+            <div class="form-group">
+              <label for="ci_brief">CI Brief:</label>
+              <input type="date" class="form-control" id="ci_brief" name="ci_brief">
+            </div>
+            <div class="form-group">
+              <label for="visa_submitted">Visa Submitted:</label>
+              <input type="date" class="form-control" id="visa_submitted" name="visa_submitted">
+            </div>
+            <div class="form-group">
+              <label for="src_date">JASA:</label>
+              <input type="date" class="form-control" id="src_date" name="src_date">
+            </div>
+            <div class="form-group">
+              <label for="src_travel_submission">SRC Travel Submission:</label>
+              <input type="date" class="form-control" id="src_travel_submission" name="src_travel_submission">
+            </div>
+            <div class="form-group">
+              <label for="deployment_travel_submission">Deployment Travel Submission:</label>
+              <input type="date" class="form-control" id="deployment_travel_submission" name="deployment_travel_submission">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+
+  <div class="container-fluid">
+    <button type="submit" class="btn btn-secondary btn-block" style="margin-bottom: 20px;">Submit</button>  
+  </div>
+
+</form>
+
+</body>
+</html>
