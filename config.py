@@ -1,0 +1,5 @@
+dbuser = "admin"
+dbpwd = "AEhs2398"
+dbhost = "databootcamp.croxleyjexre.us-east-2.rds.amazonaws.com"
+dbport = "3306"
+dbname = "roadtrippin"
