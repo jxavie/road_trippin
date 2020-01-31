@@ -1,0 +1,358 @@
+State,Location,System,Not_Reported,<60,60-94,95-119,120-144,145-170,171-194,195-220,>220
+Alabama,Rural,Interstate,3.338,409.293,103.533,22.363,16.459,8.537,3.388,2.009,1.704
+Alaska,Rural,Interstate,0,203.573,330.051,151.728,112.55,86.068,49.1,30.043,38.4
+Arizona,Rural,Interstate,1.513,537.675,223.363,78.487,37.938,16.082,10.968,4.8,5.4
+Arkansas,Rural,Interstate,0,234.946,138.771,32.715,15.033,8.524,3.378,2.789,2.734
+California,Rural,Interstate,8.534,519.824,369.451,143.799,75.642,33.344,16.241,8.239,10.758
+Colorado,Rural,Interstate,0,135.267,288.429,117.222,38.784,24.853,23.217,14.7,5.649
+Connecticut,Rural,Interstate,0,16.81,6.36,3.06,1.45,0.75,0.1,0.1,0.11
+Delaware,Rural,Interstate,0,0,0,0,0,0,0,0,0
+District of Columbia,Rural,Interstate,0,0,0,0,0,0,0,0,0
+Florida,Rural,Interstate,0.377,601.498,96.704,6.596,5.507,2.713,1.773,0.873,1.22
+Georgia,Rural,Interstate,0,214.577,223.914,56.558,23.246,9.011,5.784,2.094,2.138
+Hawaii,Rural,Interstate,0,0,0,0,0,0,0,0,0
+Idaho,Rural,Interstate,0.727,308.858,152.107,32.245,15.681,7.481,2.623,1.031,2.001
+Illinois,Rural,Interstate,0,740.59,364.81,76.14,30.93,17.23,6.27,3.65,3.72
+Indiana,Rural,Interstate,13.09,433.022,189.412,65.243,30.644,18.953,12.678,8.986,12.402
+Iowa,Rural,Interstate,26.207,287.79,205.223,56.687,22.419,6.877,2.834,1.562,1.867
+Kansas,Rural,Interstate,0,391.485,179.232,43.554,15.794,6.3,1.873,0.8,0.392
+Kentucky,Rural,Interstate,2.461,503.526,136.936,32.204,18.5,10.228,3.666,1.496,2.146
+Louisiana,Rural,Interstate,6.576,192.94,133.83,87.291,64.809,29.362,11.384,4.1,2.2
+Maine,Rural,Interstate,0,154.41,75.86,25.99,13.46,5.88,1.88,1.2,0.6
+Maryland,Rural,Interstate,0,66.238,56.658,11.481,4.651,1.483,0.456,0.454,0.715
+Massachusetts,Rural,Interstate,0,34.158,21.626,4.23,2.2,0.9,0.267,0.5,0.4
+Michigan,Rural,Interstate,4.227,181.693,237.572,66.586,33.89,19.554,9.399,5.956,3.453
+Minnesota,Rural,Interstate,0.015,192.044,294.869,50.093,29.134,10.913,4.797,3.313,2.904
+Mississippi,Rural,Interstate,0,386.796,115.478,30.706,21.576,13.443,6.018,2.31,2.11
+Missouri,Rural,Interstate,0,584.668,199.827,30.888,14.163,6.936,3.4,1.151,0.5
+Montana,Rural,Interstate,0,573.324,397.474,67.5,29.047,14.14,5.4,3.2,4.4
+Nebraska,Rural,Interstate,2.81,212.84,145.33,25.47,15.25,8.6,2.8,0.6,0.9
+Nevada,Rural,Interstate,7.143,399.975,28.055,10.3,2.9,3.4,3.4,1,0.5
+New Hampshire,Rural,Interstate,0,112.033,24,3.828,1.6,0.5,0,0,0
+New Jersey,Rural,Interstate,0,17.1,22.55,3.31,1,0.07,0.35,0.5,0
+New Mexico,Rural,Interstate,0,561.449,175.857,54.64,27.248,13.892,5.347,2.31,2.593
+New York,Rural,Interstate,10.96,316.42,304.87,85.45,44.49,19.37,8.05,5.83,8.32
+North Carolina,Rural,Interstate,0.641,386.114,122.836,22.787,15.161,7.191,4.009,1.561,0.49
+North Dakota,Rural,Interstate,0,252.762,203.956,36.687,10.485,3.416,1.226,0.9,0.3
+Ohio,Rural,Interstate,0,346.1,195.524,55.788,22.909,12.178,5.034,2.451,2.547
+Oklahoma,Rural,Interstate,1.297,285.815,260.639,48.634,23.54,13.128,5.919,4.685,2.76
+Oregon,Rural,Interstate,0,279.93,158.05,37.06,12.75,4.27,1.26,1.17,0.69
+Pennsylvania,Rural,Interstate,0,518.984,364.954,89.359,55.553,20.466,8.722,7.752,8.644
+Rhode Island,Rural,Interstate,0,15.043,2.156,0.42,0.08,0.021,0.032,0.013,0.078
+South Carolina,Rural,Interstate,0,359.77,132.389,29.88,13.84,6.365,2.297,1.25,0.5
+South Dakota,Rural,Interstate,0,218.611,313.169,35.867,13.421,6.149,2.615,1.2,0
+Tennessee,Rural,Interstate,0.02,518.603,91.86,14.415,10.068,5.445,2.063,1.5,0.22
+Texas,Rural,Interstate,1.058,894.229,820.74,180.584,62.355,27.074,8.454,3.6,2.634
+Utah,Rural,Interstate,0,377.945,235.753,51.717,10.714,4.855,1.6,0.8,0.5
+Vermont,Rural,Interstate,0.586,175.873,60.092,10.8,5.9,1.8,0.5,0.2,0.219
+Virginia,Rural,Interstate,0,271.93,267.66,39.553,11.204,5.617,1.07,0.394,0.362
+Washington,Rural,Interstate,0,170.39,144.9,41.09,27.76,18.14,9.63,8.01,9.07
+West Virginia,Rural,Interstate,0.3,159.096,110.502,23.528,11.771,6.203,4.415,1.307,2.23
+Wisconsin,Rural,Interstate,0,247.04,136.19,45.67,42.04,23.41,8.13,5.62,4.23
+Wyoming,Rural,Interstate,0,482.567,210.748,62.094,27.825,13.848,5.42,2.25,2.722
+Alabama,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Alaska,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Arizona,Rural,Other Freeways & Expressways,0,17,0.215,0.1,0.1,0.189,0,0,0
+Arkansas,Rural,Other Freeways & Expressways,0,2.171,25.086,19.1,12.78,7.4,3.902,1.2,0.397
+California,Rural,Other Freeways & Expressways,3.8,114.298,156.641,44.582,23.104,14.474,7.112,3.234,2.211
+Colorado,Rural,Other Freeways & Expressways,0,5.735,10.571,7.169,3.7,0.596,0.256,0.1,0
+Connecticut,Rural,Other Freeways & Expressways,0,15.06,15.36,1.95,1.79,0.68,0.38,0.3,0
+Delaware,Rural,Other Freeways & Expressways,0.06,1.2,8.48,4.2,1.95,0.62,0.93,0.2,0
+District of Columbia,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Florida,Rural,Other Freeways & Expressways,0.223,75.177,87.095,8.034,2.166,1.446,0.8,0.6,0.4
+Georgia,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Hawaii,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Idaho,Rural,Other Freeways & Expressways,53.216,22.118,26.398,5.839,2.186,0.837,0.64,0.236,0.05
+Illinois,Rural,Other Freeways & Expressways,0,3.69,14.82,19,5.53,3.29,1,0.74,0.21
+Indiana,Rural,Other Freeways & Expressways,0.269,48.503,44.905,20.329,17.118,8.357,3.662,1.254,1.966
+Iowa,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Kansas,Rural,Other Freeways & Expressways,0,162.76,190.584,33.072,12.076,3.9,1.242,0.5,0.129
+Kentucky,Rural,Other Freeways & Expressways,0.509,242.918,117.188,20.132,7.937,5.28,2.257,0.712,0.875
+Louisiana,Rural,Other Freeways & Expressways,0.228,0.9,7.52,5.5,5.514,2.012,1.669,0.6,0.4
+Maine,Rural,Other Freeways & Expressways,0,0,0.55,0.12,0.2,0,0,0,0.06
+Maryland,Rural,Other Freeways & Expressways,0.031,40.208,22.707,3.5,1.012,0.602,0.228,0.665,0.539
+Massachusetts,Rural,Other Freeways & Expressways,0,3.958,5.326,0.6,0.26,0,0.1,0,0.2
+Michigan,Rural,Other Freeways & Expressways,0,195.962,102.464,24.527,8.909,3.822,4.729,1.923,1.162
+Minnesota,Rural,Other Freeways & Expressways,0,15.422,12.641,3.467,1.194,0.468,0.404,0.1,0.1
+Mississippi,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Missouri,Rural,Other Freeways & Expressways,0,584.388,416.305,81.839,27.125,9.997,3.174,1.494,1.164
+Montana,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Nebraska,Rural,Other Freeways & Expressways,19,66.32,125.67,59.13,30.23,15.05,9.19,3.99,3
+Nevada,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+New Hampshire,Rural,Other Freeways & Expressways,0,8.671,0.553,0,0,0,0,0,0
+New Jersey,Rural,Other Freeways & Expressways,0,7.91,19,4.62,2.22,1.2,0,0.3,0.2
+New Mexico,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+New York,Rural,Other Freeways & Expressways,3.24,24.42,83.55,31.49,20.47,10.26,4.06,2.23,1.19
+North Carolina,Rural,Other Freeways & Expressways,0.49,226.092,146.817,24.747,9.318,6.717,2.355,0.983,2.154
+North Dakota,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Ohio,Rural,Other Freeways & Expressways,0,132.207,135.186,41.819,14.459,6.492,2.407,0.7,1.221
+Oklahoma,Rural,Other Freeways & Expressways,0,0.1,0.901,0,0.2,0.2,0.2,0.1,0.4
+Oregon,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Pennsylvania,Rural,Other Freeways & Expressways,0,112.007,158.651,38.232,14.759,9.401,6.568,4.641,5.954
+Rhode Island,Rural,Other Freeways & Expressways,0,3.9,1.707,2,2.005,0.9,0,0.2,0.1
+South Carolina,Rural,Other Freeways & Expressways,0,10.085,26.653,4.055,3.121,0.2,0.35,0.1,0
+South Dakota,Rural,Other Freeways & Expressways,0,107.865,103.073,47.225,21.838,6.558,2.395,1.525,0.328
+Tennessee,Rural,Other Freeways & Expressways,0,9.031,5,0.23,0.117,0,0,0,0
+Texas,Rural,Other Freeways & Expressways,0.8,45.52,48.758,21.406,5.828,3.447,1.2,0.5,0.3
+Utah,Rural,Other Freeways & Expressways,0,0.348,3.8,3,1.011,0.6,0.2,0,0
+Vermont,Rural,Other Freeways & Expressways,0,0,0.595,1.09,0,0,0,0,0
+Virginia,Rural,Other Freeways & Expressways,0.162,19.488,58.354,10.769,2.386,0.744,0.342,0.124,0.041
+Washington,Rural,Other Freeways & Expressways,0,138.89,295.23,87.86,32.39,17.98,14.15,10.01,15.62
+West Virginia,Rural,Other Freeways & Expressways,0,0,0.108,0.2,0,0.13,0,0,0.018
+Wisconsin,Rural,Other Freeways & Expressways,0,54.76,55.53,43.35,24.33,15.77,5.98,2.08,1.56
+Wyoming,Rural,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Alabama,Rural,Other Principal Arterial,3.653,964.143,812.668,137.734,51.035,27.777,12.45,8.404,10.823
+Alaska,Rural,Other Principal Arterial,320.561,60.021,105.969,45.953,45.059,45.609,35.09,32.921,108.068
+Arizona,Rural,Other Principal Arterial,43.19,385.168,398.051,165.611,103.662,58.459,28.246,15.683,12.84
+Arkansas,Rural,Other Principal Arterial,0.116,353.684,823.875,322.016,185.981,100.097,45.522,25.053,20.578
+California,Rural,Other Principal Arterial,31.89,851.281,1368.049,474.586,236.877,128.435,65.548,46.705,60.555
+Colorado,Rural,Other Principal Arterial,0,600.39,1128.422,438.121,203.814,103.373,50.465,26.265,17.893
+Connecticut,Rural,Other Principal Arterial,0,9.9,49.61,28.55,17.28,8.27,4.19,2.6,1.67
+Delaware,Rural,Other Principal Arterial,1.54,23.47,56.53,12.98,3.15,1.5,0.2,0.29,0.1
+District of Columbia,Rural,Other Principal Arterial,0,0,0,0,0,0,0,0,0
+Florida,Rural,Other Principal Arterial,0.653,1018.572,1197.574,265.624,84.131,32.639,9.253,4.678,3.922
+Georgia,Rural,Other Principal Arterial,133.728,805.202,1078.895,264.241,94.874,44.678,15.239,7.39,8.243
+Hawaii,Rural,Other Principal Arterial,0,1.2,20.035,17.027,12.146,11.728,6.726,4.2,4.988
+Idaho,Rural,Other Principal Arterial,120.23,463.174,702.256,218.727,90.904,37.426,14.459,9.378,5.088
+Illinois,Rural,Other Principal Arterial,6.9,378.18,971.58,438.22,254.43,152.78,75.57,42.08,40.44
+Indiana,Rural,Other Principal Arterial,28.102,715.992,677.278,256.863,133.892,68.223,35.181,32.813,17.065
+Iowa,Rural,Other Principal Arterial,31.368,914.191,1127.865,553.377,346.42,194.08,102.648,67.975,80.15
+Kansas,Rural,Other Principal Arterial,0,1532.891,794.221,162.824,67.343,36.849,17.456,8.232,7.176
+Kentucky,Rural,Other Principal Arterial,4.546,515.316,486.378,122.177,48.29,23.13,9.359,4.292,5.15
+Louisiana,Rural,Other Principal Arterial,17.861,131.363,410.841,187.902,95.172,64.374,37.425,18.691,36.179
+Maine,Rural,Other Principal Arterial,0.15,222.503,291.203,102.026,57.404,34.56,22.38,18.74,45.16
+Maryland,Rural,Other Principal Arterial,0.486,135.266,132.215,25.835,10.804,6.956,3.377,3.087,2.859
+Massachusetts,Rural,Other Principal Arterial,0,17.034,45.993,21.34,10.905,4.996,2,1.333,1.66
+Michigan,Rural,Other Principal Arterial,0.021,856.479,816.376,234.314,117.348,57.009,21.1,12.34,14.993
+Minnesota,Rural,Other Principal Arterial,0.512,1249.788,1136.019,479.354,284.359,154.711,72.207,40.407,37.042
+Mississippi,Rural,Other Principal Arterial,0,481.721,726.727,250.937,154.405,90.075,42.4,19.167,17.806
+Missouri,Rural,Other Principal Arterial,0.51,644.362,845.552,229.814,86.342,40.218,16.253,8.568,7.94
+Montana,Rural,Other Principal Arterial,0,635.708,1317.576,424.615,189.671,93.082,43.969,23.243,44.98
+Nebraska,Rural,Other Principal Arterial,210.81,938.46,708.09,216.21,115.86,66.97,30.59,20.44,31.41
+Nevada,Rural,Other Principal Arterial,0,990.133,413.773,75.688,27.049,6.951,3.364,1.553,0.913
+New Hampshire,Rural,Other Principal Arterial,0.053,151.348,109.922,28.273,14.453,7.619,4,2.92,4.154
+New Jersey,Rural,Other Principal Arterial,0,38.37,43.37,19.84,19.47,17.24,8.26,5.47,7.62
+New Mexico,Rural,Other Principal Arterial,2.503,680.646,700.829,253.174,130.236,71.863,36.825,19.189,21.967
+New York,Rural,Other Principal Arterial,37.45,289.63,1010.88,354.71,178.48,103,60.08,31.72,39.87
+North Carolina,Rural,Other Principal Arterial,14.766,339.919,778.361,254.143,100.372,41.817,20.001,10.442,12.559
+North Dakota,Rural,Other Principal Arterial,0,1233.563,1138.039,312.16,132.817,62.674,24.795,14.943,24.316
+Ohio,Rural,Other Principal Arterial,4.882,528.758,661.108,177.736,80.86,38.005,16.739,9.096,10.627
+Oklahoma,Rural,Other Principal Arterial,41.035,384.203,948.429,390.424,208.162,119.259,68.446,40.268,46.719
+Oregon,Rural,Other Principal Arterial,0.12,669.39,1325.74,376.41,157.35,71.39,28.04,15.54,12.96
+Pennsylvania,Rural,Other Principal Arterial,0,302.884,715.044,243.482,119.191,60.496,32.327,18.735,24.49
+Rhode Island,Rural,Other Principal Arterial,0.834,4.1,11.624,13.429,17.609,15.869,12.734,7.981,13.039
+South Carolina,Rural,Other Principal Arterial,0,203.374,701.479,308.283,167.466,84.624,40.139,21.059,19.176
+South Dakota,Rural,Other Principal Arterial,22.102,400.987,1113.936,507.676,269.276,137.978,70.588,41.326,28.454
+Tennessee,Rural,Other Principal Arterial,98.523,670.101,689.623,170.718,80.271,41.997,17.579,9.792,5.697
+Texas,Rural,Other Principal Arterial,41.881,2382.451,3597.263,1385.42,587.021,246.024,94.237,43.029,35.01
+Utah,Rural,Other Principal Arterial,0,205.466,513.035,237.303,118.048,53.056,18.357,9.427,7.187
+Vermont,Rural,Other Principal Arterial,0.936,99.112,134.746,36.774,19.802,13.684,8.295,6.917,9.339
+Virginia,Rural,Other Principal Arterial,0.624,256.69,828.907,314.856,137.12,56.26,22.879,10.563,5.356
+Washington,Rural,Other Principal Arterial,0,193.57,635.677,261.434,114.19,52.699,24.136,14.76,16.674
+West Virginia,Rural,Other Principal Arterial,22.687,132.631,390.495,213.392,117.9,66.784,32.068,20.512,19.88
+Wisconsin,Rural,Other Principal Arterial,0.76,857.55,912.005,480.73,281.675,157.18,80.315,50.91,50.14
+Wyoming,Rural,Other Principal Arterial,2.948,0.1,4.03,5.087,4.263,6.46,5.215,6.267,12.4
+Alabama,Rural,Minor Arterial,21.18574,899.95511,2219.4344,495.00936,198.78764,80.46929,26.61289,18.53793,23.71889
+Alaska,Rural,Minor Arterial,82.73434,40.11053,51.11825,32.65702,49.00602,47.02244,35.77411,30.69496,48.65056
+Arizona,Rural,Minor Arterial,10.11851,195.84425,435.34006,224.8873,158.37427,93.31466,52.60755,21.4908,15.2174
+Arkansas,Rural,Minor Arterial,23.26834,281.89618,1292.69781,563.52904,348.10677,268.71996,113.66671,85.11277,65.41223
+California,Rural,Minor Arterial,12.80873,214.47595,1886.09197,980.04178,873.60692,823.93896,509.42892,358.77129,308.23417
+Colorado,Rural,Minor Arterial,291.94165,111.49364,967.30063,715.4065,548.61257,339.41473,192.94542,138.95541,169.31398
+Connecticut,Rural,Minor Arterial,0.27172,2.5186,49.79547,51.67268,58.21225,26.65105,15.77101,5.59419,7.3411
+Delaware,Rural,Minor Arterial,0.11687,22.1238,46.95048,12.33058,4.81746,1.13473,0.30899,1.2944,0.51128
+District of Columbia,Rural,Minor Arterial,0,0,0,0,0,0,0,0,0
+Florida,Rural,Minor Arterial,8.49998,512.80916,1187.79694,318.91845,112.02811,30.55594,7.91543,10.96178,11.06788
+Georgia,Rural,Minor Arterial,1433.3302,1459.96137,2101.49596,556.83702,216.33038,92.58939,26.08864,14.80885,22.31787
+Hawaii,Rural,Minor Arterial,1.42,42.666,51.721,38.474,42.299,33.105,19.531,11.3,15.851
+Idaho,Rural,Minor Arterial,6.05743,236.38475,504.6469,161.85788,120.1416,67.37429,19.09533,11.28736,11.37333
+Illinois,Rural,Minor Arterial,0,343.38616,2259.44378,1107.05985,478.82343,326.68942,114.80727,58.99144,29.64882
+Indiana,Rural,Minor Arterial,11.0669,557.55045,795.01053,312.50043,236.29168,97.36764,42.98083,15.98288,16.62063
+Iowa,Rural,Minor Arterial,2.59476,0,0,0,0,0,0,0,0
+Kansas,Rural,Minor Arterial,36.03033,1071.42712,2212.82573,587.16719,196.42086,82.47723,37.87259,21.12806,21.08346
+Kentucky,Rural,Minor Arterial,23.21103,240.8456,1024.90966,572.79812,272.16156,106.15805,49.32184,22.72248,21.95469
+Louisiana,Rural,Minor Arterial,20.37904,141.61983,747.25632,384.79059,266.73745,167.89319,88.60511,47.04041,60.08692
+Maine,Rural,Minor Arterial,5.061,190.16,303.027,143.91,100.46,71.52,41.8,29.27,60.72
+Maryland,Rural,Minor Arterial,9.67934,170.06691,325.5684,118.351,43.39128,21.65441,10.12885,6.22838,12.09719
+Massachusetts,Rural,Minor Arterial,1.28443,47.54326,116.41212,46.44738,29.92577,27.65903,12.89177,6.7921,17.26295
+Michigan,Rural,Minor Arterial,47.69461,1211.12831,2326.68014,695.84435,273.36207,156.38085,74.53523,52.98994,54.90471
+Minnesota,Rural,Minor Arterial,15.97516,1825.71998,1740.11818,1099.07165,718.78852,402.82344,316.80164,182.37211,151.08439
+Mississippi,Rural,Minor Arterial,34.99645,549.67909,1371.67943,615.85147,458.40326,342.30488,213.0015,124.33143,78.82394
+Missouri,Rural,Minor Arterial,27.88928,239.58571,1248.04433,1088.08204,733.58339,369.95684,167.8927,89.01064,57.80416
+Montana,Rural,Minor Arterial,8.29717,396.22066,1361.98269,529.59966,272.92415,144.29926,73.07332,34.33292,38.64744
+Nebraska,Rural,Minor Arterial,20.99852,2012.81944,1113.81087,278.96195,192.85288,117.92896,58.99353,64.01513,78.71768
+Nevada,Rural,Minor Arterial,0.58594,152.00032,355.9695,136.40127,45.93794,19.79424,5.1982,3.89695,1.76792
+New Hampshire,Rural,Minor Arterial,3.51172,168.42255,191.28841,58.42325,35.31029,35.45802,24.60291,24.32332,87.04055
+New Jersey,Rural,Minor Arterial,3.01805,43.32171,98.82589,52.24081,28.68909,29.30348,14.87903,7.84328,6.95702
+New Mexico,Rural,Minor Arterial,9.89822,267.75091,505.15045,392.91513,291.29948,256.56281,176.21472,121.43175,282.48018
+New York,Rural,Minor Arterial,18.79056,289.95085,1106.21693,586.00954,360.96001,195.42211,105.50819,43.90602,124.09349
+North Carolina,Rural,Minor Arterial,16.63492,129.86992,1278.17392,460.91206,343.62593,192.77598,113.42396,44.86346,72.26144
+North Dakota,Rural,Minor Arterial,4.61933,791.53878,1133.33434,306.61599,138.25369,59.36292,37.00211,21.42206,38.16208
+Ohio,Rural,Minor Arterial,10.88768,626.27167,1337.19488,398.96278,156.68494,84.82561,33.6794,10.0396,6.8946
+Oklahoma,Rural,Minor Arterial,23.08968,8.04593,14.12538,7.66553,6.29748,4.67338,1.45879,1.33003,2.87002
+Oregon,Rural,Minor Arterial,10.20655,117.64474,977.40161,719.65543,260.16027,45.53245,28.74264,41.79552,0
+Pennsylvania,Rural,Minor Arterial,18.5577,325.57061,1401.74791,1238.68657,656.62259,361.81887,194.80373,99.22157,170.5302
+Rhode Island,Rural,Minor Arterial,0.04957,0,0,1.63654,2.67668,5.68929,6.69415,3.11207,3.53914
+South Carolina,Rural,Minor Arterial,17.88049,344.12544,1238.47541,752.17995,333.35918,192.25933,65.63489,35.71714,23.29097
+South Dakota,Rural,Minor Arterial,19.70542,497.556,1135.63957,555.17667,324.74132,189.31715,99.23335,51.61968,36.03042
+Tennessee,Rural,Minor Arterial,37.52128,2.19164,20.97777,5.05764,0,0.031,0,5.6196,0
+Texas,Rural,Minor Arterial,85.62792,14.4232,58.80798,160.47166,206.8795,104.63218,26.2044,9.2152,0
+Utah,Rural,Minor Arterial,1.56527,148.31098,466.6589,273.02399,210.04521,108.81475,62.6889,22.29322,19.51963
+Vermont,Rural,Minor Arterial,4.87669,99.32908,329.5777,132.6059,74.47732,45.65721,18.05655,16.77376,14.77017
+Virginia,Rural,Minor Arterial,12.57302,170.8718,1670.34362,1096.57617,396.24612,162.71068,43.47128,16.73919,5.83624
+Washington,Rural,Minor Arterial,11.81411,177.31878,620.03299,420.33597,284.18862,210.3248,125.02584,69.05935,117.93363
+West Virginia,Rural,Minor Arterial,3.61448,25.19245,516.99282,384.85223,183.4232,106.92108,52.39042,38.43575,37.89218
+Wisconsin,Rural,Minor Arterial,0,1220.07229,1270.31661,598.96823,468.24277,369.76346,239.96151,212.85108,250.18969
+Wyoming,Rural,Minor Arterial,0,0,0,0,5.34124,3.4184,5.7725,17.4864,101.65225
+Alabama,Urban,Interstate,0.868,260.294,75.982,30.951,23.622,18.404,10.995,6.249,5.674
+Alaska,Urban,Interstate,0,28.112,28.288,11.862,5.391,2.929,0.8,0.293,1.051
+Arizona,Urban,Interstate,2.277,147.136,58.515,23.381,11.566,5.203,2.532,1.2,0.9
+Arkansas,Urban,Interstate,0,117.264,103.485,38.654,21.579,13.368,7.025,4.715,4.138
+California,Urban,Interstate,13.825,261.745,431.269,213.979,153.387,89.822,47.328,31.231,27.523
+Colorado,Urban,Interstate,0,66.933,118.04,50.878,37.131,16.102,7.883,3.5,3.251
+Connecticut,Urban,Interstate,0,152.24,103.21,31.94,14.96,8.45,2.6,1.7,2.5
+Delaware,Urban,Interstate,0,4.7,16.97,6.84,4.83,2.99,2.47,0.7,1.11
+District of Columbia,Urban,Interstate,0.125,0,1.167,0,4.261,0,2.162,0,4.107
+Florida,Urban,Interstate,0,447.71,234.726,39.444,22.128,16.219,8.54,4.925,4.293
+Georgia,Urban,Interstate,0,370.211,207.973,69.13,29.745,15.852,9.204,3.902,3.718
+Hawaii,Urban,Interstate,0,0.716,12.475,11.6,9.1,10.4,4.6,2.949,3.019
+Idaho,Urban,Interstate,0.346,51.198,28.715,6.26,3.978,1.514,0.649,0.2,0.336
+Illinois,Urban,Interstate,1.41,322.14,388.82,90.22,56.52,36.92,21.65,12.5,11.52
+Indiana,Urban,Interstate,3.219,188.052,128.598,69.163,46.325,29.709,15.446,9.999,12.375
+Iowa,Urban,Interstate,12.746,61.369,63.512,19.996,9.078,5.026,2.443,1.942,1.512
+Kansas,Urban,Interstate,0.6,119.131,57,26.498,15.658,8.956,4.073,1.5,1.044
+Kentucky,Urban,Interstate,1.127,117.831,65.835,20.13,14.452,6.813,3.273,1.719,1.301
+Louisiana,Urban,Interstate,10.55,108.18,90.623,53.272,48.01,49.184,25.628,13.4,11.498
+Maine,Urban,Interstate,0,53.13,20.46,6.67,3.4,2.65,0.3,0.1,0.3
+Maryland,Urban,Interstate,0.101,136.821,123.863,28.802,14.723,10.149,6.253,6.166,11.023
+Massachusetts,Urban,Interstate,0.389,317.316,111.788,30.529,17.997,12.528,7.629,4.213,5.667
+Michigan,Urban,Interstate,3.187,125.059,295.007,88.922,58.331,43.779,24.416,18.298,19.076
+Minnesota,Urban,Interstate,0.001,78.635,142.903,48.586,23.435,14.747,8.303,4.092,4.711
+Mississippi,Urban,Interstate,0,147.562,47.793,23.682,15.824,10.117,4.433,2.456,1.238
+Missouri,Urban,Interstate,0,309.53,136.528,39.165,23.926,15.537,6.7,3.9,2.82
+Montana,Urban,Interstate,0,41.337,42.28,6.428,3.547,2.16,1,0.4,0.6
+Nebraska,Urban,Interstate,2.02,18.95,26.37,10.23,5.74,2.69,1.4,0.6,0.8
+Nevada,Urban,Interstate,8.108,72.093,38.837,19.038,14.254,5.2,2.6,1.6,1.189
+New Hampshire,Urban,Interstate,0,64.587,14.294,2.772,0.895,0.3,0.2,0,0
+New Jersey,Urban,Interstate,0,128.1,150.26,33.82,22.14,17.18,11.75,8.69,14.72
+New Mexico,Urban,Interstate,0,105.168,28.785,9.335,5.537,3.587,1.423,1.078,1.174
+New York,Urban,Interstate,48.23,230.59,353.44,131.22,66.08,44.36,25.58,16.14,23.08
+North Carolina,Urban,Interstate,5.02,353.122,230.381,81.046,41.146,20.797,8.677,3.417,1.783
+North Dakota,Urban,Interstate,0,18.207,27.844,8.064,3.604,2.247,0.854,0.239,0.132
+Ohio,Urban,Interstate,0,383.159,317.78,103.306,56.613,33.206,15.703,10.478,11.135
+Oklahoma,Urban,Interstate,0.571,85.59,112.179,38.026,17.388,14.029,7.961,5,5.258
+Oregon,Urban,Interstate,0,102.05,88.68,19.02,10.33,6.55,4.09,2.44,1.22
+Pennsylvania,Urban,Interstate,0,278.916,284.48,87.088,51.568,33.345,20.654,13.541,18.174
+Rhode Island,Urban,Interstate,0,17.164,25.514,4.571,2.496,1.199,0.49,0.044,0.688
+South Carolina,Urban,Interstate,0,152.416,86.059,29.364,19.776,8.658,4.22,1.98,1.826
+South Dakota,Urban,Interstate,0,14.223,51.325,12.422,5.134,3.045,1.2,0.3,0.1
+Tennessee,Urban,Interstate,0.116,366.098,112.047,40.027,18.542,9.165,6.107,2.01,2.99
+Texas,Urban,Interstate,5.4,410.317,549.007,223.542,135.438,79.575,33.674,14.523,7.102
+Utah,Urban,Interstate,0,80.801,109.039,33.508,15.377,8.945,3,1.628,0.7
+Vermont,Urban,Interstate,0,42.927,15.812,3,1.888,0.4,0.1,0.1,0.081
+Virginia,Urban,Interstate,0.436,154.408,234.95,68.855,28.044,19.14,8.48,4.33,2.417
+Washington,Urban,Interstate,0,112.69,124.13,43.08,22.12,11.32,6.85,6.31,8.17
+West Virginia,Urban,Interstate,0.326,118.214,64.16,20.779,13.149,8.641,4.866,2.403,2.7
+Wisconsin,Urban,Interstate,3.48,117.076,104.593,52.346,41.238,26.247,8.08,7.29,5.92
+Wyoming,Urban,Interstate,14.361,2.405,47.039,39.107,34.765,30.46,18.738,18.664,51.709
+Alabama,Urban,Other Freeways & Expressways,0.522,11.339,8.86,3.735,2.394,0.842,0.615,0.495,0.3
+Alaska,Urban,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Arizona,Urban,Other Freeways & Expressways,6.027,87.283,79.991,20.998,11.711,5.341,1.937,0.955,0.7
+Arkansas,Urban,Other Freeways & Expressways,0.505,10.619,38.148,19.313,10.534,8.547,6.143,5.71,2.5
+California,Urban,Other Freeways & Expressways,5.001,302.685,547.775,290.529,182.534,102.907,56.244,33.364,28.538
+Colorado,Urban,Other Freeways & Expressways,0,67.567,138.592,52.404,28.908,17.534,8.452,4.755,6.032
+Connecticut,Urban,Other Freeways & Expressways,0,78.77,109.67,28.91,12.76,8.6,2.42,1.15,1.48
+Delaware,Urban,Other Freeways & Expressways,0.56,4.11,22.09,6.58,2.7,1.42,0.92,0.1,0.05
+District of Columbia,Urban,Other Freeways & Expressways,0,0,2.039,0,5.768,0.062,3.893,0,3.703
+Florida,Urban,Other Freeways & Expressways,0,217.574,249.427,53.68,25.773,15.142,5.676,4.157,2.886
+Georgia,Urban,Other Freeways & Expressways,6.06,57.029,63.866,18.818,14.996,9.699,4.196,1.014,1.611
+Hawaii,Urban,Other Freeways & Expressways,0,0.3,6.8,7.276,5.88,4.529,2.48,1.9,4.47
+Idaho,Urban,Other Freeways & Expressways,7.748,8.405,8.939,1.214,0.802,1.138,0.628,0.149,0
+Illinois,Urban,Other Freeways & Expressways,2.62,20.32,36.72,14.91,14.83,11.52,7.82,4.73,4.25
+Indiana,Urban,Other Freeways & Expressways,21.292,43.771,38.224,27.657,15.278,8.592,6.451,3.243,3.008
+Iowa,Urban,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Kansas,Urban,Other Freeways & Expressways,0.037,76.328,64.19,21.335,12.257,7.677,4.933,1.757,2.211
+Kentucky,Urban,Other Freeways & Expressways,0.517,31.858,13.198,7.533,5.279,2.957,1.895,0.515,0.4
+Louisiana,Urban,Other Freeways & Expressways,0.495,8.3,11.115,7.369,11.758,11.099,9.21,6.514,6.5
+Maine,Urban,Other Freeways & Expressways,0,2.6,6.04,2.27,2.1,1.63,1,0.51,1.12
+Maryland,Urban,Other Freeways & Expressways,0.392,88.006,133.041,36.352,20.441,12.071,5.838,4.917,7.31
+Massachusetts,Urban,Other Freeways & Expressways,0.809,155.698,104.348,23.872,11.978,9.305,4.965,3.678,8.033
+Michigan,Urban,Other Freeways & Expressways,2.257,85.034,155.302,55.319,23.26,13.989,6.605,6.518,5.374
+Minnesota,Urban,Other Freeways & Expressways,0.019,56.176,93.443,35.232,16.561,9.11,4.627,3.024,2.533
+Mississippi,Urban,Other Freeways & Expressways,0,13.259,30.062,9.396,4.689,2.84,1.92,0.574,1.084
+Missouri,Urban,Other Freeways & Expressways,3.2,183.546,172.879,60.478,29.115,23.334,9.595,5.852,6.034
+Montana,Urban,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Nebraska,Urban,Other Freeways & Expressways,15.17,14.92,42.55,19.16,8.13,7.98,5.63,4.06,12.73
+Nevada,Urban,Other Freeways & Expressways,0,22.74,8.561,11.1,6.2,2.525,1.4,0.4,0.241
+New Hampshire,Urban,Other Freeways & Expressways,0,55.513,13.847,1.906,1.6,0.593,0.3,0.3,0
+New Jersey,Urban,Other Freeways & Expressways,0,139.67,178.82,56.1,24.82,20.05,12.16,7.2,14.19
+New Mexico,Urban,Other Freeways & Expressways,0,0.795,3.675,4.096,2.256,0.333,0.345,0,0.206
+New York,Urban,Other Freeways & Expressways,42.22,50.92,246.85,134.44,97.76,80.29,56.08,42.09,65.53
+North Carolina,Urban,Other Freeways & Expressways,18.012,183.654,164.239,48.348,24.954,15.522,7.698,4.822,5.32
+North Dakota,Urban,Other Freeways & Expressways,0,0,0,0,0,0,0,0,0
+Ohio,Urban,Other Freeways & Expressways,0.549,173.455,235.128,78.13,38.47,23.936,13.035,8.822,8.875
+Oklahoma,Urban,Other Freeways & Expressways,12.803,42.88,79.608,28.169,16.964,12.483,6.071,2.9,3.222
+Oregon,Urban,Other Freeways & Expressways,0.23,22.12,24.5,9.32,3.29,2.03,1.63,0.46,0.14
+Pennsylvania,Urban,Other Freeways & Expressways,0,94.231,225.906,102.005,57.197,39.453,19.407,11.466,17.907
+Rhode Island,Urban,Other Freeways & Expressways,1.685,18.865,25.365,14.428,9.211,3.808,2.534,1.691,3.238
+South Carolina,Urban,Other Freeways & Expressways,0,18.001,35.754,13.262,5.976,6.295,2.386,0.972,1.11
+South Dakota,Urban,Other Freeways & Expressways,0,0.316,6.529,4.654,4.344,1.118,0.528,0.484,0.197
+Tennessee,Urban,Other Freeways & Expressways,0.014,73.092,49.202,19.406,13.453,7.95,4.85,1.535,3.115
+Texas,Urban,Other Freeways & Expressways,53.569,194.41,499.677,280.273,183.268,101.421,46.081,21.012,15.576
+Utah,Urban,Other Freeways & Expressways,0,18.3,18.567,7.302,3.289,0.7,0.2,0.1,0.1
+Vermont,Urban,Other Freeways & Expressways,0.059,2.154,9.778,2.758,0.615,0.5,0,0,0.177
+Virginia,Urban,Other Freeways & Expressways,1.369,78.888,171.965,48.031,26.819,15.128,5.104,3.173,1.421
+Washington,Urban,Other Freeways & Expressways,0,113.09,187.245,49.901,27.82,14.534,7.61,6.63,14.628
+West Virginia,Urban,Other Freeways & Expressways,0.06,0.1,2.622,2.55,2.1,2.4,1.39,1.619,1.422
+Wisconsin,Urban,Other Freeways & Expressways,0,68.643,90.636,69.896,51.661,36.284,12.9,4.87,6.63
+Wyoming,Urban,Other Freeways & Expressways,2.452,0.3,8.308,6.746,5.49,5.393,4.244,3.734,19.154
+Alabama,Urban,Other Principal Arterial,12.51,434.905,491.26,151.129,78.558,43.615,30.706,19.51,38.201
+Alaska,Urban,Other Principal Arterial,0.778,13.586,39.27,27.593,18.465,14.778,7.05,6.843,11.327
+Arizona,Urban,Other Principal Arterial,230.48,79.373,134.467,112.01,99.039,79.376,48.056,35.169,30.838
+Arkansas,Urban,Other Principal Arterial,20.024,56.696,191.4,119.825,78.128,61.781,33.566,26.032,42.583
+California,Urban,Other Principal Arterial,36.144,150.145,553.56,747.309,856.994,967.641,758.525,721.797,1903.63
+Colorado,Urban,Other Principal Arterial,0.2,74.618,253.027,192.559,161.407,123.449,78.151,59.367,125.857
+Connecticut,Urban,Other Principal Arterial,0,17.14,149.59,146.95,121.34,91.97,59.7,42.78,82.34
+Delaware,Urban,Other Principal Arterial,1.28,18.37,89.44,41.41,20.32,13.55,9.21,5.61,15.56
+District of Columbia,Urban,Other Principal Arterial,0,0,0.2,0,8.803,0.071,24.292,0.171,73.037
+Florida,Urban,Other Principal Arterial,7.815,931.19,1673.432,620.376,308.197,181.385,92.26,57.169,86.811
+Georgia,Urban,Other Principal Arterial,76.926,579.781,980.802,326.305,170.05,99.182,56.726,37.961,61.907
+Hawaii,Urban,Other Principal Arterial,0,19.305,39.951,45.217,37.34,41.362,23.839,17.879,43.866
+Idaho,Urban,Other Principal Arterial,152.458,55.587,85.781,39.575,24.001,21.597,10.696,9.326,12.625
+Illinois,Urban,Other Principal Arterial,14.49,161.41,736.88,537.51,431.47,315.08,217.61,161.44,312.07
+Indiana,Urban,Other Principal Arterial,622.916,273.168,350.403,175.854,122.702,85.091,54.672,38.871,51.636
+Iowa,Urban,Other Principal Arterial,22.453,92.404,200.148,169.359,130.141,92.958,56.548,44.049,107.465
+Kansas,Urban,Other Principal Arterial,0.038,74.83,84.444,45.33,35.819,26.238,16.793,10.982,16.478
+Kentucky,Urban,Other Principal Arterial,32.628,153.928,196.333,85.302,63.865,40.824,23.217,18.928,31.861
+Louisiana,Urban,Other Principal Arterial,105.118,80.568,206.139,141.738,121.61,107.048,80.024,75.133,156.143
+Maine,Urban,Other Principal Arterial,0.25,13.504,31.65,23.27,17.42,13.64,7.97,4.61,16.95
+Maryland,Urban,Other Principal Arterial,16.114,155.542,285.458,131.148,94.415,78.396,55.857,50.524,156.65
+Massachusetts,Urban,Other Principal Arterial,28.414,46.21,256.622,269.735,274.603,277.766,196.266,169.557,456.537
+Michigan,Urban,Other Principal Arterial,4.753,138.259,453.318,397.029,327.75,275.78,209.895,165.424,391.04
+Minnesota,Urban,Other Principal Arterial,2.013,150.594,222.923,96.068,56.259,33.608,16.893,12.697,26.246
+Mississippi,Urban,Other Principal Arterial,0.01,115.456,282.478,169.758,113.27,73.648,52.464,36.999,104.544
+Missouri,Urban,Other Principal Arterial,0.988,128.363,281.159,129.611,99.542,71.726,47.836,38.955,70.927
+Montana,Urban,Other Principal Arterial,3.594,26.524,58.298,41.723,30.799,23.688,17.259,15.693,39.536
+Nebraska,Urban,Other Principal Arterial,79.38,11.71,41.17,29.3,27.28,28.09,23.7,19.98,65.4
+Nevada,Urban,Other Principal Arterial,12.367,119.09,106.582,46.946,30.691,26.872,12.835,8.78,13.308
+New Hampshire,Urban,Other Principal Arterial,0.213,62.709,66.648,27.715,18.856,11.952,8.487,5.688,21.201
+New Jersey,Urban,Other Principal Arterial,0,140.79,355.61,216.42,197,183.94,150.86,136.04,418.29
+New Mexico,Urban,Other Principal Arterial,28.658,90.638,151.866,101.207,90.02,70.87,45.239,34.493,87.668
+New York,Urban,Other Principal Arterial,111.77,89.78,660.32,479.86,366.96,291.34,208.29,193.38,759.46
+North Carolina,Urban,Other Principal Arterial,30.927,183.612,639.686,423.209,268.727,170.889,95.345,62.177,120.113
+North Dakota,Urban,Other Principal Arterial,1.207,22.921,52.952,38.032,31.597,16.564,12.764,9.132,22.77
+Ohio,Urban,Other Principal Arterial,11.836,204.508,561.528,379.031,308.277,250.918,176.854,138.43,415.019
+Oklahoma,Urban,Other Principal Arterial,669.192,43.793,148.95,88.302,74.005,50.65,29.391,23.841,46.8
+Oregon,Urban,Other Principal Arterial,2.26,96.86,254,161.67,116.54,80.87,51.07,33.17,58.35
+Pennsylvania,Urban,Other Principal Arterial,0,181.182,648.91,496.357,438.595,331.567,224.471,166.794,371.647
+Rhode Island,Urban,Other Principal Arterial,18.182,5.329,18.893,26.418,42.782,49.173,40.837,37.155,103.507
+South Carolina,Urban,Other Principal Arterial,0,56.246,339.351,245.747,172.004,110.668,57.533,33.896,48.629
+South Dakota,Urban,Other Principal Arterial,8.303,5.754,32.536,22.337,20.138,16.814,12.927,10.184,7.94
+Tennessee,Urban,Other Principal Arterial,67.308,456.677,671.726,254.186,159.604,100.102,68.535,42.003,82.521
+Texas,Urban,Other Principal Arterial,73.598,626.234,1509.651,933.442,703.211,567.139,409.206,332.421,1019.244
+Utah,Urban,Other Principal Arterial,11.139,115.473,249.451,116.387,69.281,41.294,21.358,12.635,21.976
+Vermont,Urban,Other Principal Arterial,2.576,11.675,41.434,24.187,13.979,10.86,6.142,4.401,11.266
+Virginia,Urban,Other Principal Arterial,23.392,57.789,368.692,277.145,217.995,161.338,102.498,72.512,73.808
+Washington,Urban,Other Principal Arterial,20.815,52.113,254.696,230.2,200.114,161.874,116.952,96.604,309.041
+West Virginia,Urban,Other Principal Arterial,3.414,31.902,148.439,80.696,51.234,31.617,16.831,15.315,20.279
+Wisconsin,Urban,Other Principal Arterial,21.582,81.879,276.798,295.626,316.45,274.446,205.345,147.837,328.152
+Wyoming,Urban,Other Principal Arterial,13.361,0.2,7.47,19.322,41.153,52.015,50.394,47.832,163.299
