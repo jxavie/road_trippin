@@ -1,4 +1,4 @@
-var datasource = "../data/gz_2010_us_040_00_5m.json";
+var datasource = "../1_datasets/geojson/gz_2010_us_040_00_5m.json";
 
 // select div for displaying US map
 var us_map = d3.select("#map");
