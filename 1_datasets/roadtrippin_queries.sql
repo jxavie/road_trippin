@@ -438,6 +438,8 @@ ALTER TABLE spending_oecd_2018euros
 ALTER TABLE spending_oecd_2018euros RENAME COLUMN `Investment Amount` TO Investment_Amount;
 ALTER TABLE spending_oecd_2018euros RENAME COLUMN `Investment Type` TO Investment_Type;
 ALTER TABLE spending_oecd_2018euros RENAME COLUMN `Spending per Capita` TO Spending_perCapita;
+SELECT * FROM spending_oecd_2018euros
+	WHERE Investment_Type = "Total road spending";
 
 
 -- Operations for spending_fedstate_percentgdp;

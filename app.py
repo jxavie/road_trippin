@@ -77,6 +77,8 @@ def state_infrastructure(state):
     
     results2 = session.query(
         # Bridges.State_Code,
+        Bridges.Features_Intersected,
+        Bridges.Facility_Carried,
         Bridges.Lat,
         Bridges.Long,
         Bridges.Year_Built,
@@ -92,10 +94,24 @@ def state_infrastructure(state):
     
     results3 = session.query(Estimate_Bridge).filter(Estimate_Bridge.State_Abbreviation == state).all()
 
-    # results4 = session.query(
-    #     Tunnels.Tunnel_Name
-    #     Tunnels.Tunnel_Name
-    # )
+    results4 = session.query(
+        Spending_byState.Year,
+        Spending_byState.Total_Hwy_DirExp,
+        Spending_byState.Total_Hwy_CurOp,
+        Spending_byState.Total_Hwy_CapOut,
+    ).filter(Spending_byState.State_Abbreviation == state)
+
+    results5 = session.query(
+        Tunnels.Tunnel_Name,
+        Tunnels.State_Code,
+        Tunnels.Latitude,
+        Tunnels.Longitude,
+        Tunnels.Route_Type,
+        Tunnels.Year_Built,
+        Tunnels.Lanes,
+        Tunnels.Length,
+        Tunnels.Condition
+    )
 
     # end session
     session.close()
@@ -112,30 +128,59 @@ def state_infrastructure(state):
     for result in results2:
         bridges.append({
             # "State": result[0],
-            "Latitude": result[0],
-            "Longitude": result[1],
-            "Year_Built": result[2],
-            # "Avg_Daily_Traffic": result[4],
-            "Structure_Kind": result[3],
-            # "Length": result[6],
-            # "Improvement_Cost": result[7],
-            # "Year_Reconstructed": result[8],
-            # "Percent_Truck_Traffic": result[9],
-            "Score": result[4]
-            # "State_Abbreviation": result[11]
+            "Features_Intersected": result[0],
+            "Facility_Carried": result[1],
+            "Latitude": result[2],
+            "Longitude": result[3],
+            "Year_Built": result[4],
+            # "Avg_Daily_Traffic": result[6],
+            "Structure_Kind": result[5],
+            # "Length": result[8],
+            # "Improvement_Cost": result[9],
+            # "Year_Reconstructed": result[10],
+            # "Percent_Truck_Traffic": result[11],
+            "Score": result[6]
+            # "State_Abbreviation": result[13]
         })
     
     cost_estimate = {
         "Count": results3[0].Count,
-        "Area": results1[0].Area,
-        "Cost to Replace": results1[0].Estimated_Total_Cost_of_Replacement,
-        "Cost to Rehab": results1[0].Estimated_Total_Cost_of_Rehab
+        "Area": results3[0].Area,
+        "Replacement_Cost": results3[0].Estimated_Total_Cost_of_Replacement,
+        "Rehab_Cost": results3[0].Estimated_Total_Cost_of_Rehab
     }
+
+    tunnels = []
+
+    for result in results5:
+        tunnels.append({
+            "Tunnel_Name": result[0],
+            "State_Code": result[1],
+            "Latitude": result[2],
+            "Longitude": result[3],
+            "Route_Type": result[4],
+            "Year_Built": result[5],
+            "Lanes": result[6],
+            "Length": result[7],
+            "Condition": result[8]
+    })
+
+    state_spending = []
+
+    for result in results4:
+        state_spending.append({
+            "Year": result[0],
+            "Total_Hwy_DirExp": result[1],
+            "Total_Hwy_CurOp": result[2],
+            "Total_Hwy_CapOut": result[3],
+    })
 
     state_data = {
         "Location": location,
-        "Bridge Data": bridges,
-        "Bridges in Poor Condition": cost_estimate 
+        "Bridge_Data": bridges,
+        "Bridges_in_Poor_Condition": cost_estimate ,
+        "Tunnel_Data": tunnels,
+        "Spending": state_spending
     }
     
     return jsonify(state_data)
@@ -301,16 +346,16 @@ def spending():
             "Spending_perCapita": result.Spending_perCapita,
         })
 
-    spending = [{
-        "Spending by State:": spending_bystate,
-        "Spending by State (Fraction of Expenditure)": spending_bystate_fraction,
-        "Spending by State (per Capita)": spending_bystate_percapita,
-        "Total State Spending": spending_state,
-        "Total Fed Spending": spending_fed,
-        "Total National Spending": spending_national,
-        "National Spending (percent GDP)": spending_national_percentgdp,
+    spending = {
+        "Spending_by_State:": spending_bystate,
+        "Spending_by_State_fractExp": spending_bystate_fraction,
+        "Spending_by_State_perCapita": spending_bystate_percapita,
+        "Total_State_Spending": spending_state,
+        "Total_Fed_Spending": spending_fed,
+        "Total_National_Spending": spending_national,
+        "National_Spending_percentGDP": spending_national_percentgdp,
         "Global": spending_oecd
-    }]
+    }
 
     return jsonify(spending)
 
@@ -348,6 +393,37 @@ def dc_potholes():
         })
 
     return jsonify(potholes)
+
+
+# define end point for DC pothole information
+@app.route('/api/ny_crash')
+def ny_crash():
+
+    # start session
+    session = Session(engine)
+
+    # query for all records
+    results = session.query(
+        Crashes.Crash_Descriptor,
+        Crashes.Date,
+        Crashes.Municipality,
+        Crashes.County_Name
+        ).all()
+
+    # end session
+    session.close()
+
+    crashes = []
+
+    for result in results:
+        crashes.append({
+            "Crash_Descriptor": result[0],
+            "Date": result[1],
+            "Municipality": result[2],
+            "County_Name": result[3]
+        })
+
+    return jsonify(crashes)
 
 
 if __name__ == '__main__':
