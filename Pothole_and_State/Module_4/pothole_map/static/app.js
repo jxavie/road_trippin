@@ -9,7 +9,7 @@ function pothole_map() {
       attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
       maxZoom: 18,
       id: "mapbox.streets",
-      accessToken: "pk.eyJ1IjoidGFidXJsZXNzIiwiYSI6ImNrNWcydzdrdTAzcTEzbm85c3Rqejc0MGgifQ.lZM2su5WvOZ1qTKLQWwJGg"
+      accessToken: ""
   }).addTo(myMap);
 
   // Create a legend to display information about our map
@@ -64,7 +64,7 @@ function pothole_map() {
 //       attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
 //       maxZoom: 18,
 //       id: "mapbox.dark",
-//       accessToken: "pk.eyJ1IjoidGFidXJsZXNzIiwiYSI6ImNrNWcydzdrdTAzcTEzbm85c3Rqejc0MGgifQ.lZM2su5WvOZ1qTKLQWwJGg"
+//       accessToken: ""
 //   }).addTo(bridge_map);
 
 //   // Create a legend to display information about our map
@@ -91,7 +91,7 @@ function state_map() {
     attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
     maxZoom: 18,
     id: "mapbox.comic",
-    accessToken: "pk.eyJ1IjoidGFidXJsZXNzIiwiYSI6ImNrNWcydzdrdTAzcTEzbm85c3Rqejc0MGgifQ.lZM2su5WvOZ1qTKLQWwJGg"
+    accessToken: ""
 }).addTo(bridge_map);
 
 // Create a legend to display information about our map
@@ -140,7 +140,7 @@ info.addTo(bridge_map);
 //       attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
 //       maxZoom: 18,
 //       id: "mapbox.satellite",
-//       accessToken: "pk.eyJ1IjoidGFidXJsZXNzIiwiYSI6ImNrNWcydzdrdTAzcTEzbm85c3Rqejc0MGgifQ.lZM2su5WvOZ1qTKLQWwJGg"
+//       accessToken: ""
 //   }).addTo(spending_map);
 
 //   // Create a legend to display information about our map
