@@ -62,10 +62,11 @@ function dollars_chart(x,y1,y2,y3,x1,y4,y5) {
     title: "Yearly Spending on Highway Infrastructure",
     xaxis: {
       title: "Year",
-      showgrid: false,
+      showgrid: false
     },
     yaxis: {
-      title: "Billions of Dollars"
+      title: "Billions of Dollars",
+      automargin: true
     }
   };
 
@@ -108,9 +109,11 @@ function gdp_chart(x,y1,y2,y3) {
     xaxis: {
       title: "Year",
       showgrid: false,
+      automargin: true
     },
     yaxis: {
-      title: "Percentage of GDP"
+      title: "Percentage of GDP",
+      automargin: true
     }
   };
 
@@ -167,7 +170,7 @@ function global_chart(x,y,year) {
     y: x,
     type: "bar",
     name: "Total Investment",
-    orientation: "h",
+    orientation: "h"
   };
 
   data = [trace]
@@ -176,7 +179,7 @@ function global_chart(x,y,year) {
     title: `Road Infrastructure Spending by Country for ${year}`,
     xaxis: {
       title: "Investment per Capita (Euros)",
-      showgrid: false,
+      showgrid: false
     },
     yaxis: {
       title: "Country",

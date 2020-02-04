@@ -54,6 +54,8 @@
   </section>
   <!-- US MAP ENDS-->
 
+  <br>
+  <br>
 
   <!-- 3 COL -->
   <section class="state_data">
@@ -63,7 +65,7 @@
       <div class="row">
         <div>
           <label for="selState">
-            <h5>STATE X STATE:</h5>
+            <h5 style="padding-top: 15px; padding-left: 15px; padding-right: 15px;">STATE X STATE:</h5>
           </label>
           <select id="selState" name="selState" onchange="stateChanged(this.value)"></select>
         </div>
@@ -72,7 +74,7 @@
       <div class="row">
 
         <!-- LEFT COLUMN -->
-        <div class="col-lg-4">
+        <div class="col-lg-5 card">
           <div id="state_map">
             <!-- STATE MAP (Bridge Location) -->
           </div>
@@ -80,15 +82,26 @@
         <!-- LEFT COLUMN ENDS -->
 
         <!-- MIDDLE COLUMN -->
-        <div class="col-lg-3">
-          <div id="state_stats">
+        <div class="col-lg-2 card" id="state_stats" style="padding: 15px;">
+          <h4>Statistics</h4>
+          <hr class="my-1">
+          <i style="font-size:11pt;">Bridges:</i>
+          <div id="state_bridges" style="padding: 0; margin: 0;">
+            <!-- STATE MAP (Bridge Location) -->
+          </div>
+          <i style="font-size:11pt;">Roads:</i>
+          <div id="state_roads">
+            <!-- STATE MAP (Bridge Location) -->
+          </div>
+          <i style="font-size:11pt;">Tunnels:</i>
+          <div id="state_tunnels">
             <!-- STATE MAP (Bridge Location) -->
           </div>
         </div>
         <!-- LEFT COLUMN ENDS -->
 
         <!-- RIGHT COLUMN START -->
-        <div class="col-lg-5">
+        <div class="col-lg-5 card">
           <div id="state_charts">
             <!-- STATS / CHARTS / BRIDGE ACCIDENTS -->
           </div>
@@ -98,6 +111,9 @@
     </div>
   </section>
   <!-- 3 COL -->
+
+  <br>
+  <br>
 
   <!-- 3 COL -->
   <section class="3_col">
@@ -113,7 +129,7 @@
         <!-- LEFT COLUMN ENDS -->
 
         <!-- MIDDLE COLUMN -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 card" style="padding: 15px;">
           <div>
             <select id="selNational" onchange="domesticChanged(this.value)"></select>
           </div>
@@ -122,7 +138,7 @@
         <!-- LEFT COLUMN ENDS -->
 
         <!-- RIGHT COLUMN START -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 card" style="padding: 15px;">
           <div>
             <select id="selGlobal" onchange="globalChanged(this.value)"></select>
           </div>
@@ -163,7 +179,7 @@
   <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="../static/js/config.js"></script>
+  <!-- <script src="../static/js/config.js"></script> -->
   <script src="../static/js/statemap.js"></script>
   <script src="../static/js/statedata.js"></script>
   <script src="../static/js/investment.js"></script>

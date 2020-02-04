@@ -110,21 +110,43 @@ function state_chart(x,y1,y2,y3,labels) {
 
 // STATE STATS SUMMARY FUNCTION
 // define function for state statistics summary
-function state_data(stats){
+function state_data(bridge_stats, road_stats, tunnel_stats){
 
   //  select div for state statistics
-  var state_stats = d3.select("#state_stats");
+  var state_bridges = d3.select("#state_bridges");
+  var state_roads = d3.select("#state_roads");
+  var state_tunnels = d3.select("#state_tunnels");
 
   // append <ul> tag to html
-  var ul = state_stats.append("ul")
-      .attr("style","padding: 0; list-style-type:none;")
+  var ul_bridge = state_bridges.append("ul")
+      .attr("style","padding-left: 15px; list-style-type:none; font-size:small;")
 
   // bind key-value pair data to list tags and append to html
-  ul.selectAll("li")
-      .data(stats)
-      .enter()
-      .append("li")
-      .text(d => d);
+  ul_bridge.selectAll("li")
+    .data(bridge_stats)
+    .enter()
+    .append("li")
+    .text(d => d);
+
+  var ul_road = state_roads.append("ul")
+    .attr("style","padding-left: 15px; list-style-type:none; font-size:small;")
+
+  // bind key-value pair data to list tags and append to html
+  ul_road.selectAll("li")
+    .data(road_stats)
+    .enter()
+    .append("li")
+    .text(d => d);
+
+  var ul_tunnels = state_tunnels.append("ul")
+    .attr("style","padding-left: 15px; list-style-type:none; font-size:small;")
+
+  // bind key-value pair data to list tags and append to html
+  ul_tunnels.selectAll("li")
+    .data(tunnel_stats)
+    .enter()
+    .append("li")
+    .text(d => d);
 }
 
 
@@ -147,6 +169,13 @@ for (var i=0; i < state_names.length; i++ ){
 
 
 
+  // format number (1000s) with commas
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  };
+
+
+
 // DEFAULT DASHBOARD SETTINGS
 // dynamically determine default state
 var state = d3.select("#selState").property("value");
@@ -159,21 +188,51 @@ var datasource = `/api/${state}`;
 d3.json(datasource).then((dataset) => {
   
   // delete previous tables
-  d3.select("#state_stats").html("");
+  d3.select("#state_bridges").html("");
+  d3.select("#state_roads").html("");
+  d3.select("#state_tunnels").html("");
 
   // assign data to variables
   var bridges = dataset.Bridge_data;
+  var bridge_summary = dataset.Bridge_Summary;
   var bridges_poor = dataset.Bridges_in_Poor_Condition;
+  var road_summary = dataset.Road_Summary;
   var tunnels = dataset.Tunnel_Data;
+  var tunnel_summary = dataset.Tunnel_Summary;
   var spending = dataset.Spending;
 
-  // array for state statistics
-  deficient_bridges = [
-    `Count : ${bridges_poor.Count}`,
-    `Total Area: ${bridges_poor.Area}`,
-    `Cost to Replace: $${bridges_poor.Area}`,
-    `Cost to Rehab to Good Condition: $${bridges_poor.Area}`,
-  ]
+  // arrays for state statistics
+  // var deficient_bridges = [
+  //   `Count: ${formatNumber(bridges_poor.Count)}`,
+  //   `Total Area: ${formatNumber(bridges_poor.Area)}`,
+  //   `Cost to Replace: ${bridges_poor.Area.formatMoney()}`,
+  //   `Cost to Rehab: ${bridges_poor.Area.formatMoney()}`,
+  // ]
+
+  var bridge_percentages = [
+    `Total Count:   ${formatNumber(bridge_summary.Count_All)}`,
+    `Percent Good:   ${parseFloat((bridge_summary.Count_Good/bridge_summary.Count_All)*100).toFixed(2)+"%"}`,
+    `Percent Fair:   ${parseFloat((bridge_summary.Count_Fair/bridge_summary.Count_All)*100).toFixed(2)+"%"}`,
+    `Percent Poor:   ${parseFloat((bridge_summary.Count_Poor/bridge_summary.Count_All)*100).toFixed(2)+"%"}`,
+    `Count Deficient Bridges:   ${formatNumber(bridges_poor.Count)}`,
+    `Cost to Replace:   $${formatNumber(bridges_poor.Replacement_Cost)}`,
+    `Cost to Rehab:   $${formatNumber(bridges_poor.Rehab_Cost)}`
+  ];
+
+  var road_percentages = [
+    `Total Count:   ${formatNumber(road_summary.Total)}`,
+    `Percent Good:   ${parseFloat(road_summary.Good_Percentage).toFixed(2)+"%"}`,
+    `Percent Fair:   ${parseFloat(road_summary.Fair_Percentage).toFixed(2)+"%"}`,
+    `Percent Poor:   ${parseFloat(road_summary.Poor_Percentage).toFixed(2)+"%"}`,
+  ];
+
+  var tunnel_percentages = [
+    `Total Count:  ${formatNumber(tunnel_summary.Total)}`,
+    `Percent Condition 1:   ${parseFloat(tunnel_summary.Condition_State_1_Percentage).toFixed(2)+"%"}`,
+    `Percent Condition 2:   ${parseFloat(tunnel_summary.Condition_State_2_Percentage).toFixed(2)+"%"}`,
+    `Percent Condition 3:   ${parseFloat(tunnel_summary.Codition_State_3_Percentage).toFixed(2)+"%"}`,
+    `Percent Condition 4:   ${parseFloat(tunnel_summary.Condition_State_4_Percentage).toFixed(2)+"%"}`,
+  ];
 
   // initialize arrays for state spending data
   var hwy_total = [];
@@ -191,7 +250,7 @@ d3.json(datasource).then((dataset) => {
 
   console.log(hwy_total)
 
-  state_data(deficient_bridges);
+  state_data(bridge_percentages, road_percentages, tunnel_percentages );
   state_chart(hwy_year, hwy_total, hwy_capital, hwy_om, hwy_year);
 });
 
@@ -201,8 +260,9 @@ d3.json(datasource).then((dataset) => {
 function stateChanged(state) {
 
   // delete previous tables
-  // d3.select("ul").html("");
-  d3.select("#state_stats").html("");
+  d3.select("#state_bridges").html("");
+  d3.select("#state_roads").html("");
+  d3.select("#state_tunnels").html("");
 
   // define datasource
   var datasource = `/api/${state}`;
@@ -211,16 +271,45 @@ function stateChanged(state) {
   
     // assign data to variables
     var bridges = dataset.Bridge_data;
+    var bridge_summary = dataset.Bridge_Summary;
     var bridges_poor = dataset.Bridges_in_Poor_Condition;
+    var road_summary = dataset.Road_Summary;
     var tunnels = dataset.Tunnel_Data;
+    var tunnel_summary = dataset.Tunnel_Summary;
     var spending = dataset.Spending;
+
+    // arrays for state statistics
+    // var deficient_bridges = [
+    //   `Count: ${formatNumber(bridges_poor.Count)}`,
+    //   `Total Area: ${formatNumber(bridges_poor.Area)}`,
+    //   `Cost to Replace: ${bridges_poor.Area.formatMoney()}`,
+    //   `Cost to Rehab: ${bridges_poor.Area.formatMoney()}`,
+    // ]
+
+    var bridge_percentages = [
+      `Total Count:   ${formatNumber(bridge_summary.Count_All)}`,
+      `Percent Good:   ${parseFloat((bridge_summary.Count_Good/bridge_summary.Count_All)*100).toFixed(2)+"%"}`,
+      `Percent Fair:   ${parseFloat((bridge_summary.Count_Fair/bridge_summary.Count_All)*100).toFixed(2)+"%"}`,
+      `Percent Poor:   ${parseFloat((bridge_summary.Count_Poor/bridge_summary.Count_All)*100).toFixed(2)+"%"}`,
+      `Count Deficient Bridges:   ${formatNumber(bridges_poor.Count)}`,
+      `Cost to Replace:   $${formatNumber(bridges_poor.Replacement_Cost)}`,
+      `Cost to Rehab:   $${formatNumber(bridges_poor.Rehab_Cost)}`
+    ];
   
-    deficient_bridges = [
-      `Count : ${bridges_poor.Count}`,
-      `Total Area: ${bridges_poor.Area}`,
-      `Cost to Replace: ${bridges_poor.Area}`,
-      `Cost to Rehab to Good Condition: ${bridges_poor.Area}`,
-    ]
+    var road_percentages = [
+      `Total Count:   ${formatNumber(road_summary.Total)}`,
+      `Percent Good:   ${parseFloat(road_summary.Good_Percentage).toFixed(2)+"%"}`,
+      `Percent Fair:   ${parseFloat(road_summary.Fair_Percentage).toFixed(2)+"%"}`,
+      `Percent Poor:   ${parseFloat(road_summary.Poor_Percentage).toFixed(2)+"%"}`,
+    ];
+  
+    var tunnel_percentages = [
+      `Total Count:   ${formatNumber(tunnel_summary.Total)}`,
+      `Percent Condition 1:   ${parseFloat(tunnel_summary.Condition_State_1_Percentage).toFixed(2)+"%"}`,
+      `Percent Condition 2:   ${parseFloat(tunnel_summary.Condition_State_2_Percentage).toFixed(2)+"%"}`,
+      `Percent Condition 3:   ${parseFloat(tunnel_summary.Codition_State_3_Percentage).toFixed(2)+"%"}`,
+      `Percent Condition 4:   ${parseFloat(tunnel_summary.Condition_State_4_Percentage).toFixed(2)+"%"}`,
+    ];
   
     // initialize arrays for state spending data
     var hwy_total = [];
@@ -238,7 +327,7 @@ function stateChanged(state) {
   
     console.log(hwy_total)
   
-    state_data(deficient_bridges);
+    state_data(bridge_percentages, road_percentages, tunnel_percentages );
     state_chart(hwy_year, hwy_total, hwy_capital, hwy_om, hwy_year);
   });
 };

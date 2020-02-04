@@ -1,11 +1,13 @@
 USE roadtrippin;
 
 -- Select Tables 
+SELECT * FROM bridge_condition_summary;
 SELECT * FROM bridges;
 SELECT * FROM centerpoints;
 SELECT * FROM dc_potholes;
 SELECT * FROM estimate_bridge_cost_2018dollars;
 SELECT * FROM ny_crash_ditch;
+SELECT * FROM road_condition_summary;
 SELECT * FROM roads;
 SELECT * FROM spending_bystate_2017dollars;
 SELECT * FROM spending_bystate_fraction_exp;
@@ -15,7 +17,18 @@ SELECT * FROM spending_oecd_2018euros;
 SELECT * FROM spending_fedstate_percentgdp;
 SELECT * FROM spending_fedstate_2017dollars;
 SELECT * FROM spending_fed_2017dollars;
+SELECT * FROM tunnel_condition_summary;
 SELECT * FROM tunnels;
+
+
+-- Operations for bridges
+SELECT * FROM bridge_condition_summary;
+ALTER TABLE bridge_condition_summary
+	MODIFY COLUMN State VARCHAR(255);
+ALTER TABLE bridge_condition_summary
+	MODIFY COLUMN State_Abbreviation VARCHAR(255);
+ALTER TABLE bridge_condition_summary
+	ADD PRIMARY KEY (ID);
 
 
 -- Operations for bridges
@@ -183,6 +196,34 @@ ALTER TABLE ny_crash_ditch RENAME COLUMN `Road Surface Conditions` TO Road_Surfa
 ALTER TABLE ny_crash_ditch RENAME COLUMN `Event Descriptor` TO Event_Descriptor;
 ALTER TABLE ny_crash_ditch RENAME COLUMN `Number of Vehicles Involved` TO Number_of_Vehicles_Involved;
 
+
+-- Operations for bridges
+SELECT * FROM road_condition_summary;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN State VARCHAR(255);
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Total FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Not_Reported FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Good_below95 FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Fair_95to170 FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Poor_above170 FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN NotReported_Percentage FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Good_Percentage FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Fair_Percentage FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN Poor_Percentage FLOAT;
+ALTER TABLE road_condition_summary
+	MODIFY COLUMN State_Abbreviation VARCHAR(255);
+ALTER TABLE road_condition_summary
+	ADD PRIMARY KEY (State);
+    
 
 -- Operations for roads
 SELECT * FROM roads;
@@ -525,9 +566,27 @@ ALTER TABLE spending_fed_2017dollars RENAME COLUMN `Water Utilities (Capital)` T
 ALTER TABLE spending_fed_2017dollars RENAME COLUMN `Water Utilities (O&M)` TO WaterUtilities_OM;
 
 
+-- Operations for bridges
+SELECT * FROM tunnel_condition_summary;
+ALTER TABLE tunnel_condition_summary
+	MODIFY COLUMN State VARCHAR(255);
+ALTER TABLE tunnel_condition_summary
+	MODIFY COLUMN Condition_State_1_Percentage FLOAT;
+ALTER TABLE tunnel_condition_summary
+	MODIFY COLUMN Condition_State_2_Percentage FLOAT;
+ALTER TABLE tunnel_condition_summary
+	MODIFY COLUMN Condition_State_3_Percentage FLOAT;
+ALTER TABLE tunnel_condition_summary
+	MODIFY COLUMN Condition_State_4_Percentage FLOAT;
+ALTER TABLE tunnel_condition_summary
+	MODIFY COLUMN State_Abbreviation VARCHAR(255);
+ALTER TABLE tunnel_condition_summary
+	ADD PRIMARY KEY (State);
+    
+
 -- Operations for tunnels;
 SELECT * FROM tunnels;
-ALTER TABLE tunnels RENAME COLUMN `Unnamed: 0` TO ID;
+ALTER TABLE tunnels RENAME COLUMN `index` TO ID;
 UPDATE tunnels SET ID = ID + 1;
 ALTER TABLE tunnels
 	ADD PRIMARY KEY (ID);
@@ -551,3 +610,5 @@ ALTER TABLE tunnels
 	MODIFY COLUMN Tunnel_Shape VARCHAR(255);
 ALTER TABLE tunnels
 	MODIFY COLUMN Ground_Conditions VARCHAR(255);
+ALTER TABLE tunnels
+	MODIFY COLUMN State_Abbreviation VARCHAR(255);

@@ -23,12 +23,12 @@ import json
 import os
 
 # import config files
-from config import remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_host, remote_db_port, remote_gwsis_dbname
-# remote_gwsis_dbuser = os.environ.get("remote_gwsis_dbuser")
-# remote_gwsis_dbpwd = os.environ.get("remote_gwsis_dbpwd")
-# remote_db_host = os.environ.get("remote_db_host")
-# remote_db_port = os.environ.get("remote_db_port")
-# remote_gwsis_dbname = os.environ.get("remote_gwsis_dbname")
+# from config import remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_host, remote_db_port, remote_gwsis_dbname
+remote_gwsis_dbuser = os.environ.get("remote_gwsis_dbuser")
+remote_gwsis_dbpwd = os.environ.get("remote_gwsis_dbpwd")
+remote_db_host = os.environ.get("remote_db_host")
+remote_db_port = os.environ.get("remote_db_port")
+remote_gwsis_dbname = os.environ.get("remote_gwsis_dbname")
 
 # configure MySQL connection
 pymysql.install_as_MySQLdb()
@@ -42,11 +42,13 @@ app = Flask(__name__)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 Base.classes.keys()
+Bridge_Summary = Base.classes.bridge_condition_summary
 Bridges = Base.classes.bridges
 Centerpoints = Base.classes.centerpoints
 Potholes = Base.classes.dc_potholes
 Estimate_Bridge = Base.classes.estimate_bridge_cost_2018dollars
 Crashes = Base.classes.ny_crash_ditch
+Road_Summary = Base.classes.road_condition_summary
 Roads = Base.classes.roads
 Spending_byState = Base.classes.spending_bystate_2017dollars
 Spending_byState_Fraction = Base.classes.spending_bystate_fraction_exp
@@ -56,6 +58,7 @@ Spending_OECD = Base.classes.spending_oecd_2018euros
 Spending_National_percentGDP = Base.classes.spending_fedstate_percentgdp
 Spending_National = Base.classes.spending_fedstate_2017dollars
 Spending_Fed = Base.classes.spending_fed_2017dollars
+Tunnel_Summary = Base.classes.tunnel_condition_summary
 Tunnels = Base.classes.tunnels
 
 
@@ -111,7 +114,13 @@ def state_infrastructure(state):
         Tunnels.Lanes,
         Tunnels.Length,
         Tunnels.Condition
-    )
+    ).filter(Tunnels.State_Abbreviation == state)
+
+    results6 = session.query(Bridge_Summary).filter(Bridge_Summary.Year == 2018).filter(Bridge_Summary.State_Abbreviation == state)
+
+    results7 = session.query(Road_Summary).filter(Road_Summary.State_Abbreviation == state)
+
+    results8 = session.query(Tunnel_Summary).filter(Tunnel_Summary.State_Abbreviation == state)
 
     # end session
     session.close()
@@ -150,6 +159,16 @@ def state_infrastructure(state):
         "Rehab_Cost": results3[0].Estimated_Total_Cost_of_Rehab
     }
 
+    state_spending = []
+
+    for result in results4:
+        state_spending.append({
+            "Year": result[0],
+            "Total_Hwy_DirExp": result[1],
+            "Total_Hwy_CurOp": result[2],
+            "Total_Hwy_CapOut": result[3],
+        })
+
     tunnels = []
 
     for result in results5:
@@ -163,24 +182,49 @@ def state_infrastructure(state):
             "Lanes": result[6],
             "Length": result[7],
             "Condition": result[8]
-    })
+        })
 
-    state_spending = []
+    bridge_summary = {
+        "Year": results6[0].Year,
+        "State": results6[0].State,
+        "Count_All": results6[0].Count_All,
+        "Count_Good": results6[0].Count_Good,
+        "Count_Fair": results6[0].Count_Fair,
+        "Count_Poor": results6[0].Count_Poor,
+        "State_Abbreviation": results6[0].State_Abbreviation
+    }
 
-    for result in results4:
-        state_spending.append({
-            "Year": result[0],
-            "Total_Hwy_DirExp": result[1],
-            "Total_Hwy_CurOp": result[2],
-            "Total_Hwy_CapOut": result[3],
-    })
+    road_summary = []
+
+    road_summary = {
+        "State": results7[0].State,
+        "Total": results7[0].Total,
+        "NotReported_Percentage": results7[0].NotReported_Percentage,
+        "Good_Percentage": results7[0].Good_Percentage,
+        "Fair_Percentage": results7[0].Fair_Percentage,
+        "Poor_Percentage": results7[0].Poor_Percentage,
+        "State_Abbreviation": results7[0].State_Abbreviation
+    }
+        
+    tunnel_summary = {
+        "State": results8[0].State,
+        "Total": results8[0].Total,
+        "Condition_State_1_Percentage": results8[0].Condition_State_1_Percentage*100,
+        "Condition_State_2_Percentage": results8[0].Condition_State_2_Percentage*100,
+        "Condition_State_3_Percentage": results8[0].Condition_State_3_Percentage*100,
+        "Condition_State_4_Percentage": results8[0].Condition_State_4_Percentage*100,
+        "State_Abbreviation": results8[0].State_Abbreviation
+    }
 
     state_data = {
         "Location": location,
         "Bridge_Data": bridges,
         "Bridges_in_Poor_Condition": cost_estimate ,
         "Tunnel_Data": tunnels,
-        "Spending": state_spending
+        "Spending": state_spending,
+        "Bridge_Summary": bridge_summary,
+        "Road_Summary": road_summary,
+        "Tunnel_Summary": tunnel_summary
     }
     
     return jsonify(state_data)
