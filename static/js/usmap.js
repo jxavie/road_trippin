@@ -11,7 +11,11 @@ var mapbox = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?a
 }).addTo(us_map);
 
 // Load data using jquery geojson
-$.getJSON('../data/infrastructure_condition_2018.json', function (data) {
+// $.getJSON('../data/infrastructure_condition_2018.json', function (data) {
+//     datasource = data;
+//     createUsMap(datasource);
+// });
+$.getJSON('/api/geojson', function (data) {
     datasource = data;
     createUsMap(datasource);
 });

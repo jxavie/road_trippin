@@ -69,6 +69,12 @@ def index():
     return render_template('index.html')
 
 
+# define route for / render form
+@app.route('/api/geojson')
+def geojson():
+    return app.send_static_file('data/infrastructure_condition_2018.json')
+
+
 # define end point for state state; use abbreviation (e.g., VA)
 @app.route('/api/<state>')
 def state_infrastructure(state):
