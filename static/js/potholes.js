@@ -1,3 +1,7 @@
+var API_KEY = function myFunc(cred) {
+  return cred
+};
+
 function pothole_map() {
   var myMap = L.map("map", {
       center: [38.9072, -77.0369],
