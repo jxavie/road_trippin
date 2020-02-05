@@ -66,16 +66,7 @@ Tunnels = Base.classes.tunnels
 # define route for / render form
 @app.route('/')
 def index():
-
-    cred = {"API_KEY": API_KEY}
-
-    return render_template('index.html', cred=cred)
-
-
-# define route for / render form
-@app.route('/api/geojson')
-def geojson():
-    return app.send_static_file('data/infrastructure_condition_2018.json')
+    return render_template('index.html')
 
 
 # define end point for state state; use abbreviation (e.g., VA)

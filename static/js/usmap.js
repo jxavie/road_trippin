@@ -1,7 +1,3 @@
-var API_KEY = function myFunc(cred) {
-    return cred
-}.toString();
-
 var datasource;
 // select div for displaying US map
 var us_map = L.map('us_map').setView([41.320961, -104.052476], 4);
@@ -15,11 +11,7 @@ var mapbox = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?a
 }).addTo(us_map);
 
 // Load data using jquery geojson
-// $.getJSON('../data/infrastructure_condition_2018.json', function (data) {
-//     datasource = data;
-//     createUsMap(datasource);
-// });
-$.getJSON('/api/geojson', function (data) {
+$.getJSON('../static/data/infrastructure_condition_2018.json', function (data) {
     datasource = data;
     createUsMap(datasource);
 });

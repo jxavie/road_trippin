@@ -1,13 +1,7 @@
-var API_KEY = function myFunc(cred) {
-  return cred
-}.toString();
-
-
-
 function pothole_map() {
-  var myMap = L.map("map", {
+  var myMap = L.map("pothole_map", {
       center: [38.9072, -77.0369],
-      zoom: 13
+      zoom: 11
     });
     
     // Adding tile layer

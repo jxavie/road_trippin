@@ -9,8 +9,10 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/style.css" />
+
   </head>
 
   <style>
@@ -18,29 +20,95 @@
       height: 600px;
       width: 100%;
     }
-    #map {
+    #state_map {
       height: 600px;
       width: 100%;
     }
+    #pothole_map {
+      height: 600px;
+      width: 100%;
+    }
+    .b-style{
+      background-color: white;
+      position: relative;;
+    }
+    .us-card{
+      border: none;
+    }
+    .us_data{
+      margin-top: 50px;
+    }
+    .card{
+      border-radius: 0;
+    }
   </style>
 
-  <body>
-    <section class="us_data">
+  <body class="b-style" data-spy="scroll" data-target=".navbar" data-offset="100">
+
+    <nav class="navbar navbar-expand-sm fixed-top" style="padding-top: 0; padding-bottom: 0; background-color: black;">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-brand " style="color: tomato; background-color: white; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; font-style: oblique;">
+          ROAD TRIPPIN
+        </li>
+      </ul>
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav mr-auto active" style="padding-left: 30px;">
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#us_data">
+              <strong>US Infrastructure</strong>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#state_data">
+              <strong>State Statistics</strong>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#investment">
+              <strong>Investment</strong>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#potholes">
+              <strong> Potholes</strong>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="bridge_crashes.html">
+              <strong>Bridge Crashes</strong>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="us_data" style="margin-top: auto;">
       <div class="container-fluid">
-        <div id="us_map">
+        <div class="card us-card" style="padding-top: 40px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px;">
+          <div class="card-title mx-auto">
+            <h4 style="margin-top: 20px; color: tomato;"><strong>
+              STATE OF INFRASTRUCTURE
+            </strong></h4>
+          </div>
+          <div id="us_map"></div>
         </div>
       </div>
     </section>
-
-    <br>
-    <br>
-
-    <section class="state_data">
+    <section id="state_data">
       <div class="container-fluid">
         <div class="row">
           <div>
             <label for="selState">
-              <h5 style="padding-top: 15px; padding-left: 15px; padding-right: 15px;">STATE X STATE:</h5>
+              <h4 style="padding-top: 30px; padding-left: 15px; padding-right: 15px; padding-bottom: 10px; color: tomato;">
+                <strong>STATE X STATE:</strong>
+              </h4>
             </label>
             <select id="selState" name="selState" onchange="stateChanged(this.value)"></select>
           </div>
@@ -51,15 +119,15 @@
             </div>
           </div>
           <div class="col-lg-2 card" id="state_stats" style="padding: 15px;">
-            <h4>Statistics</h4>
+            <h4 style="color: tomato;">Statistics</h4>
             <hr class="my-1">
-            <i style="font-size:11pt;">Bridges:</i>
+            <i style="font-size:12pt; color: tomato;">Bridges:</i>
             <div id="state_bridges" style="padding: 0; margin: 0;">
             </div>
-            <i style="font-size:11pt;">Roads:</i>
+            <i style="font-size:12pt; color: tomato;">Roads:</i>
             <div id="state_roads">
             </div>
-            <i style="font-size:11pt;">Tunnels:</i>
+            <i style="font-size:12pt; color: tomato;">Tunnels:</i>
             <div id="state_tunnels">
             </div>
           </div>
@@ -70,12 +138,13 @@
         </div>
       </div>
     </section>
-
-    <br>
-    <br>
-
-    <section class="2_col">
+    <section id="investment">
       <div class="container-fluid">
+        <div class="row">
+          <h4 style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+            <strong>US AND GLOBAL INVESTMENT:</strong>
+          </h4>
+        </div>
         <div class="row">
           <div class="col-lg-6 card" style="padding: 15px;">
             <div>
@@ -92,16 +161,31 @@
         </div>
       </div>
     </section>
-
+    <section class="potholes"></section>
+      <div class="container-fluid">
+        <div class="row">
+          <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+            <strong>DC POTHOLES</strong>
+          </h4>
+        </div>
+        <div class="card-body" id="pothole_map"></div>
+      </div>
+    </section>
     <br>
-    <br>
-
-    <div class="container-fluid">
-      <div class="card-body" id="map"></div>
-    </div>
-    <div id="map"></div>
+    <!-- <section class="crashes"></section>
+      <div class="container-fluid">
+        <div class="row">
+          <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+            <strong>BRIDGE CRASHES</strong>
+          </h4>
+        </div>
+        <div class="card"  id="crash_table">
+        </div>
+      </div>
+    </section> -->
 
     <!-- JS Code -->
+    <script type="text/javascript" src="../static/js/config.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script type="text/javascript" src="../static/js/potholes.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -112,7 +196,6 @@
     <script type="text/javascript" src="../static/js/usmap.js"></script>
     <script type="text/javascript" src="../static/js/statedata.js"></script>
     <script type="text/javascript" src="../static/js/investment.js"></script>
-    <script type="text/javascript">var myVar = myFunc({{cred.API_KEY}})</script>
   </body>
 
 </html>
