@@ -1,3 +1,5 @@
+const API_KEY = js_config;
+
 function pothole_map() {
   var myMap = L.map("pothole_map", {
       center: [38.9072, -77.0369],

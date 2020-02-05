@@ -66,7 +66,10 @@ Tunnels = Base.classes.tunnels
 # define route for / render form
 @app.route('/')
 def index():
-    return render_template('index.html')
+
+    js_config = API_KEY
+
+    return render_template('index.html', js_config=js_config)
 
 
 # define route for /bridge_crashes render form

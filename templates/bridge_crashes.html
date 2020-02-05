@@ -457,16 +457,82 @@
                   padding: 50px;
                   display: none;
                 }
+
                 </style>
-                </head>
+                <script>
+                    $(document).ready(function(){
+                  $("#flip2").click(function(){
+                    $("#panel2").slideToggle("slow");
+                  });
+                });
+                </script>
+                <style>
+                    #panel2, #flip2 {
+                  padding: 5px;
+                  text-align: center;
+                  background-color: #e5eecc;
+                  border: solid 1px #c3c3c3;
+                }
+                
+                #panel2 {
+                  padding: 50px;
+                  display: none;
+                }
+
+                </style>
+
+                <script>
+                    $(document).ready(function(){
+                $("#flip3").click(function(){
+                    $("#panel3").slideToggle("slow");
+                });
+                });
+                </script>
+                <style>
+                    #panel3, #flip3 {
+                padding: 5px;
+                text-align: center;
+                background-color: #e5eecc;
+                border: solid 1px #c3c3c3;
+                }
+
+                #panel3 {
+                padding: 50px;
+                display: none;
+                }
+
+                </style>
+                
                 <body>
                  
-                <div id="flip">Click for Analysis</div>
-                <div id="panel">AnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysis
-                    AnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysis
-                    AnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysis
-                    AnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysisAnalysis
+                <div id="flip">US Road/Highway Analysis</div>
+                <div id="panel">In 2017, the US invested 0.7% of their GDP into road/highway infrastructure, which
+                    amounted to around $182.58 per capita spending. As the US GDP has grown over the years, its investment
+                    in road/highway infrastructure has consistently declined. In 2009, US monetary spending on infrastructure
+                    had a peak high, but in the last 10 years it has also been on a decline. This could have a direct correlation 
+                    with road/highway "Condition". Since 2009, the percentage of road/highways in the US that are considered "Good Condition"
+                    has dropped almost 4%.
+                </div>
+                
+                <div id="flip2">Individual State Case Studies</div>
+                <div id="panel2">In 2018, Rhode Island had the highest percentage of tunnel elements in severe condition at 32%,
+                    They also have a high percentage of roads in poor condition at 38% and bridges in poor condition at 24%. To correlate
+                    this with spending, Rhode Island is 45th in spending in the US when in comes to road/highway infrasturcture.
+                    <br>
+                    In comparison, Florida is 4th in local state infrastructure spending and had the highes percentage of good condition 
+                    bridges at 67% and the highest percentage of good elements for their tunnels at 99%.
                 </div>        
+
+                <div id="flip3">World Relation</div>
+                <div id="panel3">
+                    Though the US is in the top 25% of the world in resilient infrastructure systems, it still falls behind other developed countries.
+                    Other developed countries spend almost twice as much of their GDP on infrastructure as the US. The American Society of Civil Engineers rated America's infrastructure system as a D+ and recommeneded that spending increase by $2T
+                    over the next decade. America's infrastructure was built with standards of 50 years ago, but that obviously has not been able to keep up
+                    with the amount of natural disasters and population growth that has happened in the same time period. Investing more into infrastructure
+                    would also help America's economy in general, as about 11% of the US work force is currently employed in an infrastructure related occupation.
+                    The World Economic Forum’s Global Competitiveness Report ranked US as 10th in infrastructure quality in 2017, whereas in 2002 the US ranked 5th.
+                    
+                </div>
 
 
 ​
