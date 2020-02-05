@@ -69,6 +69,12 @@ def index():
     return render_template('index.html')
 
 
+# define route for /bridge_crashes render form
+@app.bridge_crashes('/bridge_crashes')
+def index():
+    return render_template('bridge_crashes.html')
+
+
 # define end point for state state; use abbreviation (e.g., VA)
 @app.route('/api/<state>')
 def state_infrastructure(state):
