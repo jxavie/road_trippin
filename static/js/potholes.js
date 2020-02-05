@@ -1,4 +1,4 @@
-const API_KEY = js_config;
+// var API_KEY = js_config;
 
 function pothole_map() {
   var myMap = L.map("pothole_map", {

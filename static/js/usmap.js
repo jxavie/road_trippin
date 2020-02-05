@@ -1,4 +1,4 @@
-const API_KEY = js_config;
+// var API_KEY = js_config;
 
 var datasource;
 // select div for displaying US map
