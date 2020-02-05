@@ -1,5 +1,3 @@
-// var API_KEY = js_config;
-
 var datasource;
 // select div for displaying US map
 var us_map = L.map('us_map').setView([41.320961, -104.052476], 4);
