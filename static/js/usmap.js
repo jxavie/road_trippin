@@ -1,6 +1,6 @@
 var API_KEY = function myFunc(cred) {
     return cred
-};
+}.toString();
 
 var datasource;
 // select div for displaying US map

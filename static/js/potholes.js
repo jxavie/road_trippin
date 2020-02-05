@@ -1,6 +1,8 @@
 var API_KEY = function myFunc(cred) {
   return cred
-};
+}.toString();
+
+
 
 function pothole_map() {
   var myMap = L.map("map", {
