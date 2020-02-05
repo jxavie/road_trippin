@@ -70,8 +70,8 @@ def index():
 
 
 # define route for /bridge_crashes render form
-@app.bridge_crashes('/bridge_crashes')
-def index():
+@app.route('/bridge_crashes')
+def bridge_crashes():
     return render_template('bridge_crashes.html')
 
 
