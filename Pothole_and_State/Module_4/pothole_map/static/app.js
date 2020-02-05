@@ -116,7 +116,7 @@ info.addTo(bridge_map);
         var long = response[i].Longitdue;
         var year = response[i].Year_Built;
         //var status = response[i].service_order_status;
-        //console.log("bridge: " + lat);
+        console.log("bridge: " + lat);
         //console.log("bridge: " +long);
        if (lat) {
         if (long) {
