@@ -7,7 +7,7 @@ var mapbox = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?a
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery Â© <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 16,
     id: "mapbox.light",
-    accessToken: "pk.eyJ1IjoianhhdmllIiwiYSI6ImNrNjdvem1zZzFmMXYzbm5yeW51aHpycDMifQ.i5budp-6LFnJvFzl-nKhrw"
+    accessToken: API_KEY
 }).addTo(us_map);
 
 // Load data using jquery geojson
