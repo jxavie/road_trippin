@@ -23,12 +23,13 @@ import json
 import os
 
 # import config files
-# from config import remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_host, remote_db_port, remote_gwsis_dbname
-remote_gwsis_dbuser = os.environ.get("remote_gwsis_dbuser")
-remote_gwsis_dbpwd = os.environ.get("remote_gwsis_dbpwd")
-remote_db_host = os.environ.get("remote_db_host")
-remote_db_port = os.environ.get("remote_db_port")
-remote_gwsis_dbname = os.environ.get("remote_gwsis_dbname")
+from config import remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_host, remote_db_port, remote_gwsis_dbname
+# remote_gwsis_dbuser = os.environ.get("remote_gwsis_dbuser")
+# remote_gwsis_dbpwd = os.environ.get("remote_gwsis_dbpwd")
+# remote_db_host = os.environ.get("remote_db_host")
+# remote_db_port = os.environ.get("remote_db_port")
+# remote_gwsis_dbname = os.environ.get("remote_gwsis_dbname")
+# API_KEY = os.environ.get("API_KEY")
 
 # configure MySQL connection
 pymysql.install_as_MySQLdb()

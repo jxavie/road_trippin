@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
   <title>Road Trippin'</title>
   <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,7 @@
 </head>
 
 <style>
-  .leaflet-popup-content-wrapper{
+  /* .leaflet-popup-content-wrapper{
     background-color: white;
     opacity: 0.9;
   }
@@ -32,6 +32,10 @@
   {
     margin:0;
     padding:0;
+  } */
+
+  #map {
+    height: 200px;
   }
   </style>
 
@@ -48,8 +52,10 @@
 
   <!-- US MAP (BY STATE) START-->
   <section class="us-map">
-    <div class="container">
-      <!-- MAP CONTENTS WILL BE HERE -->
+    <div class="container-fluid">
+      <div id="map">
+        <!-- MAP CONTENTS WILL BE HERE -->
+      </div>
     </div>
   </section>
   <!-- US MAP ENDS-->
@@ -153,7 +159,7 @@
   <!-- CRASHES TABLE START -->
   <section class="crashes">
     <div class="container">
-      <div class="r-table">
+      <div id="r-table">
         <!-- TABLE GOES HERE (CAR CRASHES TABLE) -->
       </div>
     </div>
@@ -179,10 +185,11 @@
   <!-- SCRIPTS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!-- <script src="../static/js/config.js"></script> -->
-  <script src="../static/js/statemap.js"></script>
-  <script src="../static/js/statedata.js"></script>
-  <script src="../static/js/investment.js"></script>
+  <script src="../static/js/config.js"></script>
+  <!-- <script src="../static/js/statemap.js"></script> -->
+  <!-- <script src="../static/js/statedata.js"></script> -->
+  <!-- <script src="../static/js/investment.js"></script> -->
+  <script src="../static/js/pothole.js"></script>
   <!-- BODY ENDS -->
 
   <!-- SCRIPTS GOES BEFORE BODY -->
