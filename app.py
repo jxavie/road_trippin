@@ -70,6 +70,7 @@ def index():
     js_config = API_KEY
 
     return render_template('index.html', js_config=js_config)
+    # return render_template('index.html')
 
 
 # define route for /bridge_crashes render form
@@ -78,7 +79,7 @@ def bridge_crashes():
     return render_template('bridge_crashes.html')
 
 
-# define end point for state state; use abbreviation (e.g., VA)
+# define end point for state stats; use abbreviation (e.g., VA)
 @app.route('/api/<state>')
 def state_infrastructure(state):
 
@@ -147,7 +148,7 @@ def state_infrastructure(state):
     for result in results2:
         bridges.append({
             # "State": result[0],
-            "Features_Intersected": result[0],
+            "Feature_Intersected": result[0],
             "Facility_Carried": result[1],
             "Latitude": result[2],
             "Longitude": result[3],
@@ -229,7 +230,7 @@ def state_infrastructure(state):
     state_data = {
         "Location": location,
         "Bridge_Data": bridges,
-        "Bridges_in_Poor_Condition": cost_estimate ,
+        "Bridges_in_Poor_Condition": cost_estimate,
         "Tunnel_Data": tunnels,
         "Spending": state_spending,
         "Bridge_Summary": bridge_summary,
