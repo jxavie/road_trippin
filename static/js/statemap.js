@@ -1,3 +1,5 @@
+var API_KEY = d3.select("#key").property("text")
+
 // function to create a map
 function stateMap(dataset) {
     
