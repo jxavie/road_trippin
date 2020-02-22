@@ -8,7 +8,7 @@ var state_dictionary = {
   'Colorado': 'CO',
   'Connecticut': 'CT',
   'Delaware': 'DE',
-  'District of Columbia': 'DC',
+  // 'District of Columbia': 'DC',
   'Florida': 'FL',
   'Georgia': 'GA',
   'Hawaii': 'HI',
@@ -76,3 +76,6 @@ for (var i=0; i < state_names.length; i++ ){
         // .text(`${state_names[i]} - ${state_abbr[i]}`);
         .text(state_names[i]);
 };
+
+// set dropdown selection to VA
+document.getElementById("selState").value = "VA";

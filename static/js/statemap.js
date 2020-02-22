@@ -1,8 +1,7 @@
 var API_KEY = d3.select("#cred").property("text").split(";")[0];
-console.log(API_KEY);
 
 // function to create a map
-function stateMap(dataset) {
+function stateMap(dataset, state) {
     
     var tunnelIcon = L.icon({
         iconUrl: "static/images/tunnel_icon.png",
@@ -26,26 +25,48 @@ function stateMap(dataset) {
     var bridgeLayer = L.markerClusterGroup();
 
     bridges.forEach(function(bridge) {
-        var facility = bridge.Facility_Carried;
-        var feature = bridge.Feature_Intersected;
+        
         var latitude = bridge.Latitude;
         var longitude = 0 - bridge.Longitude;
-        // var condition = bridge.Score.split(" ")[0];
-        var condition = bridge.Score;
-        var strType = bridge.Structure_Kind;
-        var yearBuilt = bridge.Year_Built;
 
-        var bridgeMarker = L.marker([latitude, longitude], {icon: bridgeIcon})
-        // .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr 'style=padding-bottom:0;'>" +
-        .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
-            "Latitude:  " + latitude + "<br>" +
-            "Longitude:  " + longitude + "<br>" +
-            "Structure Type:  " + strType + "<br>" +
-            "Year Built:  " + yearBuilt + "<br>" +
-            "Condition:  " + condition + "<br>"
-        );
+        if (latitude < 0) {
+            latitude = latitude * -1;
+        }
+        else {
+            latitude;
+        };
 
-        bridgeLayer.addLayer(bridgeMarker)
+        if (longitude < 0) {
+            longitude;
+        }
+        else {
+            longitude = longitude * -1;
+        };
+
+        if (latitude) {
+            if (longitude) {
+                var facility = bridge.Facility_Carried;
+                var feature = bridge.Feature_Intersected;
+                // var latitude = bridge.Latitude;
+                // var longitude = 0 - bridge.Longitude;
+                // var condition = bridge.Score.split(" ")[0];
+                var condition = bridge.Score;
+                var strType = bridge.Structure_Kind;
+                var yearBuilt = bridge.Year_Built;
+        
+                var bridgeMarker = L.marker([latitude, longitude], {icon: bridgeIcon})
+                // .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr 'style=padding-bottom:0;'>" +
+                .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+                    "Latitude:  " + latitude + "<br>" +
+                    "Longitude:  " + longitude + "<br>" +
+                    "Structure Type:  " + strType + "<br>" +
+                    "Year Built:  " + yearBuilt + "<br>" +
+                    "Condition:  " + condition + "<br>"
+                );
+        
+                bridgeLayer.addLayer(bridgeMarker)
+            };
+        };
     });
 
     var tunnelMarkers = [];
@@ -124,10 +145,36 @@ function stateMap(dataset) {
         "Bridges" : bridgeLayer
     };
 
+    // map zoom
+    // var mapZoom = 6;
+    var mapZoom = state_zoom[state];
+
+    // if (state_maxDim[state] < 100) {
+    //     mapZoom = 9;
+    // }
+    // else if (state_maxDim[state] < 250) {
+    //     mapZoom = 8;
+    // }
+    // else if (state_maxDim[state] < 500) {
+    //     mapZoom = 7;
+    // }
+    // else if (state_maxDim[state] < 750) {
+    //     mapZoom = 6;
+    // }
+    // else if (state_maxDim[state] < 1000) {
+    //     mapZoom = 5;
+    // }
+    // else {
+    //     mapZoom = 4;
+    // };
+    console.log(state);
+    // console.log(state_maxDim[state]);
+    console.log(mapZoom);
+
     // define map object
-    var map = L.map("state_map",{
+    var statemap = L.map("state_map",{
         center: [cp_latitude, cp_longitude],
-        zoom: 6,
+        zoom: mapZoom,
         layers: [darkmap, tunnelLayer]
     });
 
@@ -148,17 +195,18 @@ function stateMap(dataset) {
     };
 
     // add legend to map
-    legend.addTo(map);
+    legend.addTo(statemap);
 
     L.control.layers(mapLayers, overlayMaps, {
         collapse: false
-    }).addTo(map);
+    }).addTo(statemap);
+
 };
 
 
 
 // DEFAULT DASHBOARD SETTINGS
-// dynamically determine default state
+// dynamically determine dropdown selection
 var state = d3.select("#selState").property("value");
 console.log(state);
 
@@ -166,12 +214,12 @@ console.log(state);
 var datasource = `/api/${state}`;
 
 // create map based on selected state
-d3.json(datasource).then((dataset) => stateMap(dataset));
+d3.json(datasource).then((dataset) => stateMap(dataset, state));
 
 
 
 // function to update map based on user input
-function updateStateMap(dataset) {
+function updateStateMap(dataset, state) {
     document.getElementById("state_map").remove();
     
     var parent_div = document.getElementById("state_map_parent")
@@ -182,5 +230,5 @@ function updateStateMap(dataset) {
     // as an example add it to the body
     parent_div.append(div);
     
-    stateMap(dataset);
+    stateMap(dataset, state);
 };
