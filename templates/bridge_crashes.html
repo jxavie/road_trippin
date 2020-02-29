@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bridge Crashes</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body data-spy="scroll" data-target=".navbar" data-offset="100">
+
+    <nav class="navbar navbar-expand-sm fixed-top" style="padding-top: 0; padding-bottom: 0; background-color: black;">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-brand " style="color: tomato; background-color: white; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; font-style: oblique;">
+            ROAD TRIPPIN
+            </li>
+        </ul>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto active" style="padding-left: 30px;">
+            <li class="nav-item">
+                <a class="nav-link" style="color: tomato; font-size: 14pt;" href="/">
+                <strong>Home</strong>
+                </a>
+            </li>
+        </div>
+    </nav>
+
+    <div id="root"></div>
+    <script type="text/babel">
+
+      ReactDOM.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('root')
+      );
+
+    </script>
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+
+<h2>Bridge Crash Table</h2>
+<p>Type in State Name to find crashed bridges within that state</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+    <table border="1" class="dataframe">  
+        <thead>    
+             <tr style="text-align: right;">      
+                 <th></th>      
+                 <th>Bridge</th>      
+                 <th>Casualties</th>      
+                 <th>Construction type, use of bridge</th>      
+                 <th>Country</th>      
+                 <th>Damage</th>      
+                 <th>Date</th>      
+                 <th>Location</th>      
+                 <th>Reason</th>    
+            </tr>  
+        </thead>  
+        <tbody id = "myTable">    
+            <tr>      
+                <th>7</th>      
+                <td>Wheeling Suspension Bridge</td>      
+                <td>No casualties</td>      
+                <td>Suspension bridge carrying the National Road o...</td>      
+                <td>United States</td>      
+                <td>Deck destroyed; towers left intact and remain ...</td>      
+                <td>17 May 1854</td>      
+                <td>West Virginia (then Virginia)</td>      
+                <td>Torsional movement and vertical undulations ca...</td>    
+            </tr>    
+            <tr>      
+                <th>8</th>      
+                <td>Gasconade Bridge</td>      
+                <td>31 killed, hundreds injured</td>      
+                <td>Wooden rail bridge</td>      
+                <td>United States</td>      
+                <td>Span from anchorage to first pier destroyed</td>      
+                <td>1 November 1855</td>      
+                <td>Missouri</td>      
+                <td>Inaugural train run conducted before temporary...</td>    
+            </tr>    
+            <tr>      
+                <th>10</th>      
+                <td>Sauquoit Creek Bridge</td>      
+                <td>9 killed, 55 injured</td>      
+                <td>Railroad trestle</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>11 May 1858</td>      
+                <td>New York</td>      
+                <td>Weight (two trains on the same trestle)</td>    
+            </tr>    
+            <tr>      
+                <th>11</th>      
+                <td>Springbrook Bridge</td>      
+                <td>41 killed (some accounts of 60 to 70)</td>      
+                <td>Railroad embankment bridge</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>27 June 1859</td>      
+                <td>Indiana</td>      
+                <td>Washout</td>    
+            </tr>    
+            <tr>      
+                <th>14</th>      
+                <td>Platte Bridge</td>      
+                <td>17–20 killed, 100 injured</td>      
+                <td>NaN</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>3 September 1861</td>      
+                <td>Missouri</td>      
+                <td>Sabotage by Confederate partisans during US Ci...</td>    
+            </tr>    
+            <tr>      
+                <th>15</th>      
+                <td>Chunky Creek Bridge</td>      
+                <td>NaN</td>      
+                <td>NaN</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>1863</td>      
+                <td>Mississippi</td>      
+                <td>Winter flood caused a debris build-up which sh...</td>    
+            </tr>    
+            <tr>      
+                <th>16</th>      
+                <td>Train bridge</td>      
+                <td>7 killed, 20 injured</td>      
+                <td>NaN</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>19 April 1873</td>      
+                <td>RI</td>      
+                <td>Washaway</td>    
+            </tr>    
+            <tr>      
+                <th>17</th>      
+                <td>Dixon Bridge (aka Truesdell Bridge)</td>      
+                <td>46 killed 56 injured</td>      
+                <td>Iron vehicular bridge (for pedestrians and car...</td>      
+                <td>United States</td>      
+                <td>Bridge was a total loss</td>      
+                <td>4 May 1873</td>      
+                <td>Illinois</td>      
+                <td>Large crowd assembled on one side to view bapt...</td>    
+            </tr>    
+            <tr>      
+                <th>18</th>      
+                <td>Portage Bridge</td>      
+                <td>0 killed 0 injured</td>      
+                <td>Wooden beam bridge over the Genesee River</td>      
+                <td>United States</td>      
+                <td>Bridge was a total loss</td>      
+                <td>5 May 1875</td>      
+                <td>New York</td>      
+                <td>Fire</td>    
+            </tr>    
+            <tr>      
+                <th>20</th>      
+                <td>Ashtabula River Railroad Bridge</td>      
+                <td>92 killed, 64 injured</td>      
+                <td>Wrought iron truss bridge</td>      
+                <td>United States</td>      
+                <td>Bridge total damage</td>      
+                <td>29 December 1876</td>      
+                <td>Ohio</td>      
+                <td>Possible fatigue failure of cast iron elements</td>    
+            </tr>    
+            <tr>      
+                <th>23</th>      
+                <td>Little Silver</td>      
+                <td>3 killed, 65+ injured</td>      
+                <td>Trestle railway bridge</td>      
+                <td>United States</td>      
+                <td>Estimated $15,000 worth of damage to the bridg...</td>      
+                <td>30 June 1882</td>      
+                <td>New Jersey</td>      
+                <td>Train derailment due to insecure railroad swit...</td>    
+            </tr>    
+            <tr>      
+                <th>26</th>      
+                <td>Bussey Bridge</td>      
+                <td>30 killed, 40 injured</td>      
+                <td>Iron railroad bridge collapses under train</td>      
+                <td>United States</td>      
+                <td>Bridge rebuilt</td>      
+                <td>14 March 1887</td>      
+                <td>Boston</td>      
+                <td>Poor construction[6]</td>    
+            </tr>    
+            <tr>      
+                <th>27</th>      
+                <td>Big Four Bridge</td>      
+                <td>37 killed</td>      
+                <td>Caisson and truss</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>10 October 1888</td>      
+                <td>Kentucky</td>      
+                <td>12 died when caisson flooded, 4 died when beam...</td>    
+            </tr>    
+            <tr>      
+                <th>0</th>      
+                <td>Dry Creek Bridge</td>      
+                <td>111 killed, unknown injured</td>      
+                <td>Wooden railway bridge</td>      
+                <td>United States</td>      
+                <td>Bridge completely destroyed</td>      
+                <td>7 August 1904</td>      
+                <td>Colorado</td>      
+                <td>Collapsed because of a sudden washout</td>    
+            </tr>    
+            <tr>      
+                <th>2</th>      
+                <td>Portage Canal Swing Bridge</td>      
+                <td>0 killed, 0 injured</td>      
+                <td>Steel swing bridge</td>      
+                <td>United States</td>      
+                <td>Swing span rebuilt.</td>      
+                <td>15 April 1905</td>      
+                <td>Michigan</td>      
+                <td>Swing span struck by the steamer Northern Wave.</td>    
+            </tr>    
+            <tr>      
+                <th>3</th>      
+                <td>Cimarron River Rail Crossing</td>      
+                <td>4-100+ killed</td>      
+                <td>Wooden railroad trestle</td>      
+                <td>United States</td>      
+                <td>Entire span lost; rebuilt</td>      
+                <td>18 September 1906</td>      
+                <td>Oklahoma Territory</td>      
+                <td>Washed out under pressure from debris during h...</td>    
+            </tr>    
+            <tr>      
+                <th>6</th>      
+                <td>Division Street Bridge</td>      
+                <td>5–7 killed, 10 injured</td>      
+                <td>Steel framework, trolley car bridge</td>      
+                <td>United States</td>      
+                <td>Complete loss, plus two trolley cars destroyed</td>      
+                <td>18 December 1915</td>      
+                <td>Washington</td>      
+                <td>Collapsed a week after being resurfaced; poor ...</td>    
+            </tr>    
+            <tr>      
+                <th>8</th>      
+                <td>Grand Avenue Bridge</td>      
+                <td>1 killed, 0 injured</td>      
+                <td>Steel overhead truss bridge, vehicular traffic</td>      
+                <td>United States</td>      
+                <td>Bridge completely destroyed.</td>      
+                <td>2 August 1920</td>      
+                <td>Wisconsin</td>      
+                <td>Believed to have been weakened by heavy trucks...</td>    
+            </tr>    
+            <tr>      
+                <th>13</th>      
+                <td>Appomattox River Drawbridge</td>      
+                <td>14 killed</td>      
+                <td>NaN</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>22 December 1935</td>      
+                <td>Virginia</td>      
+                <td>Bus drove across the drawbridge when it was open.</td>    
+            </tr>    
+            <tr>      
+                <th>14</th>      
+                <td>Falling Creek Bridge</td>      
+                <td>4 killed, 5 injured</td>      
+                <td>Wood and steel.</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>1 September 1936</td>      
+                <td>Virginia</td>      
+                <td>Two trucks were crossing the bridge when one s...</td>    
+            </tr>    
+            <tr>      
+                <th>18</th>      
+                <td>Tacoma Narrows Bridge</td>      
+                <td>0 killed, 0 injured (1 dog killed)</td>      
+                <td>Road bridge, cable suspension with plate girde...</td>      
+                <td>United States</td>      
+                <td>Bridge completely destroyed, no persons killed...</td>      
+                <td>7 November 1940</td>      
+                <td>Washington</td>      
+                <td>Aerodynamically poor design resulted in aeroel...</td>    
+            </tr>    
+            <tr>      
+                <th>20</th>      
+                <td>Chesapeake City Bridge</td>      
+                <td>Unknown</td>      
+                <td>Road bridge, vertical lift drawbridge</td>      
+                <td>United States</td>      
+                <td>Central span completely destroyed</td>      
+                <td>28 July 1942</td>      
+                <td>Maryland</td>      
+                <td>Tanker Franz Klasen rammed the movable bridge ...</td>    
+            </tr>    
+            <tr>      
+                <th>23</th>      
+                <td>John P. Grace Memorial Bridge</td>      
+                <td>5 killed</td>     
+                <td>Steel cantilever truss automobile bridge</td>      
+                <td>United States</td>      
+                <td>NaN</td>      
+                <td>24 February 1946</td>      
+                <td>South Carolina</td>      
+                <td>Three spans collapsed due to collision by the ...</td>    
+            </tr>    
+            <tr>      
+                <th>10</th>      
+                <td>Lake Pontchartrain Causeway</td>      
+                <td>6 killed</td>      
+                <td>NaN</td>      
+                <td>United States</td>      
+                <td>Single span collapse</td>      
+                <td>16 June 1964</td>      
+                <td>Louisiana</td>      
+                <td>Ship collision</td>    
+            </tr>    
+            <tr>      
+                <th>11</th>      
+                <td>Kansas Avenue Bridge</td>      
+                <td>1 killed</td>      
+                <td>Kansas Avenue Melan Bridge for traffic between...</td>      
+                <td>United States</td>      
+                <td>Single span collapse</td>      
+                <td>2 July 1965</td>      
+                <td>Kansas</td>      
+                <td>Structural deterioration</td>    
+            </tr>    
+            <tr>      
+                <th>12</th>      
+                <td>Long Shoal Bridge</td>      
+                <td>3 killed</td>      
+                <td>Swinging suspension road bridge</td>      
+                <td>United States</td>      
+                <td>Total collapse</td>      
+                <td>21 September 1965</td>      
+                <td>Missouri</td>      
+                <td>Faulty design and overload</td>    
+            </tr>    
+            <tr>      
+                <th>16</th>      
+                <td>Silver Bridge</td>      
+                <td>46 killed, 9 injured</td>      
+                <td>Road bridge, chain link suspension</td>      
+                <td>United States</td>      
+                <td>Bridge and 37 vehicles destroyed</td>      
+                <td>15 December 1967</td>      
+                <td>West Virginia and Gallipolis</td>      
+                <td>Poor maintenance and overloading</td>    
+            </tr>    
+            <tr>      
+                <th>25</th>      
+                <td>Sidney Lanier Bridge</td>      
+                <td>10 deaths, multiple injuries</td>      
+                <td>Vertical Lift Bridge over the South Brunswick ...</td>      
+                <td>United States</td>      
+                <td>Several spans knocked out</td>      
+                <td>7 November 1972</td>      
+                <td>Georgia</td>      
+                <td>Struck by the freighter African Neptune</td>    
+            </tr>    
+            <tr>      
+                <th>27</th>      
+                <td>West Side Elevated Highway</td>      
+                <td>No casualties</td>      
+                <td>NaN</td>      
+                <td>United States</td>      
+                <td>Single span collapse, which however caused the...</td>      
+                <td>15 December 1973</td>      
+                <td>New York City</td>      
+                <td>Poor maintenance and overloading</td>    
+            </tr>    
+            <tr>      
+                <th>33</th>      
+                <td>Benjamin Harrison Memorial Bridge</td>      
+                <td>0 killed, minor injuries</td>      
+                <td>Lift bridge</td>      
+                <td>United States</td>      
+                <td>Section of bridge destroyed</td>      
+                <td>24 February 1977</td>      
+                <td>Virginia</td>      
+                <td>An ocean-going tanker ship, the 5,700 ton, 523...</td>    
+            </tr>    
+            <tr>      
+                <th>34</th>      
+                <td>Green Island Bridge</td>      
+                <td>0 killed, 0 injured</td>      
+                <td>Lift bridge</td>      
+                <td>United States</td>      
+                <td>Bridge destroyed</td>      
+                <td>15 March 1977</td>      
+                <td>New York</td>      
+                <td>Flooding undermined the lift span pier resulti...</td>    
+            </tr>    <tr>      <th>36</th>      <td>Hood Canal Floating Bridge (William A. Bugge B...</td>      <td>0 killed, 0 injured</td>      <td>Floating bridge</td>      <td>United States</td>      <td>Western drawspan and western pontoons sunk; ot...</td>      <td>13 February 1979</td>      <td>Washington</td>      <td>Blown pontoon hatches combined with extreme wi...</td>    </tr>    <tr>      <th>38</th>      <td>Sunshine Skyway Bridge</td>      <td>35 killed, 1 injured</td>      <td>Steel cantilever bridge</td>      <td>United States</td>      <td>1,200 feet (370\xa0m) of southbound span, several...</td>      <td>9 May 1980</td>      <td>Florida</td>      <td>The freighter Summit Venture struck the bridge...</td>    </tr>    <tr>      <th>39</th>      <td>Old Fairmont to Wheeling Turnpike Covered Brid...</td>      <td>0 killed, 0 injured</td>      <td>Single-lane wooden-truss covered bridge built ...</td>      <td>United States</td>      <td>Bridge floated downstream approximately 200 ya...</td>      <td>16 August 1980</td>      <td>West Virginia</td>      <td>Flash Flood of Paw Paw Creek Valley causing bu...</td>    </tr>    <tr>      <th>40</th>      <td>Tompkins Hill Road overpass[24]</td>      <td>0 killed, 6 injured</td>      <td>Reinforced concrete spans on concrete support ...</td>      <td>United States</td>      <td>Two vehicles drove into the opening left by co...</td>      <td>8 November 1980</td>      <td>California</td>      <td>Earthquake caused two spans to slip off suppor...</td>    </tr>    <tr>      <th>42</th>      <td>Hyatt Regency walkway collapse</td>      <td>114 killed, 200 injured</td>      <td>Double-deck suspended footbridge in hotel inte...</td>      <td>United States</td>      <td>Walkway destroyed</td>      <td>17 July 1981</td>      <td>Missouri</td>      <td>Erroneous redesign of supporting member during...</td>    </tr>    <tr>      <th>43</th>      <td>Cline Avenue over the Indiana Harbor and Ship ...</td>      <td>14 killed, 16 injured</td>      <td>Indiana State Route 912</td>      <td>United States</td>      <td>Bridge rebuilt</td>      <td>15 April 1982</td>      <td>Indiana</td>      <td>1,200 feet (370\xa0m) of the bridge collapsed whi...</td>    </tr>    <tr>      <th>46</th>      <td>Mianus River Bridge</td>      <td>3 killed, 3 injured[25]</td>      <td>Interstate 95 (Connecticut Turnpike) over the ...</td>      <td>United States</td>      <td>100-foot (30\xa0m) section of the northbound lane...</td>      <td>28 June 1983</td>      <td>Connecticut</td>      <td>Metal corrosion and fatigue/Deferred maintenance</td>    </tr>    <tr>      <th>49</th>      <td>Schoharie Creek Bridge collapse Thruway Bridge</td>      <td>10 killed, unknown injured</td>      <td>I-90 New York Thruway over the Schoharie Creek</td>      <td>United States</td>      <td>Total collapse</td>      <td>5 April 1987</td>      <td>New York</td>      <td>Improper protection of footings by contractor ...</td>    </tr>    <tr>      <th>50</th>      <td>Schoharie Creek\'s Mill Point Bridge</td>      <td>0 killed, 0 injured</td>      <td>State highway</td>      <td>United States</td>      <td>Total collapse</td>      <td>11 April 1987</td>      <td>Amsterdam</td>      <td>Flooding</td>    </tr>    <tr>      <th>54</th>      <td>Tennessee Hatchie River Bridge</td>      <td>8 killed</td>      <td>Northbound lanes of U.S. 51 over the Hatchie R...</td>      <td>United States</td>      <td>Total collapse</td>      <td>1 April 1989</td>      <td>Tennessee and Henning</td>      <td>Shifting river channel, deterioration of found...</td>    </tr>    <tr>      <th>55</th>      <td>Cypress Street Viaduct</td>      <td>42 killed</td>      <td>I-880 (Nimitz Freeway)</td>      <td>United States</td>      <td>Structure destroyed, remains demolished and re...</td>      <td>17 October 1989</td>      <td>California</td>      <td>Destroyed in Loma Prieta earthquake</td>    </tr>    <tr>      <th>56</th>      <td>San Francisco–Oakland Bay Bridge</td>      <td>1 killed</td>      <td>I-80</td>      <td>United States</td>      <td>NaN</td>      <td>17 October 1989</td>      <td>California</td>      <td>50-foot (15\xa0m) section of the upper deck and l...</td>    </tr>    <tr>      <th>57</th>      <td>Swinging Bridge</td>      <td>5 killed</td>      <td>Pedestrian suspension bridge over the Little R...</td>      <td>United States</td>      <td>Structure destroyed</td>      <td>28 October 1989</td>      <td>Arkansas</td>      <td>Destroyed by pedestrians swinging the bridge</td>    </tr>    <tr>      <th>58</th>      <td>Lacey V. Murrow Memorial Bridge</td>      <td>0 killed</td>      <td>I-90</td>      <td>United States</td>      <td>2,790 feet (850\xa0m) of the bridge sank, dumping...</td>      <td>25 November 1990</td>      <td>Washington</td>      <td>Heavy flooding of pontoons</td>    </tr>    <tr>      <th>60</th>      <td>Claiborne Avenue Bridge</td>      <td>1 killed, 2 injured</td>      <td>Bridge connecting the "upper" and "lower" 9th ...</td>      <td>United States</td>      <td>NaN</td>      <td>28 May 1993</td>      <td>New Orleans</td>      <td>Barge collision</td>    </tr>    <tr>      <th>62</th>      <td>CSXT Big Bayou Canot rail bridge</td>      <td>47 killed, 103 injured</td>      <td>Railroad bridge span crossing Big Bayou Canot ...</td>      <td>United States</td>      <td>Amtrak train Sunset Limited carrying 220 passe...</td>      <td>22 September 1993</td>      <td>Alabama</td>      <td>Barge towboat, struck pier in fog; span shifte...</td>    </tr>    <tr>      <th>63</th>      <td>Temporary bridge</td>      <td>2 construction workers killed, 1 injured</td>      <td>Single-lane temporary bridge in construction zone</td>      <td>United States</td>      <td>Collapsed onto roadway below</td>      <td>24 November 1993</td>      <td>New Hampshire</td>      <td>Collapsed while being dismantled</td>    </tr>    <tr>      <th>66</th>      <td>I-5 Bridge Disaster</td>      <td>7 killed, 0 injured</td>      <td>Concrete truss bridge Arroyo Pasajero</td>      <td>United States</td>      <td>Complete failure of two spans on I-5</td>      <td>10 March 1995</td>      <td>California</td>      <td>Structural failure\xa0— support piers collapsed</td>    </tr>    <tr>      <th>68</th>      <td>Walnut Street Bridge</td>      <td>0 killed, 0 injured</td>      <td>Truss bridge</td>      <td>United States</td>      <td>Lost two of its seven western spans, A third s...</td>      <td>January 1996</td>      <td>Pennsylvania</td>      <td>As a result of rising flood waters and ice flo...</td>    </tr>    <tr>      <th>0</th>      <td>Hoan Bridge</td>      <td>0 killed, 0 injured</td>      <td>Concrete and steel bridge</td>      <td>United States</td>      <td>Partial collapse</td>      <td>13 December 2000</td>      <td>Wisconsin</td>      <td>Northbound right lane began to buckle during t...</td>    </tr>    <tr>      <th>2</th>      <td>I-285 bridge over GA-400</td>      <td>0 killed, 1 injured</td>      <td>Concrete and steel bridge</td>      <td>United States</td>      <td>Structural damage required closure of the bridge</td>      <td>9 June 2001</td>      <td>Georgia</td>      <td>A fuel tanker overturned underneath the bridge...</td>    </tr>    <tr>      <th>4</th>      <td>Queen Isabella Causeway</td>      <td>8 killed, 13 survivors</td>      <td>Concrete bridge for vehicle traffic over Lagun...</td>      <td>United States</td>      <td>Partial collapse</td>      <td>15 September 2001</td>      <td>Texas and South Padre Island</td>      <td>4 loaded barges veered 175 feet (53\xa0m) west of...</td>    </tr>    <tr>      <th>5</th>      <td>I-40 bridge disaster</td>      <td>14 killed</td>      <td>Concrete bridge for vehicle traffic over Arkan...</td>      <td>United States</td>      <td>Partial collapse</td>      <td>26 May 2002</td>      <td>Oklahoma</td>      <td>Barge struck one pier of the bridge causing a ...</td>    </tr>    <tr>      <th>9</th>      <td>Kinzua Bridge</td>      <td>0 killed</td>      <td>Historic steel rail viaduct</td>      <td>United States</td>      <td>Partial collapse</td>      <td>21 July 2003</td>      <td>Pennsylvania</td>      <td>Hit by tornado with 100\xa0mph winds</td>    </tr>    <tr>      <th>10</th>      <td>Interstate 95 Howard Avenue Overpass</td>      <td>0 killed, 1 injured</td>      <td>Girder and floorbeam</td>      <td>United States</td>      <td>Partial collapse</td>      <td>26 March 2004</td>      <td>Connecticut</td>      <td>Car struck a truck carrying 8,000 US gallons (...</td>    </tr>    <tr>      <th>12</th>      <td>C-470 overpass over I-70</td>      <td>3 killed, 0 injured</td>      <td>NaN</td>      <td>United States</td>      <td>Girder collapse</td>      <td>15 May 2004</td>      <td>Colorado</td>      <td>As part of a construction project, a girder tw...</td>    </tr>    <tr>      <th>15</th>      <td>I-10 Twin Span Bridge</td>      <td>0 killed, 0 injured</td>      <td>Two parallel trestle bridges crossing the east...</td>      <td>United States</td>      <td>The eastbound span was missing 38 segments wit...</td>      <td>29 August 2005</td>      <td>Louisiana</td>      <td>After Hurricane Katrina on August 29, 2005, th...</td>    </tr>    <tr>      <th>20</th>      <td>Interstate 88 Bridge</td>      <td>2 killed[38]</td>      <td>Road bridge</td>      <td>United States</td>      <td>Bridge total damage</td>      <td>28 June 2006</td>      <td>New York</td>      <td>Collapsed during Mid-Atlantic United States fl...</td>    </tr>    <tr>      <th>29</th>      <td>MacArthur Maze</td>      <td>1 injured in crash, 0 from collapse</td>      <td>NaN</td>      <td>United States</td>      <td>NaN</td>      <td>29 April 2007</td>      <td>California</td>      <td>Tanker truck crash and explosion, resulting fi...</td>    </tr>    <tr>      <th>32</th>      <td>Minneapolis I-35W bridge over the Mississippi ...</td>      <td>13 killed, 145 injured</td>      <td>Arch/truss bridge</td>      <td>United States</td>      <td>Total bridge failure</td>      <td>1 August 2007</td>      <td>Minnesota</td>      <td>The NTSB said that undersized gusset plates, i...</td>    </tr>    <tr>      <th>34</th>      <td>Harp Road bridge</td>      <td>0 killed, 0 injured</td>      <td>Main thoroughfare into Oakville over Garrard C...</td>      <td>United States</td>      <td>Majority to total collapse; temporary or perma...</td>      <td>15 August 2007</td>      <td>Washington</td>      <td>Collapsed under weight of a truck hauling an e...</td>    </tr>    <tr>      <th>41</th>      <td>The Cedar Rapids and Iowa City Railway (CRANDI...</td>      <td>0 killed, 0 injured</td>      <td>Railroad bridge</td>      <td>United States</td>      <td>Three of the bridge\'s four steel spans were sw...</td>      <td>12 June 2008</td>      <td>Iowa</td>      <td>During June 2008 Midwest floods</td>    </tr>    <tr>      <th>47</th>      <td>9 Mile Road Bridge at I-75</td>      <td>0 killed, 1 injured</td>      <td>Road bridge</td>      <td>United States</td>      <td>NaN</td>      <td>15 July 2009</td>      <td>Michigan</td>      <td>Collapsed due to tanker accident[56]</td>    </tr>    <tr>      <th>50</th>      <td>San Francisco\xa0– Oakland Bay Bridge</td>      <td>0 killed, 1 injury</td>      <td>I-80</td>      <td>United States</td>      <td>NaN</td>      <td>27 October 2009</td>      <td>California</td>      <td>Two tension rods and a crossbeam from a recent...</td>    </tr>    <tr>      <th>63</th>      <td>Eggner Ferry Bridge over the Tennessee River</td>      <td>0 killed, 0 Injured</td>      <td>Truss bridge</td>      <td>United States</td>      <td>Span over the recreational channel of the rive...</td>      <td>27 January 2012</td>      <td>Kentucky and Marshall County</td>      <td>The MV Delta Mariner struck the bottom portion...</td>    </tr>    <tr>      <th>65</th>      <td>Jay Cooke State Park Swinging Bridge</td>      <td>0 killed, 0 injured</td>      <td>Pedestrian swinging wooden plank and cable</td>      <td>United States</td>      <td>Multiple wooden planks washed away. Cables sta...</td>      <td>20 June 2012</td>      <td>Minnesota</td>      <td>Raging floodwaters</td>    </tr>    <tr>      <th>70</th>      <td>I-5 Skagit River Bridge collapse</td>      <td>0 killed, 3 Injured</td>      <td>Polygonal Warren through truss bridge</td>      <td>United States</td>      <td>One 167 foot span collapsed.</td>      <td>23 May 2013</td>      <td>Washington</td>      <td>Oversized semi-truck load carrying drilling eq...</td>    </tr>    <tr>      <th>71</th>      <td>Scott City roadway bridge collapse</td>      <td>7 injured</td>      <td>Concrete road bridge</td>      <td>United States</td>      <td>Two roadway bridge sections collapsed onto the...</td>      <td>25 May 2013</td>      <td>Missouri</td>      <td>A Union Pacific train T-boned a Burlington Nor...</td>    </tr>    <tr>      <th>77</th>      <td>Hopple Street Overpass over I-75 Southbound</td>      <td>1 killed, 0 injured</td>      <td>Road bridge</td>      <td>United States</td>      <td>Total bridge collapse</td>      <td>19 January 2015</td>      <td>Ohio</td>      <td>Old Northbound Hopple Street offramp totally c...</td>    </tr>    <tr>      <th>81</th>      <td>Pennsy Bridge</td>      <td>0 killed, 3 injured</td>      <td>Cast-in-place concrete rigid frame</td>      <td>United States</td>      <td>Partial bridge collapse of north half of span</td>      <td>18 June 2015</td>      <td>Pennsylvania</td>      <td>Partial collapse during demolition.</td>    </tr>    <tr>      <th>82</th>      <td>I-10 Bridge</td>      <td>0 killed, 1 injured</td>      <td>NaN</td>      <td>United States</td>      <td>Partial bridge collapse of span</td>      <td>20 July 2015</td>      <td>Southern California</td>      <td>Abutment displacement due to stream meander, w...</td>    </tr>    <tr>      <th>83</th>      <td>Bob White Covered Bridge</td>      <td>0 killed, 0 injured</td>      <td>Covered timber bridge</td>      <td>United States</td>      <td>Bridge collapsed and washed away during floodi...</td>      <td>29 September 2015</td>      <td>Virginia</td>      <td>Destruction due to major flooding</td>    </tr>    <tr>      <th>88</th>      <td>May Ave. Overpass</td>      <td>No injuries were reported.</td>      <td>Girder bridge over expressway</td>      <td>United States</td>      <td>Partial collapse</td>      <td>19 May 2016</td>      <td>Oklahoma</td>      <td>An over-sized load hit the bridge, causing a s...</td>    </tr>    <tr>      <th>95</th>      <td>Pfeiffer Canyon Bridge</td>      <td>0 killed</td>      <td>Concrete bridge</td>      <td>United States</td>      <td>The foundation for one of the two piers was un...</td>      <td>11 March 2017</td>      <td>California</td>      <td>Massive rain and landslide</td>    </tr>    <tr>      <th>96</th>      <td>I-85N Atlanta</td>      <td>0 killed, 0 injured</td>      <td>Concrete Overpass</td>      <td>United States</td>      <td>Investigation pending as to fire cause</td>      <td>30 March 2017</td>      <td>Atlanta</td>      <td>Fire (allegedly arson) involving HDPE pipe and...</td>    </tr>    <tr>      <th>104</th>      <td>Florida International University pedestrian br...</td>      <td>6 dead, 9 others injured.[101]</td>      <td>Concrete Pedestrian Bridge</td>      <td>United States</td>      <td>Complete Collapse on public road beneath.</td>      <td>15 March 2018</td>      <td>Florida</td>      <td>Partially constructed concrete truss bridge wi...</td>    </tr>    <tr>      <th>113</th>      <td>Dale Bend Bridge [111]</td>      <td>NaN</td>      <td>Truss</td>      <td>United States</td>      <td>NaN</td>      <td>30 January 2019</td>      <td>Arkansas</td>      <td>Overweight truck</td>    </tr>  </tbody></table>'
+
+            <script> 
+                $(document).ready(function(){
+                  $("#flip").click(function(){
+                    $("#panel").slideToggle("slow");
+                  });
+                });
+                </script>
+                <style> 
+                #panel, #flip {
+                  padding: 5px;
+                  text-align: center;
+                  background-color: #e5eecc;
+                  border: solid 1px #c3c3c3;
+                }
+                
+                #panel {
+                  padding: 50px;
+                  display: none;
+                }
+
+                </style>
+                <script>
+                    $(document).ready(function(){
+                  $("#flip2").click(function(){
+                    $("#panel2").slideToggle("slow");
+                  });
+                });
+                </script>
+                <style>
+                    #panel2, #flip2 {
+                  padding: 5px;
+                  text-align: center;
+                  background-color: #e5eecc;
+                  border: solid 1px #c3c3c3;
+                }
+                
+                #panel2 {
+                  padding: 50px;
+                  display: none;
+                }
+
+                </style>
+
+                <script>
+                    $(document).ready(function(){
+                $("#flip3").click(function(){
+                    $("#panel3").slideToggle("slow");
+                });
+                });
+                </script>
+                <style>
+                    #panel3, #flip3 {
+                padding: 5px;
+                text-align: center;
+                background-color: #e5eecc;
+                border: solid 1px #c3c3c3;
+                }
+
+                #panel3 {
+                padding: 50px;
+                display: none;
+                }
+
+                </style>
+                
+                <body>
+                 
+                <div id="flip">US Road/Highway Analysis</div>
+                <div id="panel">In 2017, the US invested 0.7% of their GDP into road/highway infrastructure, which
+                    amounted to around $182.58 per capita spending. As the US GDP has grown over the years, its investment
+                    in road/highway infrastructure has consistently declined. In 2009, US monetary spending on infrastructure
+                    had a peak high, but in the last 10 years it has also been on a decline. This could have a direct correlation 
+                    with road/highway "Condition". Since 2009, the percentage of road/highways in the US that are considered "Good Condition"
+                    has dropped almost 4%.
+                </div>
+                
+                <div id="flip2">Individual State Case Studies</div>
+                <div id="panel2">In 2018, Rhode Island had the highest percentage of tunnel elements in severe condition at 32%,
+                    They also have a high percentage of roads in poor condition at 38% and bridges in poor condition at 24%. To correlate
+                    this with spending, Rhode Island is 45th in spending in the US when in comes to road/highway infrasturcture.
+                    <br>
+                    In comparison, Florida is 4th in local state infrastructure spending and had the highes percentage of good condition 
+                    bridges at 67% and the highest percentage of good elements for their tunnels at 99%.
+                </div>        
+
+                <div id="flip3">World Relation</div>
+                <div id="panel3">
+                    Though the US is in the top 25% of the world in resilient infrastructure systems, it still falls behind other developed countries.
+                    Other developed countries spend almost twice as much of their GDP on infrastructure as the US. The American Society of Civil Engineers rated America's infrastructure system as a D+ and recommeneded that spending increase by $2T
+                    over the next decade. America's infrastructure was built with standards of 50 years ago, but that obviously has not been able to keep up
+                    with the amount of natural disasters and population growth that has happened in the same time period. Investing more into infrastructure
+                    would also help America's economy in general, as about 11% of the US work force is currently employed in an infrastructure related occupation.
+                    The World Economic Forum’s Global Competitiveness Report ranked US as 10th in infrastructure quality in 2017, whereas in 2002 the US ranked 5th.
+                    
+                </div>
+
+
+​
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      https://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+  </body>
+</html>

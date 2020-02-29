@@ -1,132 +1,314 @@
-// define default state
-var state = "AL";
+// var API_KEY = d3.select("#cred").property("text").split(";")[0];
 
+// function to create a map
+function stateMap(dataset, state) {
+    
+    var tunnelIcon = L.icon({
+        iconUrl: "static/images/tunnel_icon.png",
+        iconSize: [20, 20], // size of the icon
+    });
+      
+    var bridgeIcon = L.icon({
+        iconUrl: "static/images/bridge_icon.png",
+        iconSize: [30, 30], // size of the icon
+    });
+
+    var location = dataset.Location;
+    var bounds = dataset.State_Bounds;
+    var bridges = dataset.Bridge_Data;
+    var tunnels = dataset.Tunnel_Data;
+
+    // state centerpoint coordinates
+    var cp_latitude = location.Latitude;
+    var cp_longitude = location.Longitude;
+
+    // extreme state latitude and longitude
+    var northernExtreme = bounds.NorthBoundary;
+    var southernExtreme = bounds.SouthBoundary;
+    var westernExtreme = bounds.WestBoundary;
+    var easternExtreme = bounds.EastBoundary;
+    console.log(northernExtreme);
+    console.log(southernExtreme);
+    console.log(westernExtreme);
+    console.log(easternExtreme);
+
+    // var bridgeMarkers = [];
+    var bridgeLayer = L.markerClusterGroup();
+
+    var bridge_lat = [];
+    var bridge_long = [];
+
+    bridges.forEach(function(bridge) {
+        
+        var latitude = bridge.Latitude;
+        var longitude = 0 - bridge.Longitude;
+
+        bridge_lat.push(latitude);
+        bridge_long.push(longitude);
+
+
+        if (latitude) {
+            if (longitude) {
+                // format latitude to reflect correct sign
+                if (latitude < 0 ) {
+                    latitude = latitude * -1;
+                }
+                else {
+                    latitude;
+                };
+
+                // format longitude to reflect correct sign
+                if (longitude < 0) {
+                    longitude;
+                }
+                else {
+                    longitude = longitude * -1;
+                };
+
+                if (latitude <= northernExtreme && latitude >= southernExtreme) {
+                    if (longitude >= westernExtreme && longitude <= easternExtreme) {
+                        var facility = bridge.Facility_Carried;
+                        var feature = bridge.Feature_Intersected;
+                        // var latitude = bridge.Latitude;
+                        // var longitude = 0 - bridge.Longitude;
+                        // var condition = bridge.Score.split(" ")[0];
+                        var condition = bridge.Score;
+                        var strType = bridge.Structure_Kind;
+                        var yearBuilt = bridge.Year_Built;
+                
+                        var bridgeMarker = L.marker([latitude, longitude], {icon: bridgeIcon})
+                        // .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr 'style=padding-bottom:0;'>" +
+                        .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+                            "Latitude:  " + latitude + "<br>" +
+                            "Longitude:  " + longitude + "<br>" +
+                            "Structure Type:  " + strType + "<br>" +
+                            "Year Built:  " + yearBuilt + "<br>" +
+                            "Condition:  " + condition + "<br>"
+                        );
+                
+                        bridgeLayer.addLayer(bridgeMarker);
+                    };
+                };
+            };
+        };
+
+        // if (latitude < 0) {
+        //     latitude = latitude * -1;
+        // }
+        // else {
+        //     latitude;
+        // };
+
+        // if (longitude < 0) {
+        //     longitude;
+        // }
+        // else {
+        //     longitude = longitude * -1;
+        // };
+
+        // if (latitude) {
+        //     if (longitude) {
+        //         var facility = bridge.Facility_Carried;
+        //         var feature = bridge.Feature_Intersected;
+        //         // var latitude = bridge.Latitude;
+        //         // var longitude = 0 - bridge.Longitude;
+        //         // var condition = bridge.Score.split(" ")[0];
+        //         var condition = bridge.Score;
+        //         var strType = bridge.Structure_Kind;
+        //         var yearBuilt = bridge.Year_Built;
+        
+        //         var bridgeMarker = L.marker([latitude, longitude], {icon: bridgeIcon})
+        //         // .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr 'style=padding-bottom:0;'>" +
+        //         .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+        //             "Latitude:  " + latitude + "<br>" +
+        //             "Longitude:  " + longitude + "<br>" +
+        //             "Structure Type:  " + strType + "<br>" +
+        //             "Year Built:  " + yearBuilt + "<br>" +
+        //             "Condition:  " + condition + "<br>"
+        //         );
+        
+        //         bridgeLayer.addLayer(bridgeMarker)
+        //     };
+        // };
+    });
+
+    console.log(bridge_lat);
+    console.log(bridge_long);
+
+    var tunnelMarkers = [];
+
+    tunnels.forEach(function(tunnel) {
+        
+        var latitude = tunnel.Latitude;
+        
+        if(latitude) {
+            var tunnelName = tunnel.Tunnel_Name;
+            // var latitude = tunnel.Latitude;
+            // latitude = tunnel.Latitude;
+            var longitude = tunnel.Longitude;
+            var length = tunnel.Length;
+            var yearBuilt = tunnel.Year_Built;
+            var condition = tunnel.Condition;
+
+            if (latitude < 0) {
+                latitude = latitude * -1;
+            }
+            else {
+                latitude;
+            };
+
+            if (longitude < 0) {
+                longitude;
+            }
+            else {
+                longitude = longitude * -1;
+            };
+    
+            var tunnelMarker = L.marker([latitude, longitude], {icon: tunnelIcon})
+            // .bindPopup("<strong style='font-size:12px;'>" + tunnelName + "</strong><hr 'style=padding-bottom:0;'>" +
+            .bindPopup("<strong style='font-size:12px;'>" + tunnelName + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+                "Latitude:  " + latitude + "<br>" +
+                "Longitude:  " + longitude + "<br>" +
+                "Length:  " + length + "<br>" +
+                "Year Built:  " + yearBuilt + "<br>" +
+                "Condition:  " + condition + "<br>" 
+            );
+    
+            tunnelMarkers.push(tunnelMarker);
+        };
+
+    });
+
+    var tunnelLayer = L.layerGroup(tunnelMarkers);
+
+    // add tile layer
+    var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+        attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
+        maxZoom: 18,
+        id: "mapbox.dark",
+        accessToken: API_KEY
+    });
+
+    // add tile layer
+    var lightmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+        attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
+        maxZoom: 18,
+        id: "mapbox.light",
+        accessToken: API_KEY
+    })
+
+    // add tile layer
+    var outdoormap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+        attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
+        maxZoom: 18,
+        id: "mapbox.outdoors",
+        accessToken: API_KEY
+    })
+
+    // add tile layer
+    var satellitemap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+        attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
+        maxZoom: 18,
+        id: "mapbox.satellite",
+        accessToken: API_KEY
+    })
+
+    var mapLayers = {
+        "Dark": darkmap,
+        "Light": lightmap,
+        "Outdoors": outdoormap,
+        "Satellite": satellitemap
+    };
+
+    var overlayMaps = {
+        "Tunnels": tunnelLayer,
+        "Bridges" : bridgeLayer
+    };
+
+    // map zoom
+    // var mapZoom = 6;
+    var mapZoom = state_zoom[state];
+
+    // if (state_maxDim[state] < 100) {
+    //     mapZoom = 9;
+    // }
+    // else if (state_maxDim[state] < 250) {
+    //     mapZoom = 8;
+    // }
+    // else if (state_maxDim[state] < 500) {
+    //     mapZoom = 7;
+    // }
+    // else if (state_maxDim[state] < 750) {
+    //     mapZoom = 6;
+    // }
+    // else if (state_maxDim[state] < 1000) {
+    //     mapZoom = 5;
+    // }
+    // else {
+    //     mapZoom = 4;
+    // };
+    console.log(state);
+    // console.log(state_maxDim[state]);
+    console.log(mapZoom);
+
+    // define map object
+    var statemap = L.map("state_map",{
+        center: [cp_latitude, cp_longitude],
+        zoom: mapZoom,
+        layers: [darkmap, tunnelLayer]
+    });
+
+    // create legend
+    var legend = L.control({position: "bottomright"});
+
+    // insert div with class of legend when layer control is added
+    legend.onAdd = function() {
+        var div = L.DomUtil.create("div", "legend_state");
+        var structure = ["Tunnel", "Bridge"];
+        var labels = ["static/images/tunnel_icon.png","static/images/bridge_icon.png"];
+
+        for (var i = 0; i < structure.length; i++) {
+            div.innerHTML += ("<img src=" + labels[i] + " class='state_icon'>") + structure[i] + "<br>";
+        }
+
+        return div;
+    };
+
+    // add legend to map
+    legend.addTo(statemap);
+
+    L.control.layers(mapLayers, overlayMaps, {
+        collapse: false
+    }).addTo(statemap);
+
+};
+
+
+
+// DEFAULT DASHBOARD SETTINGS
+// dynamically determine dropdown selection
+var state = d3.select("#selState").property("value");
+console.log(state);
+
+// state data
 var datasource = `/api/${state}`;
 
-// select divs for displaying state data
-var state_map = d3.select("#state_map");
-
-
-function createMap(bridgeLocations) {
-
-    // Create the tile layer that will be the background of our map
-    var lightmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}", {
-      attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
-      maxZoom: 18,
-      id: "mapbox.light",
-      accessToken: API_KEY
-    });
-  
-    var darkmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}", {
-      attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
-      maxZoom: 18,
-      id: "mapbox.dark",
-      accessToken: API_KEY
-    });
-  
-    var comicmap = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}", {
-      attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
-      maxZoom: 18,
-      id: "mapbox.comic",
-      accessToken: API_KEY
-    });
-  
-    var mapLayers = {
-      Light: lightmap,
-      Dark: darkmap,
-      Comic: comicmap
-    }
-  
-    // Create an overlayMaps object to hold the bridges and tunnels layer
-    var overlayMaps = {
-    //   "Bridges": bridges,
-      "Tunnels": tunnels
-    };
-  
-    // Create the map object with options
-    var map = L.map("state_map", {
-      center: [32.7794, -86.8287],
-      zoom: 12,
-      layers: [darkmap, bridgeLocations]
-    });
-  
-    // Create a layer control, pass in the baseMaps and overlayMaps. Add the layer control to the map
-    L.control.layers(mapLayers, overlayMaps, {
-      collapsed: false
-    }).addTo(map);
-  }
-  
-  function createMarkers(response) {
-  
-    // Pull the "bridges" property off of response.data
-    var bridges = response.Bridge_Data;
-    console.log(bridges[0]);
-  
-    // Initialize an array to hold bridge markers
-    var bridgeMarkers = [];
-  
-    // Loop through the stations Bridge_Data array
-    for (var index = 0; index < bridges.length; index++) {
-      var bridge = bridges[index];
-  
-      // For each bridge, create a marker and bind a popup with the bridge information
-      var bridgeMarker = L.marker([bridges.Latitude, bridges.Longitude])
-        .bindPopup("<h3>" + bridges.Facility_Carried.trim() + " over " + bridges.Feature_Intersected.trim() + "<h3>\
-                    <h3>Type:" + bridges.Structure_Kind + "<h3>\
-                    <h3>Year Built: " + bridges.Year_Built + "<h3>\
-                    <h3>Condition: " + bridges.Score + "<h3>\
-                    <h3>Capacity: " + bridges.capacity + "<h3>");
-  
-      // Add the marker to the bridgeMarkers array
-      bridgeMarkers.push(bridgeMarker);
-    }
-
-    // Pull the "bridges" property off of response.data
-    var tunnels = response.Tunnel_Data;
-  
-    // Initialize an array to hold bridge markers
-    var tunnelMarkers = [];
-  
-    // Loop through the stations Bridge_Data array
-    for (var index = 0; index < tunels.length; index++) {
-      var tunnel = tunnels[index];
-  
-      // For each bridge, create a marker and bind a popup with the bridge information
-      var tunnelMarker = L.marker([tunnel.Latitude, tunnel.Longitude])
-        .bindPopup("<h4>" + tunnel.Tunnel_Name +
-            "</h2> <hr> <p font color='LightGray' size='3'>Route Type: " + tunnel.Route_Type +
-            "</p> <p font color='LightGray' size='3'>Year Built: " + tunnel.Year_Built +
-            "</p> <p font color='LightGray' size='3'>Lanes: " + tunnel.Lanes +
-            "</p> <p font color='LightGray' size='3'>Length: " + tunnel.Length +
-            "</p> <p font color='LightGray' size='3'>Poor/Severe Elements: " + tunnel.Condition + "</p>");
-  
-      // Add the marker to the bridgeMarkers array
-      tunnelMarkers.push(tunnelMarker);
-    }
-
-    console.log(tunnels[0])
-  
-    // Create a layer group made from the bike markers array, pass it into the createMap function
-    createMap(L.layerGroup(tunnelMarkers));
-  }
-
-// Perform an API call to the Citi Bike API to get station information. Call createMarkers when complete
-d3.json(datasource, createMarkers);
+// create map based on selected state
+d3.json(datasource).then((dataset) => stateMap(dataset, state));
 
 
 
-// d3.json(datasource).then((dataset) => {
-
-//     // assign features data to variable
-//     var features = dataset.features;
-
-//     // initialize array to store state names
-//     var state_names = []
-
-//     // store state names to array
-//     features.forEach((state) => {
-//         state_names.push(state.properties.NAME)
-//     });
-//     console.log(state_names);
-
-// });
+// function to update map based on user input
+function updateStateMap(dataset, state) {
+    document.getElementById("state_map").remove();
+    
+    var parent_div = document.getElementById("state_map_parent")
+    var div = document.createElement("div");
+    div.setAttribute("id", "state_map");
+    div.setAttribute("class", "card");
+    div.setAttribute("style","padding:0; margin:0;");
+    // as an example add it to the body
+    parent_div.append(div);
+    
+    stateMap(dataset, state);
+};

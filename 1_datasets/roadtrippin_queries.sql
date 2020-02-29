@@ -1,6 +1,7 @@
 USE roadtrippin;
 
 -- Select Tables 
+SELECT * FROM boundaries;
 SELECT * FROM bridge_condition_summary;
 SELECT * FROM bridges;
 SELECT * FROM centerpoints;
@@ -21,7 +22,25 @@ SELECT * FROM tunnel_condition_summary;
 SELECT * FROM tunnels;
 
 
--- Operations for bridges
+-- Operations for boundaries
+SELECT * FROM boundaries;
+ALTER TABLE boundaries
+	MODIFY COLUMN State VARCHAR(255);
+ALTER TABLE boundaries
+	MODIFY COLUMN SouthBoundary FLOAT;
+ALTER TABLE boundaries
+	MODIFY COLUMN NorthBoundary FLOAT;
+ALTER TABLE boundaries
+	MODIFY COLUMN WestBoundary FLOAT;
+ALTER TABLE boundaries
+	MODIFY COLUMN EastBoundary FLOAT;
+ALTER TABLE boundaries
+	MODIFY COLUMN State_Abbreviation VARCHAR(255);
+ALTER TABLE boundaries
+	ADD PRIMARY KEY (State_Abbreviation);
+
+
+-- Operations for bridge_condition_summary
 SELECT * FROM bridge_condition_summary;
 ALTER TABLE bridge_condition_summary
 	MODIFY COLUMN State VARCHAR(255);
@@ -56,9 +75,9 @@ ALTER TABLE bridges
 ALTER TABLE bridges
 	MODIFY COLUMN Improvement_Cost FLOAT;
 ALTER TABLE bridges
-	MODIFY COLUMN Year_Reconstructed VARCHAR(255);
+	MODIFY COLUMN Year_Reconstructed INT;
 ALTER TABLE bridges
-	MODIFY COLUMN Deck_Strucutre_Type INT;
+	MODIFY COLUMN Deck_Strucutre_Type VARCHAR(255);
 ALTER TABLE bridges
 	MODIFY COLUMN Surface_Type VARCHAR(255);
 ALTER TABLE bridges
@@ -73,11 +92,25 @@ ALTER TABLE bridges
 	MODIFY COLUMN `Bridge Condition Detail` VARCHAR(255);
 ALTER TABLE bridges
 	MODIFY COLUMN State_Abbreviation VARCHAR(255);
+ALTER TABLE bridges RENAME COLUMN `Unnamed: 0.1` TO ID;
+UPDATE bridges SET ID = ID + 1;
 ALTER TABLE bridges
 	ADD PRIMARY KEY (ID);
 ALTER TABLE bridges RENAME COLUMN `Bridge Condition Detail` TO Bridge_Condition_Detail;
+UPDATE bridges 
+   SET `Features_Intersected` = TRIM(BOTH "'" FROM `Features_Intersected`);
+UPDATE bridges 
+   SET `Features_Intersected` = TRIM(BOTH " " FROM `Features_Intersected`);
+UPDATE bridges 
+   SET `Features_Intersected` = UPPER(`Features_Intersected`);
+UPDATE bridges 
+   SET `Facility_Carried` = TRIM(BOTH "'" FROM `Facility_Carried`);
+UPDATE bridges 
+   SET `Facility_Carried` = TRIM(BOTH " " FROM `Facility_Carried`);
+UPDATE bridges 
+   SET `Facility_Carried` = UPPER(`Facility_Carried`);
 SELECT * FROM bridges
-	WHERE State_Abbreviation = "AL";
+	WHERE State_Abbreviation = "DC";
 
 
 -- Operations for centerpoints 
@@ -160,6 +193,8 @@ ALTER TABLE estimate_bridge_cost_2018dollars RENAME COLUMN STATE TO State;
 ALTER TABLE estimate_bridge_cost_2018dollars RENAME COLUMN STATE_Abbreviation TO State_Abbreviation;
 ALTER TABLE estimate_bridge_cost_2018dollars RENAME COLUMN `Estimated Total Cost of Replacement` TO Estimated_Total_Cost_of_Replacement;
 ALTER TABLE estimate_bridge_cost_2018dollars RENAME COLUMN `Estimated Total Cost of Rehab` TO Estimated_Total_Cost_of_Rehab;
+SELECT * FROM estimate_bridge_cost_2018dollars
+	WHERE State_Abbreviation = "DC";
 
 
 -- Operations for ny_crash_ditch
@@ -300,6 +335,20 @@ ALTER TABLE spending_bystate_2017dollars RENAME COLUMN `(E070) Regular Hwy-Cap O
 ALTER TABLE spending_bystate_2017dollars RENAME COLUMN `(E071) Toll Hwy-Total Expend` TO Toll_Hwy_TotalExp;
 ALTER TABLE spending_bystate_2017dollars RENAME COLUMN `(E072) Toll Hwy-Current Oper (E45)` TO Toll_Hwy_CurOp;
 ALTER TABLE spending_bystate_2017dollars RENAME COLUMN `(E073) Toll Hwy-Cap Outlay` TO Toll_Hwy_CapOut;
+UPDATE spending_bystate_2017dollars SET Total_Revenue = Total_Revenue * 1000;
+UPDATE spending_bystate_2017dollars SET Total_Expenditure = Total_Expenditure * 1000;
+UPDATE spending_bystate_2017dollars SET Total_Hwy_DirExp = Total_Hwy_DirExp * 1000;
+UPDATE spending_bystate_2017dollars SET Total_Hwy_CurOp = Total_Hwy_CurOp * 1000;
+UPDATE spending_bystate_2017dollars SET Total_Hwy_CapOut = Total_Hwy_CapOut * 1000;
+UPDATE spending_bystate_2017dollars SET Regular_Hwy_DirExp = Regular_Hwy_DirExp * 1000;
+UPDATE spending_bystate_2017dollars SET Regular_Hwy_CurOp = Regular_Hwy_CurOp * 1000;
+UPDATE spending_bystate_2017dollars SET Regular_Hwy_CapOut = Regular_Hwy_CapOut * 1000;
+UPDATE spending_bystate_2017dollars SET Toll_Hwy_TotalExp = Toll_Hwy_TotalExp * 1000;
+UPDATE spending_bystate_2017dollars SET Toll_Hwy_CurOp = Toll_Hwy_CurOp * 1000;
+UPDATE spending_bystate_2017dollars SET Toll_Hwy_CapOut = Toll_Hwy_CapOut * 1000;
+SELECT * FROM spending_bystate_2017dollars
+	WHERE State_Abbreviation = "DC";
+    
 
 -- Operations for spending_bystate_fraction_exp;
 SELECT * FROM spending_bystate_fraction_exp;
@@ -574,7 +623,7 @@ ALTER TABLE tunnel_condition_summary
 	MODIFY COLUMN Condition_State_1_Percentage FLOAT;
 ALTER TABLE tunnel_condition_summary
 	MODIFY COLUMN Condition_State_2_Percentage FLOAT;
-ALTER TABLE tunnel_condition_summary
+ALTER TABLE tunnel_condition_summarybridge_condition_summary
 	MODIFY COLUMN Condition_State_3_Percentage FLOAT;
 ALTER TABLE tunnel_condition_summary
 	MODIFY COLUMN Condition_State_4_Percentage FLOAT;
@@ -612,3 +661,5 @@ ALTER TABLE tunnels
 	MODIFY COLUMN Ground_Conditions VARCHAR(255);
 ALTER TABLE tunnels
 	MODIFY COLUMN State_Abbreviation VARCHAR(255);
+SELECT * FROM tunnels
+	WHERE State_Code = "Arizona";

@@ -1,68 +1,3 @@
-// dictionary of states and abbreviations
-var state_dictionary = {
-  'Alabama': 'AL',
-  'Alaska': 'AK',
-  'Arizona': 'AZ',
-  'Arkansas': 'AR',
-  'California': 'CA',
-  'Colorado': 'CO',
-  'Connecticut': 'CT',
-  'Delaware': 'DE',
-  'District of Columbia': 'DC',
-  'Florida': 'FL',
-  'Georgia': 'GA',
-  'Hawaii': 'HI',
-  'Idaho': 'ID',
-  'Illinois': 'IL',
-  'Indiana': 'IN',
-  'Iowa': 'IA',
-  'Kansas': 'KS',
-  'Kentucky': 'KY',
-  'Louisiana': 'LA',
-  'Maine': 'ME',
-  'Maryland': 'MD',
-  'Massachusetts': 'MA',
-  'Michigan': 'MI',
-  'Minnesota': 'MN',
-  'Mississippi': 'MS',
-  'Missouri': 'MO',
-  'Montana': 'MT',
-  'Nebraska': 'NE',
-  'Nevada': 'NV',
-  'New Hampshire': 'NH',
-  'New Jersey': 'NJ',
-  'New Mexico': 'NM',
-  'New York': 'NY',
-  'North Carolina': 'NC',
-  'North Dakota': 'ND',
-  'Ohio': 'OH',
-  'Oklahoma': 'OK',
-  'Oregon': 'OR',
-  'Pennsylvania': 'PA',
-  'Rhode Island': 'RI',
-  'South Carolina': 'SC',
-  'South Dakota': 'SD',
-  'Tennessee': 'TN',
-  'Texas': 'TX',
-  'Utah': 'UT',
-  'Vermont': 'VT',
-  'Virginia': 'VA',
-  'Washington': 'WA',
-  'West Virginia': 'WV',
-  'Wisconsin': 'WI',
-  'Wyoming': 'WY'
-  // 'American Samoa': 'AS',
-  // 'Guam': 'GU',
-  // 'Marshall Islands': 'MH',
-  // 'Micronesia': 'FM',
-  // 'Northern Marianas': 'MP',
-  // 'Palau': 'PW',
-  // 'Puerto Rico': 'PR',
-  // 'Virgin Islands': 'VI'
-}
-
-
-
 // PLOT FUNCTION
 // define function for plot
 function state_chart(x,y1,y2,y3,labels) {
@@ -88,7 +23,7 @@ function state_chart(x,y1,y2,y3,labels) {
     text: labels,
     mode: "lines+markers",
     name: "O&M"
-  }
+  };
 
   data = [trace1, trace2, trace3]
 
@@ -97,10 +32,28 @@ function state_chart(x,y1,y2,y3,labels) {
     xaxis: {
       title: "Year",
       showgrid: false,
+      automargin: true
     },
     yaxis: {
-      title: "Highway Infrastructure Spending ($)"
-    }
+      title: {
+        text: "Highway Infrastructure Spending (2017 $)",
+        standoff: 20
+      },
+      automargin: true
+    },
+    showlegend: true,
+    legend: {
+      x: 0.45,
+      xanchor: "center",
+      y: 1.1,
+      orientation: "h"
+    },
+    margin: {
+      // t: 20, //top margin
+      l: 15, //left margin
+      r: 15, //right margin
+      // b: 20 //bottom margin
+    } 
   };
 
   Plotly.newPlot("state_charts", data, layout);
@@ -147,40 +100,18 @@ function state_data(bridge_stats, road_stats, tunnel_stats){
     .enter()
     .append("li")
     .text(d => d);
-}
-
-
-
-// STATE DROP DOWN
-// assign keys and values of state dictionary to arrays
-var state_names = Object.keys(state_dictionary);
-var state_abbr = Object.values(state_dictionary);
-console.log(state_names);
-console.log(state_abbr);
-
-// populate state dropdown
-var select = d3.select("#selState");
-for (var i=0; i < state_names.length; i++ ){
-    select.append("option")
-        .attr("value", state_abbr[i])
-        // .text(`${state_names[i]} - ${state_abbr[i]}`);
-        .text(state_names[i]);
 };
 
 
 
-  // format number (1000s) with commas
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  };
+// format number (1000s) with commas
+function formatNumber(num) {
+  return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+};
 
 
 
 // DEFAULT DASHBOARD SETTINGS
-// dynamically determine default state
-var state = d3.select("#selState").property("value");
-console.log(state);
-
 // define datasource
 var datasource = `/api/${state}`;
 
@@ -257,6 +188,7 @@ d3.json(datasource).then((dataset) => {
 
 
 // UPDATE DASHBOARD BASED ON USER INPUT
+// function stateChanged(state) {
 function stateChanged(state) {
 
   // delete previous tables
@@ -329,5 +261,10 @@ function stateChanged(state) {
   
     state_data(bridge_percentages, road_percentages, tunnel_percentages );
     state_chart(hwy_year, hwy_total, hwy_capital, hwy_om, hwy_year);
+  
+    // update state map
+    // updateStateMap(state);
+    updateStateMap(dataset, state);
+
   });
 };

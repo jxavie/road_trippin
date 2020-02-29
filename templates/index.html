@@ -1,198 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
-  <title>Road Trippin'</title>
-  <!-- Leaflet CSS & JS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
-  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
-  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-  crossorigin=""></script>
-  <!-- CSS FILES -->
-  <!-- <link rel="stylesheet" href="../static/css/bootstrap.min.css"> -->
-  <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
-  <!-- <link rel="stylesheet" href="../static/css/responsive.css"> -->
-</head>
+<html lang="en-us">
 
-<style>
-  /* .leaflet-popup-content-wrapper{
-    background-color: white;
-    opacity: 0.9;
-  }
-  .leaflet-popup-tip {
-    background:white;
-    opacity: 0.9;
-  }
-  p
-  {
-    margin:0;
-    padding:0;
-  } */
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Road Trippin</title>
 
-  #map {
-    height: 200px;
-  }
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="../static/css/style.css" /> -->
+    <link rel="stylesheet" href="../static/css/style_test.css" />
+
+    <!-- Marker Cluster JS & CSS -->
+    <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+    <!-- Layers Tree JS & CSS -->
+    <link rel="stylesheet" href="../static/css/L.Control.Layers.Tree.css" crossorigin=""/>
+    <script src="../static/js/L.Control.Layers.Tree.js"></script>
+
+  </head>
+
+  <style>
+    #us_map {
+      height: 775px;
+      width: 100%;
+    }
+    #state_map {
+      height: 510px;
+      width: 100%;
+    }
+    #pothole_map {
+      height: 600px;
+      width: 100%;
+    }
+    .b-style{
+      background-color: white;
+      position: relative;;
+    }
+    .us-card{
+      border: none;
+    }
+    .us_data{
+      margin-top: 50px;
+    }
+    .card{
+      border-radius: 0;
+    }
+    #selState {
+      width: 200px;
+      text-align: center;
+      text-align-last: center;
+    }
+    #selNational {
+      width: 150px;
+      text-align: center;
+      text-align-last: center;
+    }
+    #selGlobalYear {
+      width: 80px;
+      text-align: center;
+      text-align-last: center;
+      margin-right: 5px;
+    }
+    #selGlobalType {
+      width: 175px;
+      text-align: center;
+      text-align-last: center;
+    }
   </style>
 
-<body>
-  <!-- BODY STARTS -->
+  <body class="b-style" data-spy="scroll" data-target=".navbar" data-offset="100">
 
-  <!-- HEADER START-->
-  <header class="site-header">
-    <div class="container-fluid">
-      <!-- HEADER CONTENTS HERE -->
-    </div>
-  </header>
-  <!-- HEADER END-->
-
-  <!-- US MAP (BY STATE) START-->
-  <section class="us-map">
-    <div class="container-fluid">
-      <div id="map">
-        <!-- MAP CONTENTS WILL BE HERE -->
+    <nav class="navbar navbar-expand-sm fixed-top" style="padding-top: 0; padding-bottom: 0; background-color: black;">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-brand " style="color: tomato; background-color: white; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; font-style: oblique;">
+          ROAD TRIPPIN
+        </li>
+      </ul>
+    
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav mr-auto active" style="padding-left: 30px;">
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#us_data">
+              <strong>US Infrastructure</strong>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#state_data">
+              <strong>State Statistics</strong>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#investment">
+              <strong>Investment</strong>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#potholes">
+              <strong> Potholes</strong>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="/bridge_crashes">
+              <strong>Bridge Crashes</strong>
+            </a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </section>
-  <!-- US MAP ENDS-->
+    </nav>
 
-  <br>
-  <br>
-
-  <!-- 3 COL -->
-  <section class="state_data">
-    <div class="container-fluid">
-      
-      <!-- STATE DROP DOWN -->
-      <div class="row">
-        <div>
-          <label for="selState">
-            <h5 style="padding-top: 15px; padding-left: 15px; padding-right: 15px;">STATE X STATE:</h5>
-          </label>
-          <select id="selState" name="selState" onchange="stateChanged(this.value)"></select>
+    <section id="us_data" style="margin-top: auto;">
+      <div class="container-fluid">
+        <div class="card us-card" style="padding-top: 40px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px;">
+          <div class="card-title mx-auto">
+            <h4 style="margin-top: 20px; color: tomato;"><strong>
+              STATE OF INFRASTRUCTURE
+            </strong></h4>
+          </div>
+          <div id="us_map"></div>
         </div>
       </div>
-
-      <div class="row">
-
-        <!-- LEFT COLUMN -->
-        <div class="col-lg-5 card">
-          <div id="state_map">
-            <!-- STATE MAP (Bridge Location) -->
-          </div>
-        </div>
-        <!-- LEFT COLUMN ENDS -->
-
-        <!-- MIDDLE COLUMN -->
-        <div class="col-lg-2 card" id="state_stats" style="padding: 15px;">
-          <h4>Statistics</h4>
-          <hr class="my-1">
-          <i style="font-size:11pt;">Bridges:</i>
-          <div id="state_bridges" style="padding: 0; margin: 0;">
-            <!-- STATE MAP (Bridge Location) -->
-          </div>
-          <i style="font-size:11pt;">Roads:</i>
-          <div id="state_roads">
-            <!-- STATE MAP (Bridge Location) -->
-          </div>
-          <i style="font-size:11pt;">Tunnels:</i>
-          <div id="state_tunnels">
-            <!-- STATE MAP (Bridge Location) -->
-          </div>
-        </div>
-        <!-- LEFT COLUMN ENDS -->
-
-        <!-- RIGHT COLUMN START -->
-        <div class="col-lg-5 card">
-          <div id="state_charts">
-            <!-- STATS / CHARTS / BRIDGE ACCIDENTS -->
-          </div>
-        </div>
-        <!-- RIGHT COLUMN ENDS -->
-      </div>
-    </div>
-  </section>
-  <!-- 3 COL -->
-
-  <br>
-  <br>
-
-  <!-- 3 COL -->
-  <section class="3_col">
-    <div class="container-fluid">
-      <div class="row">
-
-        <!-- LEFT COLUMN -->
-        <!-- <div class="col-lg-4"> -->
-          <!-- <div id="state_spending"> -->
-            <!-- STATE SPENDING -->
-          <!-- </div> -->
-        <!-- </div> -->
-        <!-- LEFT COLUMN ENDS -->
-
-        <!-- MIDDLE COLUMN -->
-        <div class="col-lg-6 card" style="padding: 15px;">
+    </section>
+    <section id="state_data">
+      <div class="container-fluid">
+        <div class="row">
           <div>
-            <select id="selNational" onchange="domesticChanged(this.value)"></select>
+            <label for="selState">
+              <h4 style="padding-top: 30px; padding-left: 15px; padding-right: 15px; padding-bottom: 10px; color: tomato;">
+                <strong>STATE X STATE:</strong>
+              </h4>
+            </label>
+            <select id="selState" name="selState" onchange="stateChanged(this.value)"></select>
           </div>
-          <div id="gross_spending"></div>
         </div>
-        <!-- LEFT COLUMN ENDS -->
-
-        <!-- RIGHT COLUMN START -->
-        <div class="col-lg-6 card" style="padding: 15px;">
-          <div>
-            <select id="selGlobal" onchange="globalChanged(this.value)"></select>
+        <div class="row">
+          <!-- <div class="col-lg-5 card" id="state_map"> -->
+          <div class="col-lg-5 container-fluid" id="state_map_parent" style="margin: 0; padding: 0;">
+            <div class="card" id="state_map" style="margin:0; padding:0;"></div>
           </div>
-          <div id="global_spending"></div>
+          <div class="col-lg-2 card" id="state_stats" style="padding: 15px;">
+            <h4 style="color: tomato;">Statistics</h4>
+            <hr class="my-1">
+            <i style="font-size:12pt; color: tomato;">Bridges:</i>
+            <div id="state_bridges" style="padding: 0; margin: 0;">
+            </div>
+            <i style="font-size:12pt; color: tomato;">Roads:</i>
+            <div id="state_roads">
+            </div>
+            <i style="font-size:12pt; color: tomato;">Tunnels:</i>
+            <div id="state_tunnels">
+            </div>
+          </div>
+          <div class="col-lg-5 card">
+            <br>
+            <div id="state_charts"></div>
+          </div>
         </div>
-        <!-- RIGHT COLUMN ENDS -->
       </div>
-    </div>
-  </section>
-  <!-- 3 COL -->
-
-  <!-- CRASHES TABLE START -->
-  <section class="crashes">
-    <div class="container">
-      <div id="r-table">
-        <!-- TABLE GOES HERE (CAR CRASHES TABLE) -->
+    </section>
+    <section id="investment">
+      <div class="container-fluid">
+        <div class="row">
+          <h4 style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+            <strong>US AND GLOBAL INVESTMENT:</strong>
+          </h4>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 card" style="padding: 15px;">
+            <div>
+              <select id="selNational" onchange="domesticChanged(this.value)"></select>
+            </div>
+            <div id="gross_spending"></div>
+          </div>
+          <div class="col-lg-6 card" style="padding: 15px;">
+            <!-- <div>
+              <select id="selGlobal" onchange="globalChanged(this.value)"></select>
+            </div> -->
+            <div>
+              <form class="form-inline ml-auto">
+                <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
+                <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
+              </form>
+            </div>
+            <div id="global_spending"></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-  <!-- CRASHES TABLE ENDS -->
+    </section>
+    <section id="potholes"></section>
+      <div class="container-fluid">
+        <div class="row">
+          <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+            <strong>DC POTHOLES</strong>
+          </h4>
+        </div>
+        <!-- <div class="card-body" id="pothole_map"></div> -->
+        <div class="row">
+          <div class="col-lg-4 container-fluid" id="pothole_map_parent" style="margin: 0; padding: 0;">
+            <div class="card" id="pothole_map" style="margin:0; padding:0;"></div>
+          </div>
+          <div class="col-lg-8 card" id="pothole_table">
 
-  <!-- CRASHES TABLE START -->
-  <section class="mechine_learning">
-    <div class="container">
-        <!-- MACHINE LEARNING CONTENTS HERE -->
-    </div>
-  </section>
-  <!-- CRASHES TABLE ENDS -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <!-- <section class="crashes"></section>
+      <div class="container-fluid">
+        <div class="row">
+          <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+            <strong>BRIDGE CRASHES</strong>
+          </h4>
+        </div>
+        <div class="card"  id="crash_table">
+        </div>
+      </div>
+    </section> -->
 
-  <!-- FOOTER START-->
-  <footer class="site-footer">
-    <div class="container">
-      <!-- Footer Contents Here -->
-    </div>
-  </footer>
-  <!-- FOOTER END-->
+    <!-- JS Code -->
+    <script type="text/javascript" src="../static/js/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script id="cred" type="text/javascript">{{ js_config }};</script>
+    <script type="text/javascript" src="../static/js/statedimensions.js"></script>
+    <script type="text/javascript" src="../static/js/statedropdown.js"></script>
+    <script type="text/javascript" src="../static/js/statemap.js"></script>
+    <script type="text/javascript" src="../static/js/statedata.js"></script>
+    <script type="text/javascript" src="../static/js/investment.js"></script>
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script type="text/javascript" src="../static/js/potholes.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../static/js/choropleth.js"></script>
+    <script type="text/javascript" src="../static/js/usmap.js"></script>
+    
+  </body>
 
-  <!-- SCRIPTS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="../static/js/config.js"></script>
-  <!-- <script src="../static/js/statemap.js"></script> -->
-  <!-- <script src="../static/js/statedata.js"></script> -->
-  <!-- <script src="../static/js/investment.js"></script> -->
-  <script src="../static/js/pothole.js"></script>
-  <!-- BODY ENDS -->
-
-  <!-- SCRIPTS GOES BEFORE BODY -->
-
-</body>
 </html>

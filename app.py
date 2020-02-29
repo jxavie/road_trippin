@@ -43,6 +43,7 @@ app = Flask(__name__)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 Base.classes.keys()
+Boundaries = Base.classes.boundaries
 Bridge_Summary = Base.classes.bridge_condition_summary
 Bridges = Base.classes.bridges
 Centerpoints = Base.classes.centerpoints
@@ -66,10 +67,20 @@ Tunnels = Base.classes.tunnels
 # define route for / render form
 @app.route('/')
 def index():
+
+    # js_config = API_KEY
+
+    # return render_template('index.html', js_config=js_config)
     return render_template('index.html')
 
 
-# define end point for state state; use abbreviation (e.g., VA)
+# define route for /bridge_crashes render form
+@app.route('/bridge_crashes')
+def bridge_crashes():
+    return render_template('bridge_crashes.html')
+
+
+# define end point for state stats; use abbreviation (e.g., VA)
 @app.route('/api/<state>')
 def state_infrastructure(state):
 
@@ -123,6 +134,8 @@ def state_infrastructure(state):
 
     results8 = session.query(Tunnel_Summary).filter(Tunnel_Summary.State_Abbreviation == state)
 
+    results9 = session.query(Boundaries).filter(Boundaries.State_Abbreviation == state)
+
     # end session
     session.close()
 
@@ -138,7 +151,7 @@ def state_infrastructure(state):
     for result in results2:
         bridges.append({
             # "State": result[0],
-            "Features_Intersected": result[0],
+            "Feature_Intersected": result[0],
             "Facility_Carried": result[1],
             "Latitude": result[2],
             "Longitude": result[3],
@@ -195,8 +208,6 @@ def state_infrastructure(state):
         "State_Abbreviation": results6[0].State_Abbreviation
     }
 
-    road_summary = []
-
     road_summary = {
         "State": results7[0].State,
         "Total": results7[0].Total,
@@ -217,15 +228,25 @@ def state_infrastructure(state):
         "State_Abbreviation": results8[0].State_Abbreviation
     }
 
+    state_bounds = {
+        "State": results9[0].State,
+        "SouthBoundary": results9[0].SouthBoundary,
+        "NorthBoundary": results9[0].NorthBoundary,
+        "WestBoundary": results9[0].WestBoundary,
+        "EastBoundary": results9[0].EastBoundary,
+        "State_Abbreviation": results9[0].State_Abbreviation
+    }
+
     state_data = {
         "Location": location,
         "Bridge_Data": bridges,
-        "Bridges_in_Poor_Condition": cost_estimate ,
+        "Bridges_in_Poor_Condition": cost_estimate,
         "Tunnel_Data": tunnels,
         "Spending": state_spending,
         "Bridge_Summary": bridge_summary,
         "Road_Summary": road_summary,
-        "Tunnel_Summary": tunnel_summary
+        "Tunnel_Summary": tunnel_summary,
+        "State_Bounds": state_bounds
     }
     
     return jsonify(state_data)
