@@ -6,7 +6,7 @@ var us_map = L.map('us_map').setView([41.320961, -104.052476], 4);
 var mapbox = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
     attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery Â© <a href=\"https://www.mapbox.com/\">Mapbox</a>",
     maxZoom: 16,
-    id: "mapbox.light",
+    id: "mapbox.dark",
     accessToken: API_KEY
 }).addTo(us_map);
 

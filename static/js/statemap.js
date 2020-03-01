@@ -14,6 +14,7 @@ function stateMap(dataset, state) {
     });
 
     var location = dataset.Location;
+    var bounds = dataset.State_Bounds;
     var bridges = dataset.Bridge_Data;
     var tunnels = dataset.Tunnel_Data;
 
@@ -21,53 +22,118 @@ function stateMap(dataset, state) {
     var cp_latitude = location.Latitude;
     var cp_longitude = location.Longitude;
 
+    // extreme state latitude and longitude
+    var northernExtreme = bounds.NorthBoundary;
+    var southernExtreme = bounds.SouthBoundary;
+    var westernExtreme = bounds.WestBoundary;
+    var easternExtreme = bounds.EastBoundary;
+    console.log(northernExtreme);
+    console.log(southernExtreme);
+    console.log(westernExtreme);
+    console.log(easternExtreme);
+
     // var bridgeMarkers = [];
     var bridgeLayer = L.markerClusterGroup();
+
+    var bridge_lat = [];
+    var bridge_long = [];
 
     bridges.forEach(function(bridge) {
         
         var latitude = bridge.Latitude;
         var longitude = 0 - bridge.Longitude;
 
-        if (latitude < 0) {
-            latitude = latitude * -1;
-        }
-        else {
-            latitude;
-        };
+        bridge_lat.push(latitude);
+        bridge_long.push(longitude);
 
-        if (longitude < 0) {
-            longitude;
-        }
-        else {
-            longitude = longitude * -1;
-        };
 
         if (latitude) {
             if (longitude) {
-                var facility = bridge.Facility_Carried;
-                var feature = bridge.Feature_Intersected;
-                // var latitude = bridge.Latitude;
-                // var longitude = 0 - bridge.Longitude;
-                // var condition = bridge.Score.split(" ")[0];
-                var condition = bridge.Score;
-                var strType = bridge.Structure_Kind;
-                var yearBuilt = bridge.Year_Built;
-        
-                var bridgeMarker = L.marker([latitude, longitude], {icon: bridgeIcon})
-                // .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr 'style=padding-bottom:0;'>" +
-                .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
-                    "Latitude:  " + latitude + "<br>" +
-                    "Longitude:  " + longitude + "<br>" +
-                    "Structure Type:  " + strType + "<br>" +
-                    "Year Built:  " + yearBuilt + "<br>" +
-                    "Condition:  " + condition + "<br>"
-                );
-        
-                bridgeLayer.addLayer(bridgeMarker)
+                // format latitude to reflect correct sign
+                if (latitude < 0 ) {
+                    latitude = latitude * -1;
+                }
+                else {
+                    latitude;
+                };
+
+                // format longitude to reflect correct sign
+                if (longitude < 0) {
+                    longitude;
+                }
+                else {
+                    longitude = longitude * -1;
+                };
+
+                if (latitude <= northernExtreme && latitude >= southernExtreme) {
+                    if (longitude >= westernExtreme && longitude <= easternExtreme) {
+                        var facility = bridge.Facility_Carried;
+                        var feature = bridge.Feature_Intersected;
+                        // var latitude = bridge.Latitude;
+                        // var longitude = 0 - bridge.Longitude;
+                        // var condition = bridge.Score.split(" ")[0];
+                        var condition = bridge.Score;
+                        var strType = bridge.Structure_Kind;
+                        var yearBuilt = bridge.Year_Built;
+                
+                        var bridgeMarker = L.marker([latitude, longitude], {icon: bridgeIcon})
+                        // .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr 'style=padding-bottom:0;'>" +
+                        .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+                            "Latitude:  " + latitude + "<br>" +
+                            "Longitude:  " + longitude + "<br>" +
+                            "Structure Type:  " + strType + "<br>" +
+                            "Year Built:  " + yearBuilt + "<br>" +
+                            "Condition:  " + condition + "<br>"
+                        );
+                
+                        bridgeLayer.addLayer(bridgeMarker);
+                    };
+                };
             };
         };
+
+        // if (latitude < 0) {
+        //     latitude = latitude * -1;
+        // }
+        // else {
+        //     latitude;
+        // };
+
+        // if (longitude < 0) {
+        //     longitude;
+        // }
+        // else {
+        //     longitude = longitude * -1;
+        // };
+
+        // if (latitude) {
+        //     if (longitude) {
+        //         var facility = bridge.Facility_Carried;
+        //         var feature = bridge.Feature_Intersected;
+        //         // var latitude = bridge.Latitude;
+        //         // var longitude = 0 - bridge.Longitude;
+        //         // var condition = bridge.Score.split(" ")[0];
+        //         var condition = bridge.Score;
+        //         var strType = bridge.Structure_Kind;
+        //         var yearBuilt = bridge.Year_Built;
+        
+        //         var bridgeMarker = L.marker([latitude, longitude], {icon: bridgeIcon})
+        //         // .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr 'style=padding-bottom:0;'>" +
+        //         .bindPopup("<strong style='font-size:12px;'>" + facility + " over " + feature + "</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+        //             "Latitude:  " + latitude + "<br>" +
+        //             "Longitude:  " + longitude + "<br>" +
+        //             "Structure Type:  " + strType + "<br>" +
+        //             "Year Built:  " + yearBuilt + "<br>" +
+        //             "Condition:  " + condition + "<br>"
+        //         );
+        
+        //         bridgeLayer.addLayer(bridgeMarker)
+        //     };
+        // };
     });
+
+    console.log(bridge_lat);
+    console.log(bridge_long);
 
     var tunnelMarkers = [];
 
@@ -78,11 +144,25 @@ function stateMap(dataset, state) {
         if(latitude) {
             var tunnelName = tunnel.Tunnel_Name;
             // var latitude = tunnel.Latitude;
-            latitude = tunnel.Latitude;
+            // latitude = tunnel.Latitude;
             var longitude = tunnel.Longitude;
             var length = tunnel.Length;
             var yearBuilt = tunnel.Year_Built;
             var condition = tunnel.Condition;
+
+            if (latitude < 0) {
+                latitude = latitude * -1;
+            }
+            else {
+                latitude;
+            };
+
+            if (longitude < 0) {
+                longitude;
+            }
+            else {
+                longitude = longitude * -1;
+            };
     
             var tunnelMarker = L.marker([latitude, longitude], {icon: tunnelIcon})
             // .bindPopup("<strong style='font-size:12px;'>" + tunnelName + "</strong><hr 'style=padding-bottom:0;'>" +

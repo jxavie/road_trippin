@@ -19,11 +19,15 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
 
+    <!-- Layers Tree JS & CSS -->
+    <link rel="stylesheet" href="../static/css/L.Control.Layers.Tree.css" crossorigin=""/>
+    <script src="../static/js/L.Control.Layers.Tree.js"></script>
+
   </head>
 
   <style>
     #us_map {
-      height: 600px;
+      height: 775px;
       width: 100%;
     }
     #state_map {
@@ -201,7 +205,15 @@
             <strong>DC POTHOLES</strong>
           </h4>
         </div>
-        <div class="card-body" id="pothole_map"></div>
+        <!-- <div class="card-body" id="pothole_map"></div> -->
+        <div class="row">
+          <div class="col-lg-4 container-fluid" id="pothole_map_parent" style="margin: 0; padding: 0;">
+            <div class="card" id="pothole_map" style="margin:0; padding:0;"></div>
+          </div>
+          <div class="col-lg-8 card" id="pothole_table">
+
+          </div>
+        </div>
       </div>
     </section>
     <br>

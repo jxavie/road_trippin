@@ -1,4 +1,4 @@
-// dictionary of states and abbreviations
+// map zoom level by state
 var state_zoom = {
   'AL': 6,
   'AK': 4,
