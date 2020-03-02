@@ -1,3 +1,8 @@
+// format number (1000s) with commas
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '1,');
+  };
+
 var datasource;
 // select div for displaying US map
 var us_map = L.map('us_map').setView([41.320961, -104.052476], 4);
@@ -29,7 +34,8 @@ function createUsMap(data) {
         // Property to visualize
         valueProperty: "bridge_count_good",
         // Color scheme
-        scale: ['white', 'blue'],
+        // scale: ['white', 'blue'],
+        scale: ['#ffffff', '#4dd2ff'],
         // Number of classes
         steps: 5,
         // How to create the classes
@@ -42,22 +48,42 @@ function createUsMap(data) {
         },
         // Feature popup
         onEachFeature: function (feature, layer) {
-            var popupString = `<div class="card">
-                <div class="card-header"><h3>${feature.properties.NAME}</h3></div>
-                <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                    <p>Total Bridges</p><p>Good</p><p>Fair</p> <p>Poor</p>
-                    </div>
-                    <div class="col-md-6">
-                    <p>${feature.properties.bridge_count_all}</p>
-                    <p>${feature.properties.bridge_percentage_good}</p>
-                    <p>${feature.properties.bridge_percentage_fair}</p>
-                    <p>${feature.properties.bridge_percentage_poor}</p>
-                </div>
-                </div>
-                </div>
-            </div>`;
+            // var popupString = `<div class="card">
+            //     <div class="card-header"><h3>${feature.properties.NAME}</h3></div>
+            //     <div class="card-body">
+            //     <div class="row">
+            //         <div class="col-md-6">
+            //         <p>Total Bridges</p><p>Good</p><p>Fair</p> <p>Poor</p>
+            //         </div>
+            //         <div class="col-md-6">
+            //         <p>${feature.properties.bridge_count_all}</p>
+            //         <p>${feature.properties.bridge_percentage_good}</p>
+            //         <p>${feature.properties.bridge_percentage_fair}</p>
+            //         <p>${feature.properties.bridge_percentage_poor}</p>
+            //     </div>
+            //     </div>
+            //     </div>
+            // </div>`;
+            var popupString = "<div class='card' style='margin:0; padding:0; text-align:center; border:none;'>" + 
+                "<strong style='font-size:12px'>" + feature.properties.NAME + " - Bridge Condition</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+            "</div>" + 
+            "<div class='card' style='margin:0; padding:0; border:none;'>" +
+                "<div class='row' style='border:none; margin:0; padding:0;'>" + 
+                    "<div class='col-7' style='font-size:12px; margin:0; padding:0; text-align:left;'>" +
+                        "Bridge Count: <br>" +
+                        "Good: <br>" +
+                        "Fair: <br>" +
+                        "Poor: " +
+                    "</div>" +
+                    "<div class='col-5' style='font-size:12px; margin:0; padding:0; text-align:right;'>" +
+                        formatNumber(parseInt(feature.properties.bridge_count_all)) + "<br>" +
+                        feature.properties.bridge_percentage_good + "<br>" +
+                        feature.properties.bridge_percentage_fair + "<br>" +
+                        feature.properties.bridge_percentage_poor + "<br>" +
+                    "</div>" +
+                "</div>" +
+            "</div>"
+
 
             // Add a popup to the layer
             layer.bindPopup(popupString);
@@ -69,7 +95,7 @@ function createUsMap(data) {
 
             layer.on('mouseout', function (e) {
                 layer.closePopup();
-                layer.setStyle({ 'color': '#fff' });
+                layer.setStyle({ 'color': 'black' });
             });
 
         }
@@ -80,7 +106,8 @@ function createUsMap(data) {
         // Property to visualize
         valueProperty: "tunnel_condition_good",
         // Color scheme
-        scale: ['#e5f5e0', '#31a354'],
+        // scale: ['#e5f5e0', '#31a354'],
+        scale: ["ffffff", '#d633ff'],
         steps: 5,
         // How to divide the values
         mode: 'q',
@@ -93,23 +120,43 @@ function createUsMap(data) {
         },
         // On each feature
         onEachFeature: function (feature, layer) {
-            var popupString = `<div class="card">
-                <div class="card-header"><h3>${feature.properties.NAME} Tunnel Condition</h3></div>
-                <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                    <p>Total Tunnels: </p><p>Good</p><p>Fair</p> <p>Poor</p><p>Severe</p>
-                    </div>
-                    <div class="col-md-6">
-                    <p>${feature.properties.total_tunnel_elements}</p>
-                    <p>${feature.properties.condition_percentage_good}</p>
-                    <p>${feature.properties.condition_percentage_fair}</p>
-                    <p>${feature.properties.condition_percentage_poor}</p>
-                    <p>${feature.properties.condition_percentage_severe}</p>
-                </div>
-                </div>
-                </div>
-            </div>`;
+            // var popupString = `<div class="card">
+            //     <div class="card-header"><h3>${feature.properties.NAME} Tunnel Condition</h3></div>
+            //     <div class="card-body">
+            //     <div class="row">
+            //         <div class="col-md-6">
+            //         <p>Total Tunnels: </p><p>Good</p><p>Fair</p> <p>Poor</p><p>Severe</p>
+            //         </div>
+            //         <div class="col-md-6">
+            //         <p>${feature.properties.total_tunnel_elements}</p>
+            //         <p>${feature.properties.condition_percentage_good}</p>
+            //         <p>${feature.properties.condition_percentage_fair}</p>
+            //         <p>${feature.properties.condition_percentage_poor}</p>
+            //         <p>${feature.properties.condition_percentage_severe}</p>
+            //     </div>
+            //     </div>
+            //     </div>
+            // </div>`;
+            var popupString = "<div class='card' style='margin:0; padding:0; text-align:center; border:none;'>" + 
+            "<strong style='font-size:12px'>" + feature.properties.NAME + " - Tunnel Condition</strong><hr style='margin-top:5px; margin-bottom:5px;'>" +
+            "</div>" + 
+            "<div class='card' style='margin:0; padding:0; border:none;'>" +
+                "<div class='row' style='border:none; margin:0; padding:0;'>" + 
+                    "<div class='col-7' style='font-size:12px; margin:0; padding:0; text-align:left;'>" +
+                        "Element Count: <br>" +
+                        "Good: <br>" +
+                        "Fair: <br>" +
+                        "Poor: " +
+                    "</div>" +
+                    "<div class='col-5' style='font-size:12px; margin:0; padding:0; text-align:right;'>" +
+                        formatNumber(parseInt(feature.properties.total_tunnel_elements)) + "<br>" +
+                        feature.properties.condition_percentage_good + "<br>" +
+                        feature.properties.condition_percentage_fair + "<br>" +
+                        feature.properties.condition_percentage_severe + "<br>" +
+                    "</div>" +
+                "</div>" +
+            "</div>"
+
             layer.bindPopup(popupString);
             
             layer.on('mouseover', function(e){
@@ -121,7 +168,7 @@ function createUsMap(data) {
 
             layer.on('mouseout',function(e){
                 layer.closePopup();
-                layer.setStyle({'color':'#fff'});
+                layer.setStyle({'color':'black'});
             });
 
         }
@@ -130,16 +177,16 @@ function createUsMap(data) {
     // Create map legends 
     var bridgeLegend = L.control({ position: 'bottomright' });
     bridgeLegend.onAdd = function(map){
-        this._div = L.DomUtil.create('div','info legend');
+        this._div = L.DomUtil.create('div','legend_us');
         var colors = us_geojson.options.colors;
         var limits = us_geojson.options.limits;
 
         var labels = [];
         // Add min & max
-        var legendInfo = "<h3>Total Good Bridge Count</h3>" +
+        var legendInfo = "<div style='font-size:16px; margin-bottom:10px; font-weight:bold;'>Total Good Bridge Count</div>" +
             "<div class=\"labels\">" +
             "<div class=\"min\">" + limits[0] + "</div>" +
-            "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+            "<div class=\"max\">" + formatNumber(limits[limits.length - 1]) + "</div>" +
             "</div>";
 
         this._div.innerHTML = legendInfo;
@@ -159,16 +206,16 @@ function createUsMap(data) {
     var tunnel_legend = L.control({ position: 'bottomleft'});
 
     tunnel_legend.onAdd = function(map){
-        this._div = L.DomUtil.create('div', 'info legend');
+        this._div = L.DomUtil.create('div', 'legend_us');
         var colors = tunnel_layer.options.colors;
         var limits = tunnel_layer.options.limits;
 
         var labels = [];
         // Add min & max
-        var legendInfo = "<h3>Total Good Tunnel Count</h3>" +
+        var legendInfo = "<div style='font-size:16px; margin-bottom:10px; font-weight:bold;'>Total Good Tunnel Count</div>" +
             "<div class=\"labels\">" +
             "<div class=\"min\">" + limits[0] + "</div>" +
-            "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+            "<div class=\"max\">" + formatNumber(limits[limits.length - 1]) + "</div>" +
             "</div>";
 
         this._div.innerHTML = legendInfo;
