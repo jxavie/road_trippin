@@ -18,36 +18,42 @@ html {
 } */
 
 /* Leaflet legend styling */
-.legend {
-  padding: 6px 8px;
-  font: 12px Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  color: #555;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.8);
+.legend_us {
+  /* padding: 6px 8px; */
+  padding: 10px 10px;
+  /* font: 12px Arial, Helvetica, sans-serif; */
+  font: 14px Arial, Helvetica, sans-serif;
+  /* font-weight: bold; */
+  /* color: #555; */
+  color: lightgray;
+  /* background: #fff; */
+  background: black;
+  /* background: rgba(255, 255, 255, 0.8); */
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
+  opacity: 0.8;
 }
 
-.legend ul {
+.legend_us ul {
   padding: 0;
   margin: 0;
   clear: both;
   list-style-type: none;
 }
 
-.legend li {
+.legend_us li {
   display: inline-block;
-  width: 30px;
+  width: 40px;
+  /* width: auto; */
   height: 22px;
 }
 
-.legend .min {
+.legend_us .min {
   float: left;
   padding-bottom: 5px;
 }
 
-.legend .max {
+.legend_us .max {
   float: right;
 }
 
