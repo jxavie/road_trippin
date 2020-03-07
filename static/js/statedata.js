@@ -56,7 +56,37 @@ function state_chart(x,y1,y2,y3,labels) {
     } 
   };
 
+  var layout_overlay = {
+    title: "Yearly State Spending on Highway Infrastructure",
+    xaxis: {
+      title: "Year",
+      showgrid: false,
+      automargin: true
+    },
+    yaxis: {
+      title: {
+        text: "Highway Infrastructure Spending (2017 $)",
+        standoff: 20
+      },
+      automargin: true
+    },
+    showlegend: true,
+    legend: {
+      x: 0.45,
+      xanchor: "center",
+      y: 1.05,
+      orientation: "h"
+    },
+    margin: {
+      // t: 20, //top margin
+      l: 15, //left margin
+      r: 15, //right margin
+      // b: 20 //bottom margin
+    } 
+  };
+
   Plotly.newPlot("state_charts", data, layout);
+  Plotly.newPlot("overlayChart_state", data, layout_overlay);
 };
 
 

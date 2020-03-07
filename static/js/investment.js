@@ -82,7 +82,37 @@ function dollars_chart(x,y1,y2,y3,x1,y4,y5) {
     }
   };
 
+  var layout_overlay = {
+    title: "Yearly Spending on Highway Infrastructure",
+    xaxis: {
+      title: "Year",
+      showgrid: false,
+      automargin: true
+    },
+    yaxis: {
+      title: {
+        text: "Billions of Dollars (2017 $)",
+        standoff: 20
+      },
+      automargin: true
+    },
+    showlegend: true,
+    legend: {
+      x: 0.45,
+      xanchor: "center",
+      y: 1.05,
+      orientation: "h"
+    },
+    margin: {
+      // t: 20, //top margin
+      l: 15, //left margin
+      r: 15, //right margin
+      // b: 20 //bottom margin
+    }
+  };
+
   Plotly.newPlot("gross_spending", data, layout);
+  Plotly.newPlot("overlayChart_gross", data, layout_overlay);
 };
 
 
@@ -145,7 +175,37 @@ function gdp_chart(x,y1,y2,y3) {
     }
   };
 
+  var layout_overlay = {
+    title: "Yearly Spending on Highway Infrastructure",
+    xaxis: {
+      title: "Year",
+      showgrid: false,
+      automargin: true
+    },
+    yaxis: {
+      title: {
+        text: "Percentage of GDP",
+        standoff: 20
+      },
+      automargin: true
+    },
+    showlegend: true,
+    legend: {
+      x: 0.45,
+      xanchor: "center",
+      y: 1.05,
+      orientation: "h"
+    },
+    margin: {
+      // t: 20, //top margin
+      l: 15, //left margin
+      r: 15, //right margin
+      // b: 20 //bottom margin
+    }
+  };
+
   Plotly.newPlot("gross_spending", data, layout);
+  Plotly.newPlot("overlayChart_gross", data, layout_overlay);
 };
 
 
@@ -229,6 +289,7 @@ function global_chart(x , y, year, colors) {
   };
 
   Plotly.newPlot("global_spending", data, layout);
+  Plotly.newPlot("overlayChart_global", data, layout);
 };
 
 

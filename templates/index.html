@@ -29,14 +29,17 @@
     #us_map {
       height: 775px;
       width: 100%;
+      z-index: 1;
     }
     #state_map {
       height: 510px;
       width: 100%;
+      z-index: 1;
     }
     #pothole_map {
       height: 600px;
       width: 100%;
+      z-index: 1;
     }
     .b-style{
       background-color: white;
@@ -72,25 +75,85 @@
       text-align: center;
       text-align-last: center;
     }
-    #overlay_global_spending {
+    #overlay_global {
       position: fixed; /* Sit on top of the page content */
       display: none; /* Hidden by default */
       width: 100%; /* Full width (cover the whole page) */
-      height: 100%; /* Full height (cover the whole page) */
-      top: 45px;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      height: 95%; /* Full height (cover the whole page) */
+      top: 5%;
+      /* left: 1%; */
+      /* right: 0;
+      bottom: 0; */
+      padding: 0;
+      margin: 0;
       background-color: rgba(0,0,0,0.5); /* Black background with opacity */
       z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
       cursor: pointer; /* Add a pointer on hover */
     }
-    #chart{
+    #overlayChart_global{
       position: absolute;
+      width: 95vw;
+      height: 90vh;
       top: 50%;
       left: 50%;
-      /* width: 80%;
-      height: 80%; */
+      padding: 0;
+      margin: 0;
+      /* font-size: 50px;
+      color: white; */
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+    }
+    #overlay_gross {
+      position: fixed; /* Sit on top of the page content */
+      display: none; /* Hidden by default */
+      width: 100%; /* Full width (cover the whole page) */
+      height: 95%; /* Full height (cover the whole page) */
+      top: 5%;
+      /* left: 1%; */
+      /* right: 0;
+      bottom: 0; */
+      padding: 0;
+      margin: 0;
+      background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+      z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+      cursor: pointer; /* Add a pointer on hover */
+    }
+    #overlayChart_gross{
+      position: absolute;
+      width: 95vw;
+      height: 90vh;
+      top: 50%;
+      left: 50%;
+      padding: 0;
+      margin: 0;
+      /* font-size: 50px;
+      color: white; */
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+    }
+    #overlay_state {
+      position: fixed; /* Sit on top of the page content */
+      display: none; /* Hidden by default */
+      width: 100%; /* Full width (cover the whole page) */
+      height: 95%; /* Full height (cover the whole page) */
+      top: 5%;
+      /* left: 1%; */
+      /* right: 0;
+      bottom: 0; */
+      padding: 0;
+      margin: 0;
+      background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+      z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+      cursor: pointer; /* Add a pointer on hover */
+    }
+    #overlayChart_state{
+      position: absolute;
+      width: 95vw;
+      height: 90vh;
+      top: 50%;
+      left: 50%;
+      padding: 0;
+      margin: 0;
       /* font-size: 50px;
       color: white; */
       transform: translate(-50%,-50%);
@@ -195,8 +258,14 @@
             <div id="state_tunnels">
             </div>
           </div>
-          <div class="col-lg-5 card">
+          <!-- <div class="col-lg-5 card">
             <br>
+            <div id="state_charts"></div>
+          </div> -->
+          <div class="col-lg-5 card" style="padding: 15px;">
+            <div>
+              <button class="mx-auto" type="button" style="height: 25px; width: 125px; line-height: 100%;" onclick="state_overlay_on()">Larger Chart</button>
+            </div>
             <div id="state_charts"></div>
           </div>
         </div>
@@ -211,9 +280,18 @@
         </div>
         <div class="row">
           <div class="col-lg-6 card" style="padding: 15px;">
-            <div>
+            <!-- <div>
               <select id="selNational" onchange="domesticChanged(this.value)"></select>
-            </div>
+            </div> -->
+            <form class="form-inline">
+              <!-- <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
+              <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
+              <button type="button" onclick="global_overlay_on()">Full Size</button> -->
+              <div class="mr-auto" style="margin: 0; padding: 0;">
+                <select id="selNational" onchange="domesticChanged(this.value)"></select>
+              </div>
+              <button class="ml-auto" type="button" style="height: 25px; width: 125px; line-height: 100%;" onclick="gross_overlay_on()">Larger Chart</button>
+            </form>
             <div id="gross_spending"></div>
           </div>
           <div class="col-lg-6 card" style="padding: 15px;">
@@ -221,16 +299,18 @@
               <select id="selGlobal" onchange="globalChanged(this.value)"></select>
             </div> -->
             <div>
-              <form class="form-inline ml-auto">
-                <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
+              <form class="form-inline">
+                <!-- <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
                 <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
-                <button type="button" onclick="on()">Full Size</button>
+                <button type="button" onclick="global_overlay_on()">Full Size</button> -->
+                <div class="mr-auto" style="margin: 0; padding: 0;">
+                  <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
+                  <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
+                </div>
+                <button class="ml-auto" type="button" style="height: 25px; width: 125px; line-height: 100%;" onclick="global_overlay_on()">Larger Chart</button>
               </form>
             </div>
             <div id="global_spending"></div>
-            <div id="overlay_global_spending" ondblclick="off()">
-              <div id="chart"></div>
-            </div>
           </div>
         </div>
       </div>
@@ -267,6 +347,17 @@
       </div>
     </section> -->
 
+    <!-- Chart Overlays -->
+    <div id="overlay_global" ondblclick="global_overlay_off()">
+      <div class="container-fluid" id="overlayChart_global"></div>
+    </div>
+    <div id="overlay_gross" ondblclick="gross_overlay_off()">
+      <div class="container-fluid" id="overlayChart_gross"></div>
+    </div>
+    <div id="overlay_state" ondblclick="state_overlay_off()">
+      <div class="container-fluid" id="overlayChart_state"></div>
+    </div>
+
     <!-- JS Code -->
     <!-- <script type="text/javascript" src="../static/js/config.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
@@ -277,18 +368,29 @@
     <script type="text/javascript" src="../static/js/statemap.js"></script>
     <script type="text/javascript" src="../static/js/statedata.js"></script>
     <script type="text/javascript" src="../static/js/investment.js"></script>
-    <script type="text/javascript" src="../static/js/investment_overlay.js"></script>
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <script type="text/javascript" src="../static/js/potholes.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../static/js/choropleth.js"></script>
     <script type="text/javascript" src="../static/js/usmap.js"></script>
     <script>
-      function on() {
-        document.getElementById("overlay_global_spending").style.display = "block";
+      function global_overlay_on() {
+        document.getElementById("overlay_global").style.display = "block";
       }
-      function off() {
-        document.getElementById("overlay_global_spending").style.display = "none";
+      function global_overlay_off() {
+        document.getElementById("overlay_global").style.display = "none";
+      }
+      function gross_overlay_on() {
+        document.getElementById("overlay_gross").style.display = "block";
+      }
+      function gross_overlay_off() {
+        document.getElementById("overlay_gross").style.display = "none";
+      }
+      function state_overlay_on() {
+        document.getElementById("overlay_state").style.display = "block";
+      }
+      function state_overlay_off() {
+        document.getElementById("overlay_state").style.display = "none";
       }
     </script>
 
