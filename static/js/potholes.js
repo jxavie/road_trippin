@@ -258,7 +258,7 @@ d3.json("../static/data/Ward_from_2012.geojson").then((response) => {
       center: [38.9072, -77.0369],
       zoom: 11,
       layers: [
-        darkmap,
+        streetmap,
         wardsLayer,
         // potholeLayer1_closed,
         // potholeLayer2_closed,
@@ -287,7 +287,7 @@ d3.json("../static/data/Ward_from_2012.geojson").then((response) => {
       // collapseAll: 'Collapse all',
       // expandAll: 'Expand all',
       collapsed: true
-    }).addTo(potholeMap).expandSelected(true).collapseTree(true).fitBounds([[39,], [38.8,]])
+    }).addTo(potholeMap).expandSelected(true).collapseTree(true)
   });
 
 });
