@@ -276,7 +276,8 @@ d3.json("../static/data/Ward_from_2012.geojson").then((response) => {
         potholeLayer6_open,
         potholeLayer7_open,
         potholeLayer8_open
-      ]
+      ],
+      fullscreenControl: true
     });
 
     L.control.layers.tree(mapLayers, overlayMaps, {

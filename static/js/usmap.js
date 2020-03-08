@@ -253,7 +253,8 @@ function createUsMap(data) {
         // center: [41.320961, -104.052476],
         center: [38.25, -97],
         zoom: 5,
-        layers: [darkmap, tunnel_layer]
+        layers: [darkmap, tunnel_layer],
+        fullscreenControl: true
     });
 
     // Create map legends 

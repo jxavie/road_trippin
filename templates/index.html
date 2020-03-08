@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="../static/css/L.Control.Layers.Tree.css" crossorigin=""/>
     <script src="../static/js/L.Control.Layers.Tree.js"></script>
 
+    <!-- Full Screen Leaflet -->
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
   </head>
 
   <style>
@@ -58,6 +62,10 @@
       width: 200px;
       text-align: center;
       text-align-last: center;
+      color: tomato;
+      background-color: rgba(0, 0, 0, 0.875);
+      border-color: rgba(0, 0, 0, 0.884);
+      font-weight: bold;
     }
     #selNational {
       width: 150px;
@@ -74,6 +82,17 @@
       width: 175px;
       text-align: center;
       text-align-last: center;
+    }
+    .chart-btn {
+      height: 25px;
+      width: 125px;
+      line-height: 100%;
+      /* color: tomato; */
+      /* background-color: tomato; */
+      /* color: rgba(0, 0, 0, 0.884); */
+      /* background-color: rgba(0, 0, 0, 0.884); */
+      /* border-color: rgba(0, 0, 0, 0.884); */
+      /* border-color: tomato; */
     }
     #overlay_global {
       position: fixed; /* Sit on top of the page content */
@@ -161,9 +180,9 @@
     }
   </style>
 
-  <body class="b-style" data-spy="scroll" data-target=".navbar" data-offset="100">
+  <body class="b-style" data-spy="scroll" data-target=".navbar" data-offset="100" style="background-color: rgba(0, 0, 0, 0.884);">
 
-    <nav class="navbar navbar-expand-sm fixed-top" style="padding-top: 0; padding-bottom: 0; background-color: black;">
+    <nav class="navbar navbar-expand-sm fixed-top" style="padding-top: 0; padding-bottom: 0; background-color: rgba(0, 0, 0, 0.884);">
       <ul class="navbar-nav mr-auto">
         <li class="nav-brand " style="color: tomato; background-color: white; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; font-style: oblique;">
           ROAD TRIPPIN
@@ -208,14 +227,14 @@
     </nav>
 
     <section>
-      <div class="container-fluid" style="padding:0; margin-top:45px; margin-bottom:0; margin-left:0; margin-right:0; background-color: black;">
+      <div class="container-fluid" style="padding:0; margin-top:45px; margin-bottom:0; margin-left:0; margin-right:0; background-color: rgb(0, 0, 0);">
         <img class="mx-auto d-block" src="../static/images/highres_Road.png" style="width:98vw; padding:0; margin:0;">
       </div>
     </section>
 
     <section id="us_data" style="margin-top: auto;">
       <div class="container-fluid">
-        <div class="card us-card" style="padding-top: 40px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px;">
+        <div class="card us-card" style="padding-top: 40px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px; background-color:rgba(0, 0, 0, 0);">
           <div class="card-title mx-auto">
             <h4 style="color: tomato;">
             <!-- <h4 style="margin-top: 20px; color: tomato;"> -->
@@ -242,8 +261,8 @@
         </div>
         <div class="row">
           <!-- <div class="col-lg-5 card" id="state_map"> -->
-          <div class="col-lg-5 container-fluid" id="state_map_parent" style="margin: 0; padding: 0;">
-            <div class="card" id="state_map" style="margin:0; padding:0;"></div>
+          <div class="col-lg-5 container-fluid" id="state_map_parent" style="margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0.884);">
+            <div class="card" id="state_map" style="margin:0; padding:0; background-color: rgba(0, 0, 0, 0.884);"></div>
           </div>
           <div class="col-lg-2 card" id="state_stats" style="padding: 15px;">
             <h4 style="color: tomato;">Statistics</h4>
@@ -263,8 +282,8 @@
             <div id="state_charts"></div>
           </div> -->
           <div class="col-lg-5 card" style="padding: 15px;">
-            <div>
-              <button class="mx-auto" type="button" style="height: 25px; width: 125px; line-height: 100%;" onclick="state_overlay_on()">Larger Chart</button>
+            <div class="ml-auto">
+              <button class="ml-auto chart-btn" type="button" onclick="state_overlay_on()">Larger Chart</button>
             </div>
             <div id="state_charts"></div>
           </div>
@@ -290,7 +309,7 @@
               <div class="mr-auto" style="margin: 0; padding: 0;">
                 <select id="selNational" onchange="domesticChanged(this.value)"></select>
               </div>
-              <button class="ml-auto" type="button" style="height: 25px; width: 125px; line-height: 100%;" onclick="gross_overlay_on()">Larger Chart</button>
+              <button class="ml-auto chart-btn" type="button" onclick="gross_overlay_on()">Larger Chart</button>
             </form>
             <div id="gross_spending"></div>
           </div>
@@ -307,7 +326,7 @@
                   <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
                   <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
                 </div>
-                <button class="ml-auto" type="button" style="height: 25px; width: 125px; line-height: 100%;" onclick="global_overlay_on()">Larger Chart</button>
+                <button class="ml-auto chart-btn" type="button" onclick="global_overlay_on()">Larger Chart</button>
               </form>
             </div>
             <div id="global_spending"></div>
@@ -363,7 +382,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script id="cred" type="text/javascript">{{ js_config }};</script>
-    <script type="text/javascript" src="../static/js/statedimensions.js"></script>
+    <!-- <script type="text/javascript" src="../static/js/statedimensions.js"></script> -->
     <script type="text/javascript" src="../static/js/statedropdown.js"></script>
     <script type="text/javascript" src="../static/js/statemap.js"></script>
     <script type="text/javascript" src="../static/js/statedata.js"></script>
