@@ -68,10 +68,10 @@ Tunnels = Base.classes.tunnels
 @app.route('/')
 def index():
 
-    js_config = API_KEY
+    # js_config = API_KEY
 
-    return render_template('index.html', js_config=js_config)
-    # return render_template('index.html')
+    # return render_template('index.html', js_config=js_config)
+    return render_template('index.html')
 
 
 # define route for /bridge_crashes render form
@@ -292,6 +292,7 @@ def spending():
     ).all()
     results7 = session.query(Spending_National_percentGDP).all()
     results8 = session.query(Spending_OECD).all()
+    results9 = session.query(Road_Summary).filter(Road_Summary.State != 'United States')
 
     # end session
     session.close()
@@ -304,6 +305,7 @@ def spending():
     spending_national = []
     spending_national_percentgdp = []
     spending_oecd = []
+    road_condition = []
 
     for result in results1:
         spending_bystate.append({
@@ -409,7 +411,15 @@ def spending():
             # "Measure": result.Measure,
             # "Population": result.Population,
             "Year": result.Year,
-            "Spending_perCapita": result.Spending_perCapita,
+            "Spending_perCapita": result.Spending_perCapita
+        })
+    
+    for result in results9:
+        road_condition.append({
+            "State": result.State,
+            "Good_Percentage": result.Good_Percentage,
+            "Fair_Percentage": result.Fair_Percentage,
+            "Poor_Percentage": result.Poor_Percentage,
         })
 
     spending = {
@@ -420,7 +430,8 @@ def spending():
         "Total_Fed_Spending": spending_fed,
         "Total_National_Spending": spending_national,
         "National_Spending_percentGDP": spending_national_percentgdp,
-        "Global": spending_oecd
+        "Global": spending_oecd,
+        "Road_Condition": road_condition
     }
 
     return jsonify(spending)

@@ -54,7 +54,7 @@ function dollars_chart(x,y1,y2,y3,x1,y4,y5) {
   data = [trace1, trace2, trace3, trace4, trace5]
 
   var layout = {
-    title: "Yearly Spending on Highway Infrastructure",
+    title: "Yearly US Spending on Highway Infrastructure",
     xaxis: {
       title: "Year",
       showgrid: false,
@@ -79,11 +79,16 @@ function dollars_chart(x,y1,y2,y3,x1,y4,y5) {
       l: 15, //left margin
       r: 15, //right margin
       // b: 20 //bottom margin
-    }
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor:'rgba(0, 0, 0, 0)',
+    plot_bgcolor: 'rgba(0, 0, 0, 0)'
   };
 
   var layout_overlay = {
-    title: "Yearly Spending on Highway Infrastructure",
+    title: "Yearly US Spending on Highway Infrastructure",
     xaxis: {
       title: "Year",
       showgrid: false,
@@ -108,7 +113,12 @@ function dollars_chart(x,y1,y2,y3,x1,y4,y5) {
       l: 15, //left margin
       r: 15, //right margin
       // b: 20 //bottom margin
-    }
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor: 'rgb(15,15,15)',
+    plot_bgcolor: 'rgb(15,15,15)'
   };
 
   Plotly.newPlot("gross_spending", data, layout);
@@ -147,7 +157,7 @@ function gdp_chart(x,y1,y2,y3) {
   data = [trace1, trace2, trace3]
 
   var layout = {
-    title: "Yearly Spending on Highway Infrastructure",
+    title: "Yearly US Spending on Highway Infrastructure",
     xaxis: {
       title: "Year",
       showgrid: false,
@@ -172,11 +182,16 @@ function gdp_chart(x,y1,y2,y3) {
       l: 15, //left margin
       r: 15, //right margin
       // b: 20 //bottom margin
-    }
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor:'rgba(0, 0, 0, 0)',
+    plot_bgcolor: 'rgba(0, 0, 0, 0)'
   };
 
   var layout_overlay = {
-    title: "Yearly Spending on Highway Infrastructure",
+    title: "Yearly US Spending on Highway Infrastructure",
     xaxis: {
       title: "Year",
       showgrid: false,
@@ -201,7 +216,12 @@ function gdp_chart(x,y1,y2,y3) {
       l: 15, //left margin
       r: 15, //right margin
       // b: 20 //bottom margin
-    }
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor: 'rgb(15,15,15)',
+    plot_bgcolor: 'rgb(15,15,15)'
   };
 
   Plotly.newPlot("gross_spending", data, layout);
@@ -250,6 +270,100 @@ function gdp_chart(x,y1,y2,y3) {
 
 
 
+// CONDITION-SPENDING CHART FUNCTION
+// define function for condition vs. spending plot
+function condition_chart(x , y) {
+  var trace1 = {
+    x: x,
+    y: y,
+    mode: "markers",
+    type: "scatter",
+    orientation: "h",
+    marker: {
+      size: 12,
+      color: "orange"
+    }
+  };
+
+  // var trace2 = {
+  //   x: [0.02, 0.16],
+  //   y: [1.68639555 * 0.02 + 47.798337637560714, 1.68639555 * 0.16 + 47.798337637560714],
+  //   type: "line"
+  // };
+  // console.log(1.68639555 * 0.02 + 47.798337637560714)
+  // console.log(1.68639555 * 0.16 + 47.798337637560714)
+
+  // data = [trace1, trace2];
+  data = [trace1];
+
+  var layout = {
+    title: "Spending vs. Road Condition",
+    xaxis: {
+      title: "Percent of Spending on Roads",
+      // showgrid: false,
+      automargin: true
+      // linecolor: "grey"
+    },
+    yaxis: {
+      title: {
+        text: "Percent of Roads in Good Condition",
+        standoff: 20
+      },
+      // showgrid: false,
+      automargin: true
+      // linecolor: "grey"
+    },
+    margin: {
+      // t: 20, //top margin
+      l: 15, //left margin
+      r: 15, //right margin
+      // b: 20 //bottom margin
+    },
+    font: {
+      color: 'white'
+    },
+    showlegend: false,
+    paper_bgcolor:'rgba(0, 0, 0, 0)',
+    plot_bgcolor: 'rgba(0, 0, 0, 0)'
+  };
+
+  var layout_overlay = {
+    title: "Spending vs. Road Condition",
+    xaxis: {
+      title: "Percent of Spending on Roads",
+      // showgrid: false,
+      automargin: true
+      // linecolor: "grey"
+    },
+    yaxis: {
+      title: {
+        text: "Percent of Roads in Good Condition",
+        standoff: 20
+      },
+      // showgrid: false,
+      automargin: true
+      // linecolor: "grey"
+    },
+    margin: {
+      // t: 20, //top margin
+      l: 15, //left margin
+      r: 15, //right margin
+      // b: 20 //bottom margin
+    },
+    font: {
+      color: 'white'
+    },
+    showlegend: false,
+    paper_bgcolor: 'rgb(15,15,15)',
+    plot_bgcolor: 'rgb(15,15,15)'
+  };
+
+  Plotly.newPlot("condition_spending", data, layout);
+  Plotly.newPlot("overlayChart_condition", data, layout_overlay);
+};
+
+
+
 // GLOBAL COMPARISON CHART FUNCTION
 // define function for global spending plot
 function global_chart(x , y, year, colors) {
@@ -285,11 +399,43 @@ function global_chart(x , y, year, colors) {
       l: 15, //left margin
       r: 15, //right margin
       // b: 20 //bottom margin
-    }
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor:'rgba(0, 0, 0, 0)',
+    plot_bgcolor: 'rgba(0, 0, 0, 0)'
+  };
+
+  var layout_overlay = {
+    title: `Road Infrastructure Spending by Country for ${year}`,
+    xaxis: {
+      title: "Investment per Capita (Euros)",
+      // showgrid: false,
+      automargin: true
+    },
+    yaxis: {
+      title: {
+        text: "Country",
+        standoff: 20
+      },
+      automargin: true
+    },
+    margin: {
+      // t: 20, //top margin
+      l: 15, //left margin
+      r: 15, //right margin
+      // b: 20 //bottom margin
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor: 'rgb(15,15,15)',
+    plot_bgcolor: 'rgb(15,15,15)'
   };
 
   Plotly.newPlot("global_spending", data, layout);
-  Plotly.newPlot("overlayChart_global", data, layout);
+  Plotly.newPlot("overlayChart_global", data, layout_overlay);
 };
 
 
@@ -476,6 +622,35 @@ d3.json("/api/spending").then((dataset) => {
 
   global_chart(total_perCapita, total_country, selected_year, colors_total);
 
+  // process data for condition and spending
+  var condition_spending = dataset.Spending_by_State_fractExp;
+  var road_condition = dataset.Road_Condition;
+
+  var spending_state = [];
+  var spending_hwy = [];
+  var road_state = [];
+  var road_good = [];
+
+  road_condition.forEach((data) => {
+    condition_spending.forEach((data2) => {
+      if (data.State == data2.State) {
+        if(data2.Year == 2017) {
+          spending_state.push(data2.State);
+          spending_hwy.push(data2.Total_Hwy_DirExp);
+          road_state.push(data.State);
+          road_good.push(data.Good_Percentage);
+        };
+      };
+    });
+
+  });
+
+  console.log(spending_state);
+  console.log(spending_hwy);
+  console.log(road_state);
+  console.log(road_good);
+
+  condition_chart(spending_hwy, road_good);
 });
 
 

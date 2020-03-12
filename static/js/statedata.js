@@ -53,7 +53,12 @@ function state_chart(x,y1,y2,y3,labels) {
       l: 15, //left margin
       r: 15, //right margin
       // b: 20 //bottom margin
-    } 
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor:'rgba(0, 0, 0, 0)',
+    plot_bgcolor: 'rgba(0, 0, 0, 0)'
   };
 
   var layout_overlay = {
@@ -82,7 +87,12 @@ function state_chart(x,y1,y2,y3,labels) {
       l: 15, //left margin
       r: 15, //right margin
       // b: 20 //bottom margin
-    } 
+    },
+    font: {
+      color: 'white'
+    },
+    paper_bgcolor: 'rgb(15,15,15)',
+    plot_bgcolor: 'rgb(15,15,15)'
   };
 
   Plotly.newPlot("state_charts", data, layout);

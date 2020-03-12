@@ -4,7 +4,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <meta http-equiv="X-UA-Compatible">
     <title>Road Trippin</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
@@ -27,9 +28,28 @@
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 
+    <!--JQuery and React-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- <script src="jquery-3.4.1.min.js"></script>  -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script>
   </head>
 
   <style>
+    .description {
+      background-color: rgba(255, 99, 71, 0.85);
+      color: white;
+      /* padding-top: 50px; */
+      /* padding-bottom: 50px; */
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 30px;
+      padding-right: 30px;
+      text-align: justify;
+      font-size: 13pt;
+    }
     #us_map {
       height: 775px;
       width: 100%;
@@ -39,6 +59,7 @@
       height: 510px;
       width: 100%;
       z-index: 1;
+      background-color: rgba(0, 0, 0, 0);
     }
     #pothole_map {
       height: 600px;
@@ -82,6 +103,69 @@
       width: 175px;
       text-align: center;
       text-align-last: center;
+    }
+    #gross_spending {
+      height: 500px;
+    }
+    #condition_spending {
+      height: 500px;
+    }
+    #global_spending {
+      height: 600px;
+    }
+    #pothole_chart {
+      height: 362px;
+    }
+    #pothole_table_parent {
+      height: 320px;
+      overflow-y: auto;
+    }
+    thead {
+      border: none;
+    }
+    th {
+      position: sticky;
+      top: 0;
+      /* background-color:  rgba(30,30,30); */
+      background-color: rgba(255, 99, 71,0.9);
+      color: white;
+    }
+    #panel, #flip {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      text-align: center;
+      background-color: rgba(255, 99, 71, 0.85);
+      color: white;
+      border: none;
+    }
+    #panel {
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-align: justify;
+      display: none;
+      /* border: none; */
+    }
+    #panel2, #flip2 {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      text-align: center;
+      background-color: rgba(255, 99, 71, 0.85);
+      color: white;
+      border: none;
+    }
+    
+    #panel2 {
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-align: justify;
+      display: none;
+      /* border: none; */
     }
     .chart-btn {
       height: 25px;
@@ -178,11 +262,127 @@
       transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
     }
+    #overlay_condition {
+      position: fixed; /* Sit on top of the page content */
+      display: none; /* Hidden by default */
+      width: 100%; /* Full width (cover the whole page) */
+      height: 95%; /* Full height (cover the whole page) */
+      top: 5%;
+      /* left: 1%; */
+      /* right: 0;
+      bottom: 0; */
+      padding: 0;
+      margin: 0;
+      background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+      z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+      cursor: pointer; /* Add a pointer on hover */
+    }
+    #overlayChart_condition{
+      position: absolute;
+      width: 95vw;
+      height: 90vh;
+      top: 50%;
+      left: 50%;
+      padding: 0;
+      margin: 0;
+      /* font-size: 50px;
+      color: white; */
+      transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+    }
+    #intro-vid {
+      position: fixed;
+      width: 95%;
+      top: 50%;
+      left: 2.5%;
+      /* width: 100%;
+      height: 100%; */
+      margin: 0;
+      padding: 0;
+      /* background-size: cover;
+      background-repeat: repeat; */
+      transform: translate(0,-50%);
+      /* background-color: rgba(0,0,0); */
+      animation-name: intro_vid;
+      animation-duration: 44s;
+      z-index: 2;
+      visibility: hidden;
+    }
+    .animate-nav {
+      animation-name: animate_nav;
+      animation-duration: 47s;
+      z-index: 1;
+    }
+    .animate-body {
+      animation-name: animate_body;
+      animation-duration: 47s;
+      z-index: 1;
+    }
+    @keyframes intro_vid {
+      0% {
+        visibility: visible;
+        opacity: 1;
+      }
+      99% {
+        visibility: visible;
+        opacity: 1;
+      }
+      100% {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+    @keyframes animate_nav {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      95% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      100% {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    @keyframes animate_body {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      95% {
+        visibility: hidden;
+        opacity: 0;
+      }
+      100% {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    .bg-image {
+      background-image: url(../static/images/infrastructure.png);
+      /* width: 100vw; */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100vw;
+      padding: 0;
+      margin: 0;
+    }
   </style>
 
   <body class="b-style" data-spy="scroll" data-target=".navbar" data-offset="100" style="background-color: rgba(0, 0, 0, 0.884);">
 
-    <nav class="navbar navbar-expand-sm fixed-top" style="padding-top: 0; padding-bottom: 0; background-color: rgba(0, 0, 0, 0.884);">
+    <!-- Intro Video -->
+    <!-- <div class="container-fluid" id="intro-vid"> -->
+      <video controls autoplay muted id="intro-vid">
+      <!-- <video autoplay muted style="position: fixed; width: 95%; top: 50%; left: 2.5%; transform: translate(0, -50%);"> -->
+        <source src="../static/images/intro_vid.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+    <!-- </div> -->
+
+    <nav class="navbar navbar-expand-sm fixed-top animate-nav" style="padding-top: 0; padding-bottom: 0; background-color: rgba(0, 0, 0, 0.884);">
       <ul class="navbar-nav mr-auto">
         <li class="nav-brand " style="color: tomato; background-color: white; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; font-style: oblique;">
           ROAD TRIPPIN
@@ -226,155 +426,260 @@
       </div>
     </nav>
 
-    <section>
-      <div class="container-fluid" style="padding:0; margin-top:45px; margin-bottom:0; margin-left:0; margin-right:0; background-color: rgb(0, 0, 0);">
-        <img class="mx-auto d-block" src="../static/images/highres_Road.png" style="width:98vw; padding:0; margin:0;">
-      </div>
-    </section>
-
-    <section id="us_data" style="margin-top: auto;">
-      <div class="container-fluid">
-        <div class="card us-card" style="padding-top: 40px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px; background-color:rgba(0, 0, 0, 0);">
-          <div class="card-title mx-auto">
-            <h4 style="color: tomato;">
-            <!-- <h4 style="margin-top: 20px; color: tomato;"> -->
-              <strong>
-              STATE OF HIGHWAY INFRASTRUCTURE
-              </strong>
+    <div class="animate-body">
+      <section>
+        <div class="container-fluid" style="padding: 0; margin-top: 45px; background-color: rgb(0, 0, 0);">
+        <!-- <div class="container-fluid" style="padding: 0; margin-top: 45px; margin-bottom: 0; margin-left: 0; margin-right: 0; background-color: rgb(0, 0, 0);"> -->
+          <img class="mx-auto d-block" src="../static/images/highres_Road.png" style="width:98.75vw; padding:0; margin:0;">
+          <!-- <img class="mx-auto d-block" src="../static/images/CALITRIP.png" style="width:98.75vw; padding:0; margin:0;"> -->
+        </div>
+      </section>
+      <section id="intro">
+        <div class ="container-fluid" style="margin: 0; padding: 0;">
+          <div class="description">
+            <h5><strong><i>Welcome to Road Trippin'!</i></strong></h5>
+            <!-- <br> -->
+            The goal of this project was to take a deep dive into the data on our nation's highway infrastructure. 
+            We looked at the conditions and elements of our roads, bridges, and tunnels, as well as the 
+            spending by state and nationally. This project also looks at how the US stacks up against other
+            nations in spending on infrastructure. To keep it close to home, we also looked at data on 
+            potholes in DC in the year of 2020 so far, to inform our local drivers. Lastly, we have an 
+            interesting section on bridge crashes in the last century for our viewers indulgement.
+          </div>
+        </div>
+      </section>
+      <section id="us_data" style="margin-top: auto;">
+        <div class="container-fluid">
+          <div class="card us-card" style="padding-top: 100px; padding-bottom: 0px; padding-left: 20px; padding-right: 20px; background-color:rgba(0, 0, 0, 0);">
+            <div class="card-title mx-auto">
+              <h4 style="color: tomato;">
+              <!-- <h4 style="margin-top: 20px; color: tomato;"> -->
+                <strong>
+                STATE OF HIGHWAY INFRASTRUCTURE
+                </strong>
+              </h4>
+            </div>
+            <div id="us_map"></div>
+            <div class="description" style="background-color: rgba(255, 99, 71, 0.85);">
+              What are the conditions of the roads, bridges, and tunnels that you use everyday?
+              Hover over different states on our map to see the conditions, whether they be good, fair, or poor.
+              Then you can chose which infrastructure element you want to view by switching the layer.
+            </div>
+            <!-- <p style="color: white;">What are the conditions of the roads, bridges, and tunnels that you use everyday?
+              Hover over different states on our map to see the conditions, whether they be good, fair, or poor.
+              Then you can chose which infrastructure element you want to view by switching the layer.
+            </p> -->
+          </div>
+        </div>
+      </section>
+      <section id="state_data">
+        <div class="container-fluid">
+          <div class="row">
+          <!-- <div class="row container-fluid bg-image" style="padding: 0; margin: 0; height: 150px; width: 100%;"> -->
+            <div>
+              <label for="selState">
+                <!-- <h4 style="padding-top: 30px; padding-left: 15px; padding-right: 15px; padding-bottom: 10px; color: tomato;"> -->
+                <h4 style="padding-top: 100px; padding-left: 15px; padding-right: 15px; padding-bottom: 10px; color: tomato;">
+                  <strong>STATE X STATE:</strong>
+                </h4>
+              </label>
+              <select id="selState" name="selState" onchange="stateChanged(this.value)"></select>
+            </div>
+          </div>
+          <div class="row">
+            <!-- <div class="col-lg-5 card" id="state_map"> -->
+            <div class="col-lg-5 container-fluid" id="state_map_parent" style="margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0);">
+              <div class="card" id="state_map" style="margin:0; padding:0; background-color: rgba(0, 0, 0, 0);"></div>
+            </div>
+            <div class="col-lg-2 card" id="state_stats" style="padding: 15px; background-color: rgba(0, 0, 0, 0);">
+              <h4 style="color: tomato;">Statistics</h4>
+              <hr class="my-1">
+              <i style="font-size:12pt; color: tomato;">Bridges:</i>
+              <div id="state_bridges" style="padding: 0; margin: 0; color: whitesmoke;">
+              </div>
+              <i style="font-size:12pt; color: tomato;">Roads:</i>
+              <div id="state_roads" style="color: whitesmoke;">
+              </div>
+              <i style="font-size:12pt; color: tomato;">Tunnels:</i>
+              <div id="state_tunnels" style="color: whitesmoke;">
+              </div>
+            </div>
+            <!-- <div class="col-lg-5 card">
+              <br>
+              <div id="state_charts"></div>
+            </div> -->
+            <div class="col-lg-5 card" style="padding: 15px; background-color: rgba(0, 0, 0, 0);">
+              <div class="ml-auto">
+                <button class="ml-auto chart-btn" type="button" onclick="state_overlay_on()">Larger Chart</button>
+              </div>
+              <div id="state_charts"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="investment">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- <h4 style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;"> -->
+            <h4 style="padding-top: 100px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+              <strong>US AND GLOBAL INVESTMENT:</strong>
             </h4>
           </div>
-          <div id="us_map"></div>
-        </div>
-      </div>
-    </section>
-    <section id="state_data">
-      <div class="container-fluid">
-        <div class="row">
-          <div>
-            <label for="selState">
-              <h4 style="padding-top: 30px; padding-left: 15px; padding-right: 15px; padding-bottom: 10px; color: tomato;">
-                <strong>STATE X STATE:</strong>
-              </h4>
-            </label>
-            <select id="selState" name="selState" onchange="stateChanged(this.value)"></select>
-          </div>
-        </div>
-        <div class="row">
-          <!-- <div class="col-lg-5 card" id="state_map"> -->
-          <div class="col-lg-5 container-fluid" id="state_map_parent" style="margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0.884);">
-            <div class="card" id="state_map" style="margin:0; padding:0; background-color: rgba(0, 0, 0, 0.884);"></div>
-          </div>
-          <div class="col-lg-2 card" id="state_stats" style="padding: 15px;">
-            <h4 style="color: tomato;">Statistics</h4>
-            <hr class="my-1">
-            <i style="font-size:12pt; color: tomato;">Bridges:</i>
-            <div id="state_bridges" style="padding: 0; margin: 0;">
-            </div>
-            <i style="font-size:12pt; color: tomato;">Roads:</i>
-            <div id="state_roads">
-            </div>
-            <i style="font-size:12pt; color: tomato;">Tunnels:</i>
-            <div id="state_tunnels">
-            </div>
-          </div>
-          <!-- <div class="col-lg-5 card">
-            <br>
-            <div id="state_charts"></div>
-          </div> -->
-          <div class="col-lg-5 card" style="padding: 15px;">
-            <div class="ml-auto">
-              <button class="ml-auto chart-btn" type="button" onclick="state_overlay_on()">Larger Chart</button>
-            </div>
-            <div id="state_charts"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="investment">
-      <div class="container-fluid">
-        <div class="row">
-          <h4 style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
-            <strong>US AND GLOBAL INVESTMENT:</strong>
-          </h4>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 card" style="padding: 15px;">
-            <!-- <div>
-              <select id="selNational" onchange="domesticChanged(this.value)"></select>
-            </div> -->
-            <form class="form-inline">
-              <!-- <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
-              <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
-              <button type="button" onclick="global_overlay_on()">Full Size</button> -->
-              <div class="mr-auto" style="margin: 0; padding: 0;">
+          <div class="row">
+            <div class="col-lg-6 card" style="padding: 15px; background-color: rgba(0, 0, 0, 0);">
+              <!-- <div>
                 <select id="selNational" onchange="domesticChanged(this.value)"></select>
-              </div>
-              <button class="ml-auto chart-btn" type="button" onclick="gross_overlay_on()">Larger Chart</button>
-            </form>
-            <div id="gross_spending"></div>
-          </div>
-          <div class="col-lg-6 card" style="padding: 15px;">
-            <!-- <div>
-              <select id="selGlobal" onchange="globalChanged(this.value)"></select>
-            </div> -->
-            <div>
+              </div> -->
               <form class="form-inline">
                 <!-- <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
                 <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
                 <button type="button" onclick="global_overlay_on()">Full Size</button> -->
                 <div class="mr-auto" style="margin: 0; padding: 0;">
-                  <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
-                  <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
+                  <select id="selNational" onchange="domesticChanged(this.value)"></select>
                 </div>
-                <button class="ml-auto chart-btn" type="button" onclick="global_overlay_on()">Larger Chart</button>
+                <button class="ml-auto chart-btn" type="button" onclick="gross_overlay_on()">Larger Chart</button>
               </form>
+              <div id="gross_spending"></div>
             </div>
-            <div id="global_spending"></div>
+            <div class="col-lg-6 card" style="padding: 15px; background-color: rgba(0, 0, 0, 0);">
+              <!-- <div>
+                <select id="selGlobal" onchange="globalChanged(this.value)"></select>
+              </div> -->
+              <div class="ml-auto" style="margin: 0; padding: 0;">
+                <button class="ml-auto chart-btn" type="button" onclick="condition_overlay_on()">Larger Chart</button>
+              </div>
+              <div id="condition_spending"></div>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-lg-12 card" style="margin: 0; padding: 1px; background-color: rgba(0, 0, 0, 0);">
+              <div id="flip" style="text-align: center; font-weight: bold; font-size: 14pt;">US Road/Highway Analysis</div>
+              <div id="panel" style="text-align: justify;">
+                In 2017, the US invested 0.7% of its gross domestic product (GDP) into road/highway  
+                infrastructure, which amounted to around $182.58 per capita spending. While US GDP 
+                grew over the years, investment in road/highway infrastructure consistently declined. 
+                In 2009, US monetary spending on infrastructure reached a peak high, 
+                but in the last 10 years it has also been on a decline. This could have a 
+                direct correlation with road/highway "Condition". Since 2009, the percentage 
+                of road/highways in the US that are considered "Good Condition" has dropped almost 4%.
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <!-- <div class="col-lg-4 card" style="padding: 15px; background-color: rgba(0, 0, 0, 0);"></div> -->
+            <div class="col-lg-8 card" style="padding: 15px; background-color: rgba(0, 0, 0, 0);">
+              <div>
+                <form class="form-inline">
+                  <!-- <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
+                  <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
+                  <button type="button" onclick="global_overlay_on()">Full Size</button> -->
+                  <div class="mr-auto" style="margin: 0; padding: 0;">
+                    <select id="selGlobalYear" onchange="globalChangedYear(this.value)"></select>
+                    <select id="selGlobalType" onchange="globalChangedType(this.value)"></select>
+                  </div>
+                  <button class="ml-auto chart-btn" type="button" onclick="global_overlay_on()">Larger Chart</button>
+                </form>
+              </div>
+              <div id="global_spending"></div>
+            </div>
+            <!-- <div class="col-lg-4 card" style="padding: 15px; background-color: rgba(0, 0, 0, 0);"> -->
+            <div class="col-lg-4" style="margin: 0; padding: 0px; background-color: rgba(0, 0, 0, 0);">
+              <div class="card" style="margin: 0; padding: 1px; background-color: rgba(0, 0, 0, 0);">
+                <div id="flip" style="text-align: center; font-weight: bold; font-size: 14pt;">US Road/Highway Analysis</div>
+                <div id="panel" style="text-align: justify;">
+                  In 2017, the US invested 0.7% of its gross domestic product (GDP) into road/highway  
+                  infrastructure, which amounted to around $182.58 per capita spending. While US GDP 
+                  grew over the years, investment in road/highway infrastructure consistently declined. 
+                  In 2009, US monetary spending on infrastructure reached a peak high, 
+                  but in the last 10 years it has also been on a decline. This could have a 
+                  direct correlation with road/highway "Condition". Since 2009, the percentage 
+                  of road/highways in the US that are considered "Good Condition" has dropped almost 4%.
+                </div>
+              </div>
+              <div class="card" style="margin: 0; padding: 1px; background-color: rgba(0, 0, 0, 0);">
+                <div id="flip2" style="text-align: center; font-weight: bold; font-size: 14pt;">World Relation</div>
+                <div id="panel2" style="text-align: justify;">
+                  Though the US is in the top 25% of the world in resilient infrastructure systems, it still falls 
+                  behind other developed countries. Other developed countries spend almost twice as much of their GDP on infrastructure 
+                  as the US. In 2018, The American Society of Civil Engineers rated America's infrastructure system as a D+ and 
+                  recommeneded that spending increase by $2T over the next decade. America's infrastructure was built with standards of 
+                  50 years ago, but that obviously has not been able to keep up with the amount of natural disasters and population 
+                  growth that has happened in the same time period. Investing more into infrastructure would also help America's economy 
+                  in general, as about 11% of the US work force is currently employed in an infrastructure related occupation. The World 
+                  Economic Forum’s Global Competitiveness Report ranked US as 10th in infrastructure quality in 2017, whereas in 2002 
+                  the US ranked 5th.
+                </div> 
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section id="potholes"></section>
-      <div class="container-fluid">
-        <div class="row">
-          <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
-            <strong>DC POTHOLES</strong>
-          </h4>
-        </div>
-        <!-- <div class="card-body" id="pothole_map"></div> -->
-        <div class="row">
-          <div class="col-lg-4 container-fluid" id="pothole_map_parent" style="margin: 0; padding: 0;">
-            <div class="card" id="pothole_map" style="margin:0; padding:0;"></div>
+      </section>
+      <section id="potholes"></section>
+        <div class="container-fluid">
+          <div class="row">
+            <!-- <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;"> -->
+            <h4 class="mx-auto" style="padding-top: 100px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+              <strong>DC POTHOLES</strong>
+            </h4>
           </div>
-          <div class="col-lg-8 card" id="pothole_table">
-            
+          <!-- <div class="card-body" id="pothole_map"></div> -->
+          <div class="row">
+            <div class="col-lg-4 container-fluid card" id="pothole_map_parent" style="margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0);">
+              <div class="row" style="height: 80px; margin:0; padding:0; background-color: rgba(255, 99, 71, 0.85);">
+                <div class="col-lg-8 mr-auto" style="padding: 0; margin: 0;">
+                  <h5 style="color: white; padding-top: 10px; padding-left: 15px;">Number of Open Cases:</h5>
+                  <h5 style="color: white; padding-left: 15px;">Average Time to Resolve:</h5>
+                </div>
+                <div class="col-lg-4" style="padding: 0; margin: 0; text-align: right;">
+                  <h5 id="pothole-count" style="color: white; padding-top: 10px; padding-right: 15px;"></h5>
+                  <h5 id="avg-time" style="color: white; padding-right: 15px;"></h5>
+                </div>
+              </div>
+              <div class="row" style="height: 2px;"></div>
+              <div class="card" id="pothole_map" style="margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0);"></div>
+            </div>
+            <div class="col-lg-8" style="margin: 0; padding: 0;">
+              <div class="card" style="margin: 0; padding-left: 20px; padding-right: 20px; background-color: rgba(0, 0, 0, 0);">
+                <div id="pothole_chart" style="margin: 0; padding: 0;"></div>
+              </div>
+              <div class="card" id="pothole_table_parent" style="margin: 0; padding-left: 10px; padding-right: 10px; background-color: rgba(0, 0, 0, 0);">
+                <table id="pothole_table" class="table table-striped table-dark table-hover">
+                  <thead style="font-size: 12pt;"></thead>
+                  <tbody style="color: white; font-size: 10pt;"></tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-    <br>
-    
-    <!-- <section class="crashes"></section>
-      <div class="container-fluid">
-        <div class="row">
-          <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
-            <strong>BRIDGE CRASHES</strong>
-          </h4>
+      </section>
+      <br>
+      
+      <!-- <section class="crashes"></section>
+        <div class="container-fluid">
+          <div class="row">
+            <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;">
+              <strong>BRIDGE CRASHES</strong>
+            </h4>
+          </div>
+          <div class="card"  id="crash_table">
+          </div>
         </div>
-        <div class="card"  id="crash_table">
-        </div>
-      </div>
-    </section> -->
+      </section> -->
 
-    <!-- Chart Overlays -->
-    <div id="overlay_global" ondblclick="global_overlay_off()">
-      <div class="container-fluid" id="overlayChart_global"></div>
-    </div>
-    <div id="overlay_gross" ondblclick="gross_overlay_off()">
-      <div class="container-fluid" id="overlayChart_gross"></div>
-    </div>
-    <div id="overlay_state" ondblclick="state_overlay_off()">
-      <div class="container-fluid" id="overlayChart_state"></div>
+      <!-- Chart Overlays -->
+      <div id="overlay_global" ondblclick="global_overlay_off()">
+        <div class="container-fluid" id="overlayChart_global"></div>
+      </div>
+      <div id="overlay_gross" ondblclick="gross_overlay_off()">
+        <div class="container-fluid" id="overlayChart_gross"></div>
+      </div>
+      <div id="overlay_state" ondblclick="state_overlay_off()">
+        <div class="container-fluid" id="overlayChart_state"></div>
+      </div>
+      <div id="overlay_condition" ondblclick="condition_overlay_off()">
+        <div class="container-fluid" id="overlayChart_condition"></div>
+      </div>
+    
     </div>
 
     <!-- JS Code -->
@@ -388,8 +693,9 @@
     <script type="text/javascript" src="../static/js/statedata.js"></script>
     <script type="text/javascript" src="../static/js/investment.js"></script>
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-    <script type="text/javascript" src="../static/js/potholes.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../static/js/potholesmap.js"></script>
+    <script type="text/javascript" src="../static/js/potholesdata.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
     <script type="text/javascript" src="../static/js/choropleth.js"></script>
     <script type="text/javascript" src="../static/js/usmap.js"></script>
     <script>
@@ -411,6 +717,29 @@
       function state_overlay_off() {
         document.getElementById("overlay_state").style.display = "none";
       }
+      function condition_overlay_on() {
+        document.getElementById("overlay_condition").style.display = "block";
+      }
+      function condition_overlay_off() {
+        document.getElementById("overlay_condition").style.display = "none";
+      }
+    </script>
+    <script> 
+      $(document).ready(function(){
+        $("#flip").click(function(){
+          $("#panel").slideToggle("slow");
+        });
+      });
+      $(document).ready(function(){
+        $("#flip2").click(function(){
+          $("#panel2").slideToggle("slow");
+        });
+      });
+    </script>
+    <script>
+      $(function(){
+        $("#includedContent").load("table_data.html"); 
+      });
     </script>
 
   </body>
