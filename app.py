@@ -37,7 +37,8 @@ engine = create_engine(f'mysql://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{rem
 # conn = engine.connect()
 
 # initialize flask application
-app = Flask(__name__, static_folder='static')
+# app = Flask(__name__, static_folder='static')
+app = Flask(__name__)
 
 # set up SQL Alchemy connection and classes
 Base = automap_base()
@@ -68,10 +69,10 @@ Tunnels = Base.classes.tunnels
 @app.route('/')
 def index():
 
-    # js_config = API_KEY
+    js_config = API_KEY
 
-    # return render_template('index.html', js_config=js_config)
-    return render_template('index.html')
+    return render_template('index.html', js_config=js_config)
+    # return render_template('index.html')
 
 
 # define route for /bridge_crashes render form
