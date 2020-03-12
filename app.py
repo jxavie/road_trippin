@@ -37,7 +37,7 @@ engine = create_engine(f'mysql://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{rem
 # conn = engine.connect()
 
 # initialize flask application
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 # set up SQL Alchemy connection and classes
 Base = automap_base()
