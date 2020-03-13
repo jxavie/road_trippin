@@ -1,215 +1,459 @@
-* {
-  margin: 0px;
+/* Body */
+.b-style{
+  background-color: white;
+  position: relative;
   padding: 0px;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  transition: 0.3s all ease-in-out;
+  margin: 0px;
 }
 
-body {
-  background: #f2f2f2;
+/* Footer */
+.footer {
+  padding-top: 0;
+  padding-bottom: 0; 
+  background-color: rgba(0, 0, 0, 0.884);
+  color: tomato;
 }
 
-a {
-  text-decoration: none;
+/* Card */
+.card{
+  border-radius: 0;
 }
 
-a:hover {
-  text-decoration: none;
+
+/* Table */
+thead {
+  border: none;
+}
+th {
+  position: sticky;
+  top: 0;
+  /* background-color:  rgba(30,30,30); */
+  background-color: rgba(255, 99, 71,0.9);
+  color: white;
 }
 
-input,
-textarea,
-button {
-  outline: none;
+
+/* Descriptions and Analyses */
+.description {
+  background-color: rgba(255, 99, 71, 0.85);
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: justify;
+  font-size: 13pt;
 }
 
-button:focus {
-  outline: none;
-}
 
-ul {
-  list-style-type: none;
+/* US Map */
+.us_data{
+  margin-top: 50px;
 }
-
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  border-style: none;
+.us-card{
+  border: none;
 }
-.r-table {
-  min-width: 300px;
-  overflow: hidden;
-  overflow-x: auto;
+#us_map {
+  height: 775px;
+  width: 100%;
+  z-index: 1;
 }
-/* ALEAR BOXES */
-.alert-box {
-  color: #555;
-  font-size: 14px;
-  padding: 10px;
-  margin: 10px 0px;
-}
-
-.alert-box span {
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.error {
-  background: #ffecec;
-  border: 1px solid #f5aca6;
-}
-
-.success {
-  background: #e9ffd9;
-  border: 1px solid #a6ca8a;
-}
-
-.warning {
-  background: #fff8c4;
-  border: 1px solid #f2c779;
-}
-
-.notice {
-  background: #e3f7fc;
-  border: 1px solid #8ed9f6;
-}
-
-/* BADGES */
-.badge {
-  font-weight: 500;
-  border-radius: 0px;
-  padding: 5px 7px;
-  font-size: 72%;
-  letter-spacing: 0.3px;
-  vertical-align: middle;
-  display: inline-block;
-  text-align: center;
-  text-transform: capitalize;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px 3.5px;
-}
-
-.badge.info {
-  background: #effafb;
-  color: #1ebccd;
-  border: 1px solid #62d6e2;
-}
-
-.badge.info a {
-  color: #1ebccd;
-}
-
-.badge.primary {
-  background: #f8fbff;
-  color: #3b5998;
-  border: 1px solid #3b5998;
-}
-
-.badge.primary a {
-  color: #3b5998;
-}
-
-.badge.success {
-  background: #eff9f2;
-  color: #22af47;
-  border: 1px solid #47d26b;
-}
-
-.badge.success a {
-  color: #22af47;
-}
-
-.badge.danger {
-  background: #fff1f1;
-  color: #f83f37;
-  border: 1px solid #ffa39f;
-}
-
-.badge.danger a {
-  color: #f83f37;
-}
-
-.badge.warning {
-  background: #fff8eb;
-  color: #ffbf36;
-}
-
-.badge.warning a {
-  color: #ffbf36;
-}
-
-.fix {
-  overflow: hidden;
-}
-
-.clear {
-  clear: both;
-}
-
-.aligncenter {
-  text-align: center;
-}
-
-.alignleft {
-  text-align: left;
-}
-
-.alignright {
-  text-align: right;
-}
-
-/* Leaflet map Styling */
-#map{
-  height: 100vh; 
-  width:100%;
-}
-
-.leaflet-popup{
-  width:250px;
-}
-
-.leaflet-content-wrapper{
-  width:230px;
-}
-
-/* Leaflet legend styling */
-.legend {
-  padding: 6px 8px;
-  font: 12px Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  color: #555;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.8);
+.legend_us {
+  padding: 10px 10px;
+  font: 14px Arial, Helvetica, sans-serif;
+  color: lightgray;
+  background: black;
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
 }
-
-.legend ul {
+.legend_us ul {
   padding: 0;
   margin: 0;
   clear: both;
   list-style-type: none;
 }
-
-.legend li {
+.legend_us li {
   display: inline-block;
-  width: 30px;
+  width: 40px;
   height: 22px;
 }
 
-.legend .min {
+.legend_us .min {
   float: left;
   padding-bottom: 5px;
 }
 
-.legend .max {
+.legend_us .max {
   float: right;
 }
 
-h1 {
+
+/* State Map */
+.legend_state {
+  padding: 10px 10px;
+  font: 16px Arial, Helvetica, sans-serif;
+  background: black;
+  border-radius: 5px;
+  line-height: 25px;
+  color: lightgray;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  opacity: 0.7;
+}
+#state_map {
+  height: 510px;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0);
+}
+.state_icon {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-right: 5px;
+  height: 25px;
+  width: 25px;
+}
+
+
+/* Pothole Map */
+#pothole_map {
+  height: 625px;
+  width: 100%;
+  z-index: 1;
+}
+
+
+/* Dropdowns */
+#selState {
+  width: 200px;
   text-align: center;
+  text-align-last: center;
+  color: tomato;
+  background-color: rgba(0, 0, 0, 0.875);
+  border-color: rgba(0, 0, 0, 0.884);
+  font-weight: bold;
+}
+#selNational {
+  width: 150px;
+  text-align: center;
+  text-align-last: center;
+}
+#selGlobalYear {
+  width: 80px;
+  text-align: center;
+  text-align-last: center;
+  margin-right: 5px;
+}
+#selGlobalType {
+  width: 175px;
+  text-align: center;
+  text-align-last: center;
+}
+
+
+/* Charts */
+#gross_spending {
+  height: 500px;
+}
+#condition_spending {
+  height: 500px;
+}
+#global_spending {
+  height: 600px;
+}
+#pothole_chart {
+  height: 362px;
+}
+#pothole_table_parent {
+  height: 320px;
+  overflow-y: auto;
+}
+
+
+/* Collapsible Panels */
+#panel, #flip {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  background-color: rgba(255, 99, 71, 0.85);
+  color: white;
+  border: none;
+}
+#panel {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+  display: none;
+  /* border: none; */
+}
+#panel2, #flip2 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  background-color: rgba(255, 99, 71, 0.85);
+  color: white;
+  border: none;
+}
+#panel2 {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+  display: none;
+  /* border: none; */
+}
+#panel-footer, #flip-footer {
+  /* padding-top: 15px;
+  padding-bottom: 15px; */
+  /* text-align: center; */
+  /* background-color: rgba(255, 99, 71, 0.85);
+  color: white; */
+  border: none;
+}
+#panel-footer {
+  margin-top: 0;
+  padding-top: 0;
+  /* padding-bottom: 20px; */
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+  /* border: none; */
+}
+
+
+/* Chart Overlays */
+.chart-btn {
+  height: 25px;
+  width: 125px;
+  line-height: 100%;
+  /* color: tomato; */
+  /* background-color: tomato; */
+  /* color: rgba(0, 0, 0, 0.884); */
+  /* background-color: rgba(0, 0, 0, 0.884); */
+  /* border-color: rgba(0, 0, 0, 0.884); */
+  /* border-color: tomato; */
+}
+#overlay_global {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 95%; /* Full height (cover the whole page) */
+  top: 5%;
+  /* left: 1%; */
+  /* right: 0;
+  bottom: 0; */
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+#overlayChart_global{
+  position: absolute;
+  width: 95vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  margin: 0;
+  /* font-size: 50px;
+  color: white; */
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+#overlay_gross {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 95%; /* Full height (cover the whole page) */
+  top: 5%;
+  /* left: 1%; */
+  /* right: 0;
+  bottom: 0; */
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+#overlayChart_gross{
+  position: absolute;
+  width: 95vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  margin: 0;
+  /* font-size: 50px;
+  color: white; */
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+#overlay_state {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 95%; /* Full height (cover the whole page) */
+  top: 5%;
+  /* left: 1%; */
+  /* right: 0;
+  bottom: 0; */
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+#overlayChart_state{
+  position: absolute;
+  width: 95vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  margin: 0;
+  /* font-size: 50px;
+  color: white; */
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+#overlay_condition {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 95%; /* Full height (cover the whole page) */
+  top: 5%;
+  /* left: 1%; */
+  /* right: 0;
+  bottom: 0; */
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+#overlayChart_condition{
+  position: absolute;
+  width: 95vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  margin: 0;
+  /* font-size: 50px;
+  color: white; */
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+#overlay_potholes {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 95%; /* Full height (cover the whole page) */
+  top: 5%;
+  /* left: 1%; */
+  /* right: 0;
+  bottom: 0; */
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+#overlayChart_potholes{
+  position: absolute;
+  width: 95vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  margin: 0;
+  /* font-size: 50px;
+  color: white; */
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+
+/* Animation */
+/* #intro-vid {
+  position: fixed;
+  width: 95%;
+  top: 50%;
+  left: 2.5%;
+  margin: 0;
+  padding: 0;
+  transform: translate(0,-50%);
+  animation-name: intro_vid;
+  animation-duration: 44s;
+  z-index: 2;
+  visibility: hidden;
+}
+.animate-nav {
+  animation-name: animate_nav;
+  animation-duration: 47s;
+  z-index: 1;
+}
+.animate-body {
+  animation-name: animate_body;
+  animation-duration: 47s;
+  z-index: 1;
+}
+@keyframes intro_vid {
+  0% {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+@keyframes animate_nav {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  95% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes animate_body {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  95% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+} */
+
+/* Background Image */
+.bg-image {
+  background-image: url(../static/images/infrastructure.png);
+  /* width: 100vw; */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  padding: 0;
+  margin: 0;
 }

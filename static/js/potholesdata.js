@@ -55,10 +55,10 @@ function potholes_chart(x,y1,y2) {
   };
 
   var layout_overlay = {
-    title: "Potholes in DC (Current Month)",
+    title: "Potholes in DC (Month-to-Date)",
     xaxis: {
-      // title: "DC Wards",
-      showgrid: false,
+      title: "DC Wards",
+      // showgrid: false,
       automargin: true
     },
     yaxis: {
@@ -68,11 +68,12 @@ function potholes_chart(x,y1,y2) {
       },
       automargin: true
     },
+    barmode: 'stack',
     showlegend: true,
     legend: {
       x: 0.45,
       xanchor: "center",
-      y: 1.1,
+      y: 1.25,
       orientation: "h"
     },
     margin: {
@@ -89,7 +90,7 @@ function potholes_chart(x,y1,y2) {
   };
 
   Plotly.newPlot("pothole_chart", data, layout);
-  // Plotly.newPlot("overlayChart_pothole", data, layout_overlay);
+  Plotly.newPlot("overlayChart_potholes", data, layout_overlay);
 };
 
 
