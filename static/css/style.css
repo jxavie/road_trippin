@@ -249,8 +249,8 @@ th {
   bottom: 0; */
   padding: 0;
   margin: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  background-color: rgba(0,0,0,0.75); /* Black background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 #overlayChart_global{
@@ -277,8 +277,8 @@ th {
   bottom: 0; */
   padding: 0;
   margin: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  background-color: rgba(0,0,0,0.75); /* Black background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 #overlayChart_gross{
@@ -305,8 +305,8 @@ th {
   bottom: 0; */
   padding: 0;
   margin: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  background-color: rgba(0,0,0,0.75); /* Black background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 #overlayChart_state{
@@ -333,8 +333,8 @@ th {
   bottom: 0; */
   padding: 0;
   margin: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  background-color: rgba(0,0,0,0.75); /* Black background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 #overlayChart_condition{
@@ -361,8 +361,8 @@ th {
   bottom: 0; */
   padding: 0;
   margin: 0;
-  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  background-color: rgba(0,0,0,0.75); /* Black background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer; /* Add a pointer on hover */
 }
 #overlayChart_potholes{
@@ -380,72 +380,67 @@ th {
 }
 
 
-/* Animation */
-/* #intro-vid {
+/* Video Intro */
+#vid-div {
   position: fixed;
-  width: 95%;
+  width: 100%;
+  height: 100%;
   top: 50%;
-  left: 2.5%;
+  left: 50%;
   margin: 0;
   padding: 0;
-  transform: translate(0,-50%);
-  animation-name: intro_vid;
-  animation-duration: 44s;
+  transform: translate(-50%,-50%);
+  z-index: 3;
+  background-color: black;
+}
+#intro-vid {
+  position: fixed;
+  width: 90vw;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  transform: translate(-50%,-50%);
+}
+#overlay_video {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 95%; /* Full height (cover the whole page) */
+  top: 5%;
+  /* left: 1%; */
+  /* right: 0;
+  bottom: 0; */
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0,0,0,0.75); /* Black background with opacity */
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+#overlayVideo{
+  position: absolute;
+  width: 95vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  margin: 0;
+  /* font-size: 50px;
+  color: white; */
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+.hide-nav {
   z-index: 2;
-  visibility: hidden;
 }
-.animate-nav {
-  animation-name: animate_nav;
-  animation-duration: 47s;
-  z-index: 1;
+.hide-body {
+  z-index: 2;
 }
-.animate-body {
-  animation-name: animate_body;
-  animation-duration: 47s;
-  z-index: 1;
+.hide-footer {
+  z-index: 2;
 }
-@keyframes intro_vid {
-  0% {
-    visibility: visible;
-    opacity: 1;
-  }
-  99% {
-    visibility: visible;
-    opacity: 1;
-  }
-  100% {
-    visibility: hidden;
-    opacity: 0;
-  }
-}
-@keyframes animate_nav {
-  0% {
-    visibility: hidden;
-    opacity: 0;
-  }
-  95% {
-    visibility: hidden;
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-}
-@keyframes animate_body {
-  0% {
-    visibility: hidden;
-    opacity: 0;
-  }
-  95% {
-    visibility: hidden;
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-} */
+
 
 /* Background Image */
 .bg-image {
