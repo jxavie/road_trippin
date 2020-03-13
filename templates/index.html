@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <meta http-equiv="X-UA-Compatible"> -->
-    <title>Road Trippin</title>
+    <title>Road Trippin'</title>
     
     <!-- Bootstrap -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
@@ -47,22 +47,24 @@
   <body class="b-style" data-spy="scroll" data-target=".navbar" data-offset="100" style="background-color: rgba(0, 0, 0, 0.884);">
 
     <!-- Intro Video -->
-    <!-- <div class="container-fluid" id="intro-vid"> -->
-      <!-- <video controls autoplay muted id="intro-vid"> -->
-      <!-- <video autoplay muted style="position: fixed; width: 95%; top: 50%; left: 2.5%; transform: translate(0, -50%);"> -->
-        <!-- <source src="../static/images/intro_vid.mp4" type="video/mp4"> -->
-        <!-- <source src={{ url_for("static", filename="intro_vid.mp4") }} type="video/mp4"> -->
-        <!-- Your browser does not support HTML5 video. -->
-      <!-- </video> -->
-    <!-- </div> -->
-    <!-- <video controls autoplay muted id="intro-vid">
-      <source src="../static/intro_vid.mp4" type="video/mp4">
-    </video> -->
+    <div id="vid-div" ondblclick="video_off()">
+      <video controls autoplay muted id="intro-vid">
+        <source src="https://adobeprod-a.akamaihd.net/T4BKckKdrSI/rend/T4BKckKdrSI_576.mp4?hdnea=st%3D1584069564%7Eexp%3D1584080364%7Eacl%3D%2Fshared_assets%2Fimage%2F*%21%2Fz%2FT4BKckKdrSI%2Frend%2F*%21%2Fi%2FT4BKckKdrSI%2Frend%2F*%21%2FT4BKckKdrSI%2Frend%2F*%21%2FT4BKckKdrSI%2Fimage%2F*%7Ehmac%3Dafc4221ef2eb151b9cb36309cb72f060ae097c8b9dbb2b68b29398135e117f2b" type="video/mp4">
+      </video>
+    </div>
 
-    <nav class="navbar navbar-expand-sm fixed-top animate-nav" style="padding-top: 0; padding-bottom: 0; background-color: rgba(0, 0, 0, 0.884);">
+    <!-- Intro Video Overlay -->
+      <div id="overlay_video" ondblclick="video_overlay_off()">
+        <video controls id="overlayVideo">
+          <source src="https://adobeprod-a.akamaihd.net/T4BKckKdrSI/rend/T4BKckKdrSI_576.mp4?hdnea=st%3D1584069564%7Eexp%3D1584080364%7Eacl%3D%2Fshared_assets%2Fimage%2F*%21%2Fz%2FT4BKckKdrSI%2Frend%2F*%21%2Fi%2FT4BKckKdrSI%2Frend%2F*%21%2FT4BKckKdrSI%2Frend%2F*%21%2FT4BKckKdrSI%2Fimage%2F*%7Ehmac%3Dafc4221ef2eb151b9cb36309cb72f060ae097c8b9dbb2b68b29398135e117f2b" type="video/mp4">
+        </video>
+      </div>
+  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm fixed-top hide-nav" style="padding-top: 0; padding-bottom: 0; background-color: rgba(0, 0, 0, 0.884);">
       <ul class="navbar-nav mr-auto">
         <li class="nav-brand " style="color: tomato; background-color: white; font-size: x-large; font-weight: bolder; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; font-style: oblique;">
-          ROAD TRIPPIN
+          ROAD TRIPPIN'
         </li>
       </ul>
     
@@ -99,11 +101,17 @@
               <strong>Bridge Crashes</strong>
             </a>
           </li>
+          <li class="nav-item" onclick="video_overlay_on()">
+            <a class="nav-link" style="color: tomato; font-size: 14pt;" href="#">
+              <strong>Intro Video</strong>
+            </a>
+            <!-- Intro Video -->
+          </li>
         </ul>
       </div>
     </nav>
 
-    <div class="animate-body">
+    <div class="hide-body">
       <section>
         <div class="container-fluid" style="padding: 0; margin-top: 45px; background-color: rgb(0, 0, 0);">
         <!-- <div class="container-fluid" style="padding: 0; margin-top: 45px; margin-bottom: 0; margin-left: 0; margin-right: 0; background-color: rgb(0, 0, 0);"> -->
@@ -337,7 +345,7 @@
       <br>
       <br>
 
-      <footer class="footer py-2 fixed-bottom d-sm-none d-none d-md-block">
+      <footer class="footer py-2 fixed-bottom d-sm-none d-none d-md-block hide-footer">
         <div class="container-fluid">
           <!-- <div class="text-right medium align-self-end">
             Meet Team Road Trippin'
@@ -486,6 +494,30 @@
       $(function(){
         $("#includedContent").load("table_data.html"); 
       });
+    </script>
+    <script>
+      var video = document.getElementById("intro-vid");
+      var video2 = document.getElementById("overlayVideo");
+      var videoDiv = document.getElementById("vid-div");
+      var videoOverlay = document.getElementById("overlay_video");
+      
+      video.onended = function() {
+        videoDiv.style.display = "none";
+      };
+
+      function video_off() {
+        video.pause();
+        videoDiv.style.display = "none";
+      }
+
+      function video_overlay_on() {
+        videoOverlay.style.display = "block";
+      }
+
+      function video_overlay_off() {
+        video2.pause();
+        videoOverlay.style.display = "none";
+      }
     </script>
 
   </body>
