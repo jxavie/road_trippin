@@ -2332,9 +2332,9 @@ function createMLMap(data) {
 };
 
 // Load data using jquery geojson
-d3.json("https://jvanzalk.s3.us-east-2.amazonaws.com/va_county_roads.GeoJSON").then((data) => {
+d3.json("/api/condition").then((data) => {
     createMLMap(data);
-})
+});
 
 // d3.json("../static/data/va_county_roads.geojson").then((data) => {
 //     createMLMap(data);

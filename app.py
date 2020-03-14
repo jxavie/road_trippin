@@ -22,6 +22,8 @@ import json
 # import OS
 import os
 
+from varoadcondition_data import va_county_roads
+
 # import config files
 # from config import remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_host, remote_db_port, remote_gwsis_dbname
 remote_gwsis_dbuser = os.environ.get("remote_gwsis_dbuser")
@@ -69,17 +71,22 @@ Tunnels = Base.classes.tunnels
 @app.route('/')
 def index():
 
-    js_config = API_KEY
+    # js_config = API_KEY
 
-    return render_template('index.html', js_config=js_config)
-    # return render_template('index.html')
+    # return render_template('index.html', js_config=js_config)
+    return render_template('index.html')
 
 
-# # define route for /bridge_crashes render form
-# @app.route('/bridge_crashes')
-# def bridge_crashes():
-#     return render_template('bridge_crashes.html')
+# define route for /bridge_crashes render form
+@app.route('/bridge_crashes')
+def bridge_crashes():
+    return render_template('bridge_crashes.html')
 
+# define route for /bridge_crashes render form
+@app.route('/api/condition')
+def va_roads():
+    va_county_roads
+    return jsonify(va_county_roads)
 
 # define end point for state stats; use abbreviation (e.g., VA)
 @app.route('/api/<state>')
