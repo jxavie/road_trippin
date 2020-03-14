@@ -75,10 +75,10 @@ def index():
     # return render_template('index.html')
 
 
-# define route for /bridge_crashes render form
-@app.route('/bridge_crashes')
-def bridge_crashes():
-    return render_template('bridge_crashes.html')
+# # define route for /bridge_crashes render form
+# @app.route('/bridge_crashes')
+# def bridge_crashes():
+#     return render_template('bridge_crashes.html')
 
 
 # define end point for state stats; use abbreviation (e.g., VA)
