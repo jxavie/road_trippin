@@ -25,13 +25,13 @@ import os
 from varoadcondition_data import va_county_roads
 
 # import config files
-# from config import remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_host, remote_db_port, remote_gwsis_dbname
-remote_gwsis_dbuser = os.environ.get("remote_gwsis_dbuser")
-remote_gwsis_dbpwd = os.environ.get("remote_gwsis_dbpwd")
-remote_db_host = os.environ.get("remote_db_host")
-remote_db_port = os.environ.get("remote_db_port")
-remote_gwsis_dbname = os.environ.get("remote_gwsis_dbname")
-API_KEY = os.environ.get("API_KEY")
+from config import remote_gwsis_dbuser, remote_gwsis_dbpwd, remote_db_host, remote_db_port, remote_gwsis_dbname
+# remote_gwsis_dbuser = os.environ.get("remote_gwsis_dbuser")
+# remote_gwsis_dbpwd = os.environ.get("remote_gwsis_dbpwd")
+# remote_db_host = os.environ.get("remote_db_host")
+# remote_db_port = os.environ.get("remote_db_port")
+# remote_gwsis_dbname = os.environ.get("remote_gwsis_dbname")
+# API_KEY = os.environ.get("API_KEY")
 
 # configure MySQL connection
 pymysql.install_as_MySQLdb()
@@ -71,10 +71,10 @@ Tunnels = Base.classes.tunnels
 @app.route('/')
 def index():
 
-    # js_config = API_KEY
+    js_config = API_KEY
 
-    # return render_template('index.html', js_config=js_config)
-    return render_template('index.html')
+    return render_template('index.html', js_config=js_config)
+    # return render_template('index.html')
 
 
 # define route for /bridge_crashes render form
