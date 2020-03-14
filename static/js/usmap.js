@@ -351,37 +351,40 @@ function createUsMap(data) {
 
     // Baselayers object
     var baselayers = {
-        'Dark':darkmap,
-        'Light': lightmap
+        'Dark':darkmap
+        // 'Light': lightmap
     };
 
     // Add the overlay control to the map
-    L.control.layers(baselayers,overlays).addTo(us_map);
+    L.control.layers(baselayers, overlays).addTo(us_map);
 
     // Map events to add and remove the legends
     us_map.on('overlayadd', function (layer, name) {
         // console.log(name, layer);
 
         if (layer.name == "Tunnel Condition") {
-            us_map.addControl(tunnelLegend);
             us_map.removeLayer(bridge_layer);
             us_map.removeLayer(road_layer);
             us_map.removeControl(bridgeLegend);
             us_map.removeControl(roadLegend);
+            us_map.addLayer(tunnel_layer);
+            us_map.addControl(tunnelLegend);
         }
         else if (layer.name == "Road Condition") {
-            us_map.addControl(roadLegend);
             us_map.removeLayer(bridge_layer);
             us_map.removeLayer(tunnel_layer);
             us_map.removeControl(bridgeLegend);
             us_map.removeControl(tunnelLegend);
+            us_map.addLayer(road_layer);
+            us_map.addControl(roadLegend);
         }
         else {
-            us_map.addControl(bridgeLegend);
             us_map.removeLayer(tunnel_layer);
             us_map.removeLayer(road_layer);
             us_map.removeControl(tunnelLegend);
             us_map.removeControl(roadLegend);
+            us_map.addLayer(bridge_layer);
+            us_map.addControl(bridgeLegend);
         }
 
     });

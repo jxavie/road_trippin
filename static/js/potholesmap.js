@@ -18,15 +18,6 @@ var goldIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
-
-// tile layers
-var darkmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-  attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
-  maxZoom: 18,
-  id: "mapbox.dark",
-  accessToken: API_KEY
-});
-
 var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
   maxZoom: 18,
@@ -34,27 +25,27 @@ var streetmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.pn
   accessToken: API_KEY
 });
 
-var satellitemap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+var comicmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>",
   maxZoom: 18,
-  id: "mapbox.satellite",
+  id: "mapbox.comic",
   accessToken: API_KEY
 });
 
 var mapLayers = {
   label: "Base Layers",
   children: [
+    // {
+    //   label: "Dark",
+    //   layer: darkmap
+    // },
     {
-      label: "Dark",
-      layer: darkmap
+      label: "Comic",
+      layer: comicmap
     },
     {
       label: "Street",
       layer: streetmap
-    },
-    {
-      label: "Satellite",
-      layer: satellitemap
     }
   ]
 };
@@ -258,7 +249,7 @@ d3.json("../static/data/Ward_from_2012.geojson").then((response) => {
       center: [38.9072, -77.0369],
       zoom: 11,
       layers: [
-        streetmap,
+        comicmap,
         wardsLayer,
         // potholeLayer1_closed,
         // potholeLayer2_closed,

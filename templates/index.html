@@ -48,6 +48,12 @@
     <!-- Math -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.0/math.min.js"></script>
 
+    <!-- JQuery Custom Slider -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
   </head>
 
 
@@ -302,7 +308,7 @@
       </section>
 
       <!-- DC POTHOLES -->
-      <section id="potholes"></section>
+      <section id="potholes">
         <div class="container-fluid">
           <div class="row">
             <!-- <h4 class="mx-auto" style="padding-top: 25px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px; color: tomato;"> -->
@@ -355,8 +361,19 @@
               <strong>VIRGINIA ROADS - CONDITION OVER TIME</strong>
             </h4>
           </div>
-          <div class="row card" id="slider" style="background-color: rgba(0, 0, 0, 0);">HELLO</div>
-          <div class="row card" id="ml_map" style="background-color: rgba(0, 0, 0, 0);"></div>
+          <!-- <div class="card borderless" id="slider" style="background-color: rgba(0, 0, 0, 0);"> -->
+          <div style="height: 50px; padding-left: 50px; padding-right: 50px;">
+            <div class="card borderless mx-auto" style="padding-bottom: 10px; background-color: rgba(0, 0, 0, 0);">
+              <button id="play" class="mx-auto chart-btn" type="button">Play</button>
+            </div>
+            <div class="card borderless" id="slider" style="height: 15px;">
+              <div id="custom-handle" class="ui-slider-handle"></div>
+            </div>
+          </div>
+          <div class="card borderless" style="padding-top: 0; padding-bottom: 0; padding-left: 50px; padding-right: 50px; margin-top: 10px; background-color:rgba(0, 0, 0, 0);">
+            <div id="ml_map"></div>
+          </div>
+        </div>
       </section>
 
       <!-- BRIDGE CRASHES -->
@@ -1263,6 +1280,7 @@
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <script type="text/javascript" src="../static/js/potholesmap.js"></script>
     <script type="text/javascript" src="../static/js/potholesdata.js"></script>
+    <script type="text/javascript" src="../static/js/varoadcondition.js"></script>
     <script type="text/javascript" src="../static/js/bridgecrashes.js"></script>
     
     <script>
