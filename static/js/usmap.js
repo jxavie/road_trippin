@@ -1,3 +1,5 @@
+var API_KEY = d3.select("#cred").property("text").split(";")[0];
+
 // format number (1000s) with commas
 function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '1,');

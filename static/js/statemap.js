@@ -1,4 +1,4 @@
-var API_KEY = d3.select("#cred").property("text").split(";")[0];
+// var API_KEY = d3.select("#cred").property("text").split(";")[0];
 
 // function to create a map
 function stateMap(dataset, state) {
