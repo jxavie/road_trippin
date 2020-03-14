@@ -2332,6 +2332,6 @@ function createMLMap(data) {
 };
 
 // Load data using jquery geojson
-$.getJSON('../static/data/va_county_roads.geojson', function (data) {
+$.getJSON("../static/data/va_county_roads.geojson", function (data) {
     createMLMap(data);
 });
