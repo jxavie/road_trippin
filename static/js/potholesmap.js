@@ -40,12 +40,12 @@ var mapLayers = {
     //   layer: darkmap
     // },
     {
-      label: "Comic",
-      layer: comicmap
-    },
-    {
       label: "Street",
       layer: streetmap
+    },
+    {
+      label: "Comic",
+      layer: comicmap
     }
   ]
 };
@@ -249,7 +249,7 @@ d3.json("../static/data/Ward_from_2012.geojson").then((response) => {
       center: [38.9072, -77.0369],
       zoom: 11,
       layers: [
-        comicmap,
+        streetmap,
         wardsLayer,
         // potholeLayer1_closed,
         // potholeLayer2_closed,

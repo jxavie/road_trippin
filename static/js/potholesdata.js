@@ -55,7 +55,7 @@ function potholes_chart(x,y1,y2) {
   };
 
   var layout_overlay = {
-    title: "Potholes in DC (Month-to-Date)",
+    title: "Potholes in DC (Last 30 Days)",
     xaxis: {
       title: "DC Wards",
       // showgrid: false,
